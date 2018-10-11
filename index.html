@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html lang="en" ng-app="myApp">
+	<head>
+	    <title>
+	    	Log In
+	    </title>
+	    <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script type="text/javascript" src="bootstrap/js/bootstrap.bundle.js"></script>
+		
+
+   	</head>
+
+    <body>
+			<div class="container">
+				<!-- Start of Row 1 ------------------------------------------------------->
+
+					
+				<nav class="navbar navbar-default navbar-static-top">
+					<div class="container-fluid">
+						<div class="navbar-header">
+					  		<a class="navbar-brand" href="/"><img class="logo" src="img/pic_logo.png" height="92" width="92"/>PICSIS</a>			<!--- BRAND PAGE HERE ---->
+						</div>
+					</div>
+	   			</nav>
+
+				<!---END OF ROW 1 ------------------------------------------------------->
+
+				<!--- START OF ROW 2 ----------------------------------------------------->
+				<div class = "row">
+					<div class = "col-sm-4" ng-controller="LogInCtrl">
+						<h2> Sign in </h2> 
+						<form id="log_in">
+					    	<div class="form-group" id="log_in">
+					        	<div class="form-row align-items-center">
+									<label class"sr-only" for="email">Email</label>
+							        <input type="email" class="form-control input-lg" id="email" placeholder="Email" ng-model="user.email" />
+					   				<br>
+									
+									<label class"sr-only" for="password">Password</label>
+					           		<input type="password" class="form-control input-lg" id="password"  placeholder="Password" ng-model="user.password"/>
+					            	<br>
+									
+									<button type="submit" class="btn btn-primary" ng-click="authorize()" ng-href="http://localhost:3000/home">Log In</button>
+									
+								</div>
+						 	</div>
+				    	</form>
+					</div>
+					<div class = "col-sm-8" ng-controller="AnnouncementsCtrl">
+						<div id="announcements">
+						<!--- float to the left --->
+							<h2>{{announcement.title}}</h2>
+							<p>{{announcement.body}}</p>
+						</div>
+					</div>
+				</div>
+			<!---END OF ROW 2 --------------------------------------------------------->
+			</div>
+	</body>
+	<script type="text/javascript" src="angular/angular.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+	<script type="text/javascript" src="controllers/MainController.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-cookies.js"></script>
+</html>

@@ -1,0 +1,177 @@
+/* make sidebar nav vertical */ 
+@media (min-width: 768px) {
+    html{
+		font-family:Montserrat, sans-serif
+	}
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }	
+	
+  .navbar {
+      font-family: Montserrat, sans-serif;
+      margin-bottom: 1%;
+	  padding:1%;
+	  padding-top:.5%;
+      background-color: #123456;
+      border: 0;
+      
+  }
+  /*** Image and header name ***/
+  .navbar-brand{
+	  font-weight:bold;
+	  letter-spacing:2px;
+	  font-size:1.3vw;
+	  color:white;
+	  padding-bottom:0;
+	  
+  }
+  .navbar-brand:hover{
+	  
+  }
+  .container{
+	  margin-left:5%;
+	  margin-top:4%;
+
+  }
+	/**** Menu-related CSS ***/
+  .sidebar-nav {
+	  font-family: Verdana, sans-serif;
+      background-color: #123456;
+      font-size: 1vw !important;
+	  text-transform:uppercase;
+	  font-weight:bold;
+  }
+  
+  .sidebar-nav > .nav{
+	  background-color: #123456;
+	  border-radius:10px;
+	  float:left;
+	  display:block;
+	  color:#4b98e5;
+	
+  }
+  
+  .menu_list{
+	  padding:.5rem;
+	  margin:0;
+	  margin-top:.25rem;
+	  margin-bottom:.25rem;
+	  padding-right:5rem;
+	  padding-left:2rem;
+	
+  }
+  .menu_list:hover{
+	  background-color:#1e5791;
+
+  }
+  li>a{
+	  text-decoration:none;
+	 
+  }
+  .nav-item{
+	  color:white;
+  }
+  a:hover{
+	  
+	  text-decoration:none;
+	  color:white;
+  }
+ .table{
+	
+ }
+ .table td{
+	font-family:Verdana;
+	letter-spacing:.5px;
+	font-size:.8vw;
+	font-weight:bold;
+	text-align:right;
+	
+ } 
+ .table th{
+   
+ }
+ .clickableRow{
+	 cursor:pointer;
+	 background-color:#f9edd9;
+ }
+ .clickableRow:hover{
+	background-color:#f9dcac;
+ }
+ /**Top header**/
+ .topHeader,.secondHeader{
+	background-color:#123456;	
+	color:white;
+ }
+ /**Striped table***/
+
+ #subject-code{
+	 text-align:left;
+ }
+ #subject-grade{
+	 text-align:right;
+ }
+ 
+ .btn:hover{
+	 cursor:pointer;
+ }
+ .table-row{
+	 background-color:#f9dcac;
+ }
+ .student-home{
+	 border-collapse:separate;
+ }
+ .student-home-td{
+	 margin-top:0;
+	 padding:0;
+	 vertical-align:top;
+	 text-align:left;
+ }
+ .reminders-table{
+
+ }
+ .reminders-feed{
+	 padding-left:10%;
+	 overflow-y:auto;
+	 overflow-x:auto;
+	 min-width:420px;
+	 width:auto;
+	 word-wrap:break-word;
+	
+ }
+ .reminder-container{
+	 border:1px solid black;
+	 box-shadow:3px 4px #888;
+	 padding:5%;
+	 padding-left:3%;
+	 margin-top:3%;
+	 min-width:360px;
+	 width:auto;
+	 min-height:120px;
+	 height:auto;
+	 word-wrap:break-word;
+	  background-color:#87cefa;
+	 
+ }
+ .reminder-body{
+	 padding-left:10%;
+	 
+ }
+ .reminder-message{
+	 font-weight:bold;
+ }
+ 
+ .addEntryForm{
+	 border-left:4px solid #336699;
+	 padding:10px;
+	 padding-top:15px;
+	 padding-bottom:15px;
+	 margin:20px;
+	 
+	 
+ }
+ 
+ hr {
+    border: 1px solid #d3d3d3;
+    
+}
+ 
+ 
+}

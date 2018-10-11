@@ -1,0 +1,20 @@
+<div style="margin-bottom:20px; border-left:4px solid #336699; padding-left:10px;" >
+<h4> Edit Field </h4>
+
+<label>Please select a field to edit: </label>
+<select class="custom-select" style="max-width:200%;margin-bottom:20px" ng-model="fieldEdit">
+	<option value ="student">Student Number</option>
+	<option value ="lname">Last Name</option>
+	<option value ="fname">First Name</option>
+	<option value ="mname">Middle Name</option>
+	<option value ="course">Course</option>
+	<option value ="major_degree">Major/Degree</option>
+	<option value ="email">Email</option>
+	<option value ="mobile">Mobile</option>
+</select>
+
+<input type="text" class="form-control input-xs col-sm-8" placeholder="New value here" ng-model="entered_data"/><br/>
+<br/>	
+<button type="submit" class="btn btn-success btn-md col-sm-2" ng-click="editTheField()" style="margin-left:20px">Submit</button>
+<br/>
+</div >

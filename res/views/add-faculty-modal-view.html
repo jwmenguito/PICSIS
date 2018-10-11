@@ -1,0 +1,22 @@
+<div class="addEntryForm">	
+	<div class="inputFields">
+		<h3>Add Faculty </h3>
+		<hr/>
+		<form class="addForm">
+			<div style="text-align:left;vertical-align:top">
+			<input type="text" class="form-control input-xs col-sm-8" placeholder="Professor ID" ng-model="prof_id"/><br/>
+				<input type="text" class="form-control input-xs col-sm-8" placeholder="Last Name" ng-model="lname"/><br/>
+				<input type="text" class="form-control input-xs col-sm-8" placeholder="First Name" ng-model="fname"/><br/>
+				<input type="text" class="form-control input-xs col-sm-8" placeholder="Middle Name" ng-model="mname"/><br/>
+				<h4>Gender</h4>
+				<label><input class="radio-inline" type="radio" value="M" ng-model="gender"/>Male</label>
+				<label><input class="radio-inline" type="radio" value="F" ng-model="gender"/>Female</label><br/>
+				<input type="email" class="form-control input-xs col-sm-8" placeholder="Email Address" ng-model="email" style="margin-top:5px"/><br/>
+				<input type="text" class="form-control input-xs col-sm-8" placeholder="Mobile" ng-model="mobile"/><br/>
+				<input type="text" class="form-control input-xs col-sm-8" placeholder="Degree" ng-model="degree"/><br/>
+				<input type="text" class="form-control input-xs col-sm-8" placeholder="Major" ng-model="major" /><br/>
+			</div>																
+				<button type="submit" class="btn btn-success btn-lg col-sm-2" ng-click="add()">Submit</button>
+		</form>
+	</div>
+</div>

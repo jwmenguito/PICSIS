@@ -1,0 +1,16 @@
+<table class="table table-hover table-condensed">
+
+<tr>
+<h2>Course Checklist</h2>
+</tr>
+<tr class="table-header">
+<thead class="secondHeader">
+<th>Subject Code</th>
+<th id="subject-grade">Subject Grade</th>
+</thead>
+</tr>
+<tr ng-repeat="(x,subject) in user_object.checklist">
+<td class="subject" id="subject-code">{{subject.subject_code}}</td>
+<td class="subject" id="subject-grade">{{subject.grade}}</td>
+</tr>
+</table>

@@ -1,0 +1,174 @@
+<div>
+	<h2>Records</h2>
+    <div class="span12">
+	<select name="table_data" class="custom-select" ng-model="display_table" style="max-width:200%;margin-bottom:20px">
+	<option value ="student">Students</option>
+	<option value ="faculty">Faculty</option>
+	<option value ="subject">Subjects</option>
+	</select>
+	<ui-view>
+		
+	</ui-view>
+	<button class="btn btn-primary btn-md col-sm-2 " ng-click="getTable()" style="margin-left:20px;margin-right:20px;margin-bottom:20px">Select</button>
+	<button class="btn btn-success btn-md col-sm-2" ng-click="addEntry()"style="margin-bottom:20px"> Add </button>
+	<button class="btn btn-warning btn-md col-sm-2" ng-click="archive()" style="margin-left:20px;margin-right:20px;margin-bottom:20px">Archive</button>
+	<div ng-switch="display_table" style="margin-top:10px">
+		<!-- Start of Student ng-switch !-->
+		<div ng-switch-when="student">
+		
+			
+		<table class="table table-bordered">
+		<thead>
+				<tr class="topHeader">
+			<!-- table headers -->
+				<th class="thead">Student Number</th>
+				<th>Last Name</th>
+				<th>First Name</th>
+				<th>Course</th>
+				<th>Major/Degree</th>
+				<th>Email</th>
+				<th></th>
+				<th></th>
+			<!-- table headers end-->
+				</tr>
+		</thead>
+		
+		<!-- Table body -->
+		<tbody ng-repeat="student in students" data-ng-switch on ="studentCollapse[$index]" ng-init="student_index=$index">
+			<tr class="clickableRow">
+				<td id="subject-code">{{student.student_no}}</td>
+				<td id="subject-code">{{student.lname}}</td>
+				<td id="subject-code">{{student.fname}}</td>
+				<td id="subject-code">{{student.course}}</td>
+				<td id="subject-code">{{student.major_degree}}</td>
+				<td id="subject-code">{{student.email}}</td>
+				<td><button class="btn-primary btn-xs" ng-click="selectTableRow($index,student.student_no)">Expand</button></td>
+				<td><button class="btn-primary btn-xs" ng-click="edit($index)">Edit</button></td>
+			</tr>
+			
+			<!-- Secondary tables here -->
+			<tr data-ng-switch-when="true">
+				<!--Table for Checklist-->
+				<td colspan="3">
+					<div class="span3">
+						<div class="pull-right">
+							<!-- Legit 2nd Level Table # 1 here -->
+							<table class="table table-hover table-condensed">
+								<thead class="levelTwo">
+									<tr class="secondHeader">
+										<th>Subject Code</th>
+										<th>Grade</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<!--Content here-->
+									<tr class="table_student" data-ng-repeat="subject in students[$index].checklist track by $index">
+										<td id="subject-code">{{subject.subject_code}}</td>
+										<td id="subject-grade">{{subject.grade}}</td>
+										
+									</tr>
+									<!--End of Content-->
+								</tbody>
+									
+							</table>
+							<!-- End of 2nd Level Table # 1 here -->
+						</div>
+					</div>
+				</td>
+				<!-- End of Table for checklist-->
+				
+				<!-- Table for Fees! -->
+				<td colspan="3">
+					<div class="span3">
+						<div class="pull-right">
+							<!-- Legit 2nd Level Table # 2 here -->
+							<table class="table table-hover table-condensed">
+								<thead class="levelTwo">
+									<tr class="secondHeader">
+										<th>Amount</th>
+										<th>Receipt</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!--Content here-->
+									<tr class="table_student" data-ng-repeat="fee in students[$index].fees track by $index">
+										<td id="subject-code">{{fee.amount}}</td>
+										<td id="subject-grade">{{fee.receipt}}</td>
+									</tr>
+									<!--End of Content-->
+								</tbody>
+									
+							</table>
+							<!-- End of 2nd Level Table # 2 here -->
+						</div>
+					</div>
+				</td>
+				<!-- End of Table for Fees -->
+			</tr>
+		</tbody>
+		<!-- end of table -->
+		</table>
+		</div>
+		<!-- end of student ng-switch-->
+		<div ng-switch-when="faculty">
+		
+		<table class="table table-bordered">
+		<thead>
+			<tr class="topHeader">
+				<th class="thead">Professor ID</th>
+				<th>Last Name</th>
+				<th>First Name</th>
+				<th>Gender</th>
+				<th>Degree</th>
+				<th>Major</th>
+				<th>Email</th>
+
+			</tr>
+		</thead>
+			<tr ng-repeat="faculty in faculties">
+				<td id="subject-code">{{faculty.prof_id}}</td>
+				<td id="subject-code">{{faculty.lname}}</td>
+				<td id="subject-code">{{faculty.fname}}</td>
+				<td id="subject-code">{{faculty.gender}}</td>
+				<td id="subject-code">{{faculty.degree}}</td>
+				<td id="subject-code">{{faculty.major}}</td>
+				<td id="subject-code">{{faculty.email}}</td>
+								<td><button class="btn-primary btn-xs" ng-click="edit($index)">Edit</button></td>
+			</tr>
+
+		</table>
+		
+		</div>
+		<!-- end of faculty ng-switch-->
+		<div ng-switch-when="subject">
+		<table class="table table-bordered">
+			<thead>
+				<tr class="topHeader">
+					<th>Class Code</th>
+					<th>Class Description</th>
+					<th id="subject-grade">Units </th>
+					<th>Prof ID </th>
+					<th>Major/Degree </th>
+					<th></th>
+				</tr>
+			</thead>
+        <tr	ng-repeat="subject in subjects">
+				<td class="subject" id ="subject-code">{{subject.subject_code}}</td>
+				<td class="subject" id="subject-code">{{subject.subj_desc}}</td>
+				<td class="subject" id="subject-grade">{{subject.units}}</td>
+				<td class="subject" id="subject-grade">{{subject.prof_id}}</td>
+				<td class="subject" id="subject-grade">{{subject.major_degree}}</td>
+								<td><button class="btn-primary btn-xs" ng-click="edit($index)">Edit</button></td>
+		</tr>
+		
+		</table>
+		
+		</div>
+		<!-- end of subject ng-switch -->
+	</div>	
+	</div>
+	
+	
+	
+</div>

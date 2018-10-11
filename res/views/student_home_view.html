@@ -1,0 +1,85 @@
+<table class="student-home">
+	<div class="row">
+	<tr>
+		<div class="col-sm-4">
+		<!-- First Table -->
+		<td class="student-home-td" colspan="4">
+			<h2>Home</h2>
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+					
+					</tr>
+				</thead>
+					<tr class="table-row">
+						<th class="thead">Student Number</th>
+						<td>{{user_object.student_no}}</td>
+					</tr>
+					<tr class="table-row">
+						<th>Last Name</th>
+						<td>{{user_object.lname}}</td>
+					</tr>
+					<tr class="table-row">
+						<th>First Name</th>
+						<td>{{user_object.fname}}</td>
+					</tr>
+					<tr class="table-row">
+						<th>Course</th>
+						<td>{{user_object.course}}</td>
+					</tr>
+					<tr class="table-row">
+						<th>Major/Degree</th>
+						<td>{{user_object.major_degree}}</td>
+					</tr>
+					<tr class="table-row">
+						<th>Email</th>
+						<td>{{user_object.email}}</td>
+					</tr>
+			</table>
+		</td>
+		</div>
+		
+
+		<div class="col-sm-8">
+		<!-- Second Table-->
+
+						
+		<td  class="student-home-td" colspan="8">
+			<!---Reminders Page --->
+			<h2>Reminders</h2>
+			<table class="reminders-table">
+				<thead>
+				
+				</thead>
+				<tr>
+					<td>
+						<div class="reminders-feed">
+							<div class="reminder-container" ng-repeat="reminder in user_object.reminders">
+								<div class="reminder-title">
+								<h6>
+									Title:&nbsp &nbsp{{reminder.title}}
+								</h6>
+								<h6>
+									Date:&nbsp &nbsp{{reminder.date}}
+								</h6>
+								</div>
+								<h6>Message:</h6>
+								<div class="reminder-body">
+									
+									<p class="reminder-message">
+										{{reminder.message}}
+									</pre>
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</td>
+		
+		</div>
+		
+		<!-- End of Second Table -->
+	</tr>
+	</div>
+</table>

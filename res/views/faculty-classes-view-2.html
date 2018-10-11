@@ -1,0 +1,93 @@
+<div>
+    <div class="span12">
+        <!-- START TABLE -->
+        <div>
+			<h2>Classes</h2>
+            <table class="table">
+                <thead class="topLevel">
+                    <tr class="topHeader">
+                        <th>Class Code</th>
+						<th>Class Description</th>
+						<th id="subject-grade">Units </th>
+						<th></th>
+					</tr>
+                </thead>
+                <tbody data-ng-repeat="class in classes track by $index" data-ng-switch on="dayDataCollapse[$index]" ng-init="class_index=$index" >
+                    <tr class="clickableRow" title="Collapsible Class" data-ng-click="selectTableRow($index, class.subject_code)" >
+						<td class="subject" id ="subject-code">{{class.subject_code}}</td>
+						<td class="subject" id="subject-code">{{class.subj_desc}}</td>
+						<td class="subject" id="subject-grade">{{class.units}}</td>
+						<td>
+						<button class="btn-info btn-xs" data-toggle="modal" data-target="#reminderForm">Send Reminder</button>
+							<!-- Modal -->
+							<div id="reminderForm" class="modal fade" role="dialog">
+							  <div class="modal-dialog modal-dialog-centered">
+
+							<!-- Modal content-->
+								<div class="modal-content">
+								  <div class="modal-header">
+								  <h4> Send Reminder to {{classes[$parent.index].subject_code}}</h2>
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+								  </div>
+								  <div class="modal-body">
+									<hr>
+									<textarea class="form-control" rows="3" ng-model="$parent.msg" name="message" placeholder="Message"></textarea><br/>
+								  </div>
+								  <div class="modal-footer">
+									<button type="submit" class="btn-success btn-sm" ng-click="send_reminders($index)">Send</button>
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								  </div>
+								</div>
+
+							  </div>
+							</div>
+							<!-- End of Modal -->
+						</td>
+					</tr>
+                   <!-- insert 2nd table here -->
+				    <tr data-ng-switch-when="true">
+                        <td colspan="9">
+                            <div class="span9">
+                                <div class="pull-right">
+                                    <table class="table table-hover table-condensed table-striped">
+                                        <thead class="levelTwo">
+                                            <tr class="secondHeader">
+                                               
+                                                <th style="text-align:center">Student Number</th>
+                                                <th style="text-align:left">Last Name</th>
+                                                <th style="text-align:left">First Name</th>
+                                                <th>Grade</th>
+												 <th></th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="table_student" data-ng-repeat="student in classes[$index].students track by $index" data-ng-switch on = "gradeHidden" >
+												
+                                                <td class="table_student" style="text-align:center">{{student.student_no}}</td>
+                                                <td class="table_student" style="text-align:left">{{student.lname}}</td>
+                                                <td class="table_student" style="text-align:left">{{student.fname}}</ td>
+                                                <td>{{student.grade}}</td>
+												<td class=	"pullright">
+												<!--<button class="btn-xs" ng-click="checkIndex(class_index,$index)">CHECK </button>-->
+												<button class="btn-xs btn-warning" data-toggle="modal" data-target="#gradeModal" ng-click="store_index(class_index,$index)">Grade</button>
+												<input type="text" class="col-sm-3 input-xs" placeholder="Enter Grade" ng-model="$parent.gradeArray[$index]"/></input><br/>
+												
+												</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- END TABLE -->
+								
+		
+		
+		
+	</div>
+</div>

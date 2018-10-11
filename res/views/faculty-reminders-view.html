@@ -1,0 +1,27 @@
+<div class="row">
+<h2>Reminders</h2>
+
+<br/>
+</div>
+<div class="row">
+<div class="col-sm-4">
+</div>
+<div class="col-sm-4">
+
+<label class"sr-only" for="sendBy">Send by: </label>
+
+<select name="sendBy">
+	<option value ="student_no">Student Number</option>
+	<option value ="subject_code">Subject Code</option>
+</select>
+
+<label class"sr-only" for="title">Title</label><br/>
+<input type="text" class="form-control input-lg" id="subject"  placeholder="Title" ng-model="title"/><br/>
+<label class"sr-only" for="mesage">Message</label><br/>
+<textarea class="form-control" rows="3"></textarea><br/>
+<button type="submit" class="btn btn-primary" ng-click="change_password()" >Change Password</button>
+
+</div>
+<div class="col-sm-4">
+</div>
+</div>

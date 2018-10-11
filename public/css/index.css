@@ -1,0 +1,181 @@
+body {
+      font: 400 15px/1.8 Lato, sans-serif;
+      color: #777;
+  }
+  h3, h4 {
+      margin: 10px 0 30px 0;
+      letter-spacing: 10px;      
+      font-size: 20px;
+      color: #111;
+  }
+  .container {
+      padding: 1%;
+	  
+  }
+
+  .btn {
+      padding: 10px 20px;
+      background-color: #123456;
+      color: #f1f1f1;
+      border-radius: 0;
+      transition: .2s;
+  }
+
+.navbar {
+     
+      margin-bottom: 1%;
+	  padding:1%;
+	  padding-top:.5%;
+      background-color: #123456;
+      border: 0;
+      
+  }
+  /*** Image and header name ***/
+  .navbar-brand{
+	  font-weight:900;
+	  letter-spacing:2px;
+	  font-size:2.3vw;
+	  color:white;
+	  padding-bottom:0;
+	  
+  }
+  .navbar-brand:hover{
+	  color:white;
+  }
+  
+  footer {
+      background-color: #40E0D0;
+      color: #FFFAFA;
+      padding: 32px;
+  }
+  footer a {
+      color: #FFFAFA;
+  }
+  footer a:hover {
+      color: #40E0D0;
+      text-decoration: none;
+  }  
+  .form-control {
+      border-radius: 0;
+  }
+  textarea {
+      resize: none;
+  }
+
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password], input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #40E0D0;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.form-check-input{
+	padding-top:.2%;
+	
+}
+.form-check-label{
+	padding-left:.2rem;
+	padding-right:2rem;
+}
+.form-check{
+	padding-left:2rem;
+}
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+    
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+
+.log_in_field{
+	width:250px	;
+}
+.log_in{
+	width: 250px;
+	border:2px black;
+}

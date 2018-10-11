@@ -1,0 +1,17 @@
+					<div class="row">
+					  <div class="col-sm-3">
+						<div class="sidebar-nav" role="navigation">
+							  <ul class="nav flex-column">
+								<li ng-repeat="state in states" class="menu_list">
+								<a class="nav-item" ng-href="{{state.state_url}}" ui-sref-opts="{reload:true}">{{state.name}}</a>
+								</li>
+							  
+							  </ul>
+						</div>
+					  </div>
+					  <div class="col-sm-9">
+						<ui-view>
+						<p> Content here </p>
+						</ui-view>
+					  </div>
+					</div>

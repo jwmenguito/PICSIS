@@ -1,0 +1,25 @@
+<!-- Modal Start -->
+													<div id="gradeModal" class="modal fade" role="dialog">
+														<div class="modal-dialog modal-dialog-centered">
+
+															<!-- Modal content-->
+															<div class="modal-content">
+																<div class="modal-header">
+																	<button type="button" class="close" data-dismiss="modal">&times;</button>
+																</div>
+																
+																<div class="modal-body">
+																	<h5> {{classes[subject_index].students[student_index].lname}}</h5>
+																	<label class"sr-only" for="mesage">Grade</label><br/>
+																	<input type="text" class="form-control input-xs" placeholder="Grade" ng-model="data.grade"/></<br/>
+																</div>
+																
+																<div class="modal-footer">
+																	<button type="submit" class="btn-success btn-sm" ng-click="grade()">Send</button>
+																	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+																</div>
+															</div>
+															<!--End of Modal Content -->	
+														</div>
+													</div>
+													<!-- End of Modal -->
