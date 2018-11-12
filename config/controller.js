@@ -59,6 +59,7 @@ exports.authenticate = (req,res,next)=>{
 			
 			if(!userFound){
 				console.log("Email: "+req.body.email+" not found.");
+				alert("Email is not registered!");
 				return res.status(200).redirect('/');
 				
 				
@@ -67,6 +68,7 @@ exports.authenticate = (req,res,next)=>{
 				//check if password matches
 				if(!userFound.validatePassword(req.body.password)){
 					console.log("Wrong email + password combination");
+					alert("Incorrect password")
 					return res.status(200).redirect('/');
 					
 				}else{
