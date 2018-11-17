@@ -8,6 +8,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 
 		}
 	}]);
+	
 	homeModule.factory('getUserType',["$cookies",function userTypeFactory($cookies){
 		var token_json = $cookies.get('token');
 		var token =  JSON.parse(user.slice(2));

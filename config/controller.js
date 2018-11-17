@@ -59,7 +59,7 @@ exports.authenticate = (req,res,next)=>{
 			
 			if(!userFound){
 				console.log("Email: "+req.body.email+" not found.");
-				alert("Email is not registered!");
+
 				return res.status(200).redirect('/');
 				
 				
@@ -68,9 +68,9 @@ exports.authenticate = (req,res,next)=>{
 				//check if password matches
 				if(!userFound.validatePassword(req.body.password)){
 					console.log("Wrong email + password combination");
-					alert("Incorrect password")
-					return res.status(200).redirect('/');
 					
+					var url = "/";
+					return res.json({message:url});
 				}else{
 					// if user is found and password is right
 					// create a token with only our given payload
@@ -80,7 +80,7 @@ exports.authenticate = (req,res,next)=>{
 					var url = "";
 					console.log("User details: \n");
 					console.log(userFound);
-					console.log("USER email PUTANGINA = "+userFound.type);
+					
 					if(userFound.type=='s'){
 						user_id = userFound.student_no;
 						url = "/student";

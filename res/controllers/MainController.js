@@ -52,8 +52,13 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
 			$http
 			.post("/api/authenticate",data)
 			.then(function(response){
-				console.log(response.data.message);
-				window.location.assign('http://localhost:3000'+response.data.message);
+				if(response.data.message=="/"){
+					alert("Incorrect Email or Password.");
+					
+				}
+					console.log(response.data.message);
+					window.location.assign('http://localhost:3000'+response.data.message)
+				
 			})
 			.catch(angular.noop);
 		
