@@ -30,9 +30,9 @@
     "passport-local": "^1.0.0",
     "request": "^2.85.0",
     "serve-favicon": "^2.5.0"
-  }
+  },
   
-  "engines": {
+  "engines":{
     "node": "8.10.0"
   }
 }
