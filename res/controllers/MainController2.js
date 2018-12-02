@@ -210,7 +210,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 		
 		$scope.retrieveClasses = function(){
 			$http
-            .get('http://localhost:3000/faculty/classes/get/'+dataHolder())
+            .get('http://localhost:3000/faculty/classes/get/'+dataHolder())				//gets classes by profId
 			.then(
 			function(response){
 				console.log(response.data);
@@ -220,7 +220,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 					
 					for(var j=0;j<$scope.classes[i].students.length;j++){
 						
-						for(var k=0;k<$scope.classes[i].students[j].checklist.length;k++){
+						for(var k=0;k<$scope.classes[i].students[j].checklist.length;k++){							//gets the student's grade for the current subjectCode ( for loop i )
 							if($scope.classes[i].students[j].checklist[k].subject_code == currSubjectCode){
 								$scope.classes[i].students[j].grade = $scope.classes[i].students[j].checklist[k].grade;
 							}
@@ -233,6 +233,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 		}
 		$scope.retrieveClasses();
 		
+		//Send Reminders
 		$scope.send_reminders = function(index) {
 			
 			$('#myModal').on('shown.bs.modal', function () {
@@ -258,12 +259,14 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 			alert(index1+":"+index2);
 		}
 		$scope.gradeArray = [];
+		
+		//UPDATES THE SELECTED GRADE
 		$scope.store_index = function(subjectIndex,studentIndex){
 			$scope.student_index = studentIndex;
 			$scope.subject_index = subjectIndex;
 
 			
-			
+			//gets the selected student
 			var data2 = {
 				student_no:$scope.classes[$scope.subject_index].students[$scope.student_index].student_no,
 				subject_code:$scope.classes[$scope.subject_index].subject_code,
@@ -273,11 +276,13 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 				$http
 				.post('http://localhost:3000/faculty/classes/grade',data2)
 				.then(function(response){
+					$scope.gradeArray[$scope.student_index] = response.data.grade;
 					alert(response.data.message);
 				});
 			$scope.gradeArray[$scope.student_index] = "";
 		}
 		
+		//Grade Function
 		$scope.grade = function(){
 	
 		}

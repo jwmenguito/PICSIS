@@ -4,9 +4,17 @@ var Faculty = require(__dirname+'/../user_faculty');	//mongoose user
 var Subjects = require(__dirname+'/../subjects');
 var Student = require(__dirname+'/../user_student');
 var admin = require(__dirname+'/../user_admin');
+var Usr = require(__dirname+'/../usr');
+
 var jwt = require('jsonwebtoken');
 var mongoose = require('mongoose');
 var cookieExtractor = require(__dirname+'/../../config/cookieExtractor');
+
+var FeeRef = require(__dirname+'/../fee_ref');
+var Curriculum = require(__dirname+'/../curriculum');
+var Fees = require(__dirname+'/../fee');
+
+//Admin Home
 exports.admin_home = (req,res) =>{
 	console.log("HELLO WORLD! ADMIN!!!");
 	
@@ -52,9 +60,12 @@ exports.admin_home = (req,res) =>{
 		});
 }
 
+//Admin Records
 exports.admin_records = (req,res) =>{
 	res.status(200).sendFile(path.join(__dirname + '/../../home.html')); 
 }
+
+//Admin Get Records
 exports.admin_get_records = (req,res) => {
 		console.log("GET");
 	if(req.body.table==='subject'){
@@ -97,42 +108,128 @@ exports.admin_get_records = (req,res) => {
 	}
 }
 
+
+
+//Admin ADD students
 exports.admin_add_student = (req,res) => {
 	console.log(req.body);
 	var student = new Student(req.body);
-	Subjects.find({major_degree:req.body.major_degree}).sort({subject_code:1}).exec(function(err,docs){
+	var checklist = {
+			student_no: "",
+			subjects : []
+	}
+	// initialize fee
+	var fee = {
+		
+		id:0,
+		misc:0,
+		selection:0,
+		entrance:0,
+		tuition:0
+	}
+	
+	FeeRef.findOne({"degree":req.body.course}).exec(function(err,doc){
 		if(err) throw err;
-		if(!docs) console.log("No subjects");
-		if(docs){
-			for(var i=0;i<docs.length;i++){
-				var subject = {
-					subject_code : docs[i].subject_code,
-					grade : "N"
-				}
-				console.log(subject);
-				student.checklist.push(subject);
-				
-				
-			}
-			student._id = new mongoose.Types.ObjectId();
-			var fee = {
-				_id:new mongoose.Types.ObjectId(),
-				student:student._id,
-				term:1,
-				amount:12300,
-				receipt:""
-			}
-			student.fees.push(fee);
-			console.log(student);
-			student.save(function(err){
-				if(err) return res.json({message:'Student not saved'});
-				else return res.json({message:'Student successfully saved'});
-			});	
-			
+		if(doc) {
+			fee = doc;
 		}
 	});
 	
-	// return res.json({message:'Student successfully saved'});
+	Curriculum.findOne({major_degree:req.body.major_degree,degree:req.body.course}).exec(function(err,docs){
+		console.log(req.body.major_degree);
+		console.log(req.body.major_degree);
+		console.log(req.body.major_degree);
+		if(err) throw err;
+		if(!docs) console.log ("Error, no match found for degree.");
+		if(docs) {
+			console.log(docs);
+			//for each term
+			for(var x=0; x<docs.terms.length;x++){
+				//get term
+				var term = {
+					
+					term: docs.terms[x].term,
+					units: docs.terms[x].units,
+					subjects:[]
+					
+				}
+				
+				for(var y=0;y<docs.terms[x].subjects.length;y++){
+					
+					var subject = {
+						subject_code: docs.terms[x].subjects[y].subject_code,
+						subj_desc: docs.terms[x].subjects[y].subj_desc,
+						units: docs.terms[x].subjects[y].units,
+						grade: '-'
+					}
+					
+					term.subjects.push(subject);
+				}
+				//add term to checklist
+				student.checklist.push(term);
+			}
+
+			//Create Student Fee
+			var today = new Date();
+			student._id = new mongoose.Types.ObjectId();
+			var student_fee = {
+				_id:new mongoose.Types.ObjectId(),
+				student:student._id,
+				selection: fee.selection,
+				entrance: fee.entrance,
+				id: fee.id,
+				misc: fee.misc,
+				tuition: fee.tuition,
+				term:1,
+				year: today.getFullYear(),
+				receipt:""
+			}
+			
+			//Create new Fee entity
+			var new_fee = new Fees(student_fee);
+			console.log(student_fee);
+			
+			//Push fee to student.fees array
+			student.fees.push(student_fee);
+			console.log(student);
+			
+			//Create student password
+			student.setPassword(student.lname);
+			
+			//Save fee to database
+			new_fee.save(function(err){
+				if(err) return res.json({message:"Fee not saved."});
+			});
+			
+			//save student
+			student.save(function(err){
+				if(err) return res.json({message:'Student not saved'});
+			});	
+			
+			//create user
+			var usr = {
+				email: student.email,
+				hash:student.hash,
+				salt:student.salt,
+				type:"s"
+			}
+			console.log(usr);
+			console.log(usr);
+			
+			var new_usr = new Usr(usr);
+			
+			new_usr.save(function(err){
+				if(err) return res.json({message:'Cannot create account'});
+				else return res.json({message:'Student Account created successfully'});
+				
+				
+			});
+			
+		
+			
+	}
+})
+
 }
 
 exports.admin_add_subject = (req,res) => {

@@ -2,17 +2,14 @@ var mongoose = require('mongoose');
 var crypto = require('crypto');
 var Schema = mongoose.Schema;
 
-var FeeSchema = new Schema ({
+var FeeRefSchema = new Schema ({
 	_id:Schema.Types.ObjectId,
-	student:{type:Schema.Types.ObjectId, ref:'Student'},
-	term:Number,
 	degree:String,
 	selection:Number,
 	entrance:Number,
 	id:Number,
 	misc:Number,
-	tuition:Number,
-	receipt:String
+	tuition:Number
 });
 
-module.exports = mongoose.model('Fee',FeeSchema,"fees");
+module.exports = mongoose.model('FeeRef',FeeRefSchema,"fee_reference");

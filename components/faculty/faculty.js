@@ -159,7 +159,7 @@ exports.faculty_grades = (req,res) => {
 			if(!doc) res.json({message:"Failure"});
 			if(doc) {
 				console.log(doc);
-				res.json({message:"Success"});
+				res.json({message:"Success! Refresh the page to see updates.", grade: req.body.grade});
 			}
 });
 		/*

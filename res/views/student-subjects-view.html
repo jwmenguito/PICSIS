@@ -3,14 +3,21 @@
 <tr>
 <h2>Course Checklist</h2>
 </tr>
-<tr class="table-header">
-<thead class="secondHeader">
-<th>Subject Code</th>
-<th id="subject-grade">Subject Grade</th>
-</thead>
+<tbody ng-repeat="(x,term) in user_object.checklist">
+<tr>
+<th> Term {{term.term}} </th>
 </tr>
-<tr ng-repeat="(x,subject) in user_object.checklist">
-<td class="subject" id="subject-code">{{subject.subject_code}}</td>
-<td class="subject" id="subject-grade">{{subject.grade}}</td>
+<tr>
+	<th>Subject Code</th>
+	<th>Subject Description</th>
+	<th>Units</th>
+	<th id="subject-grade">Subject Grade</th>
 </tr>
+<tr ng-repeat="subject in user_object.checklist[$index].terms.subjects track by $index">
+	<td>{{subject.subject_code}}</td>
+	<td>{{subject.subj_desc}}</td>
+	<td>{{subject.units}}</td>
+	<td>{{subject.grade}}</td>
+</tr>
+</tbody>
 </table>

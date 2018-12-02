@@ -10,6 +10,7 @@ var studentSchema = new Schema({
 	email:String,
 	fname:String,
 	lname:String,
+	mname:String,
 	mobile:Number,
 	course:String,
 	major_degree:String,
