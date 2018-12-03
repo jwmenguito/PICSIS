@@ -5,17 +5,17 @@
 </tr>
 <tbody ng-repeat="(x,term) in user_object.checklist">
 <tr>
-<th> Term {{term.term}} </th>
+<th id="no-hover"> Term {{term.term}} </th>
 </tr>
-<tr>
+<tr id="no-hover">
 	<th>Subject Code</th>
 	<th>Subject Description</th>
 	<th>Units</th>
 	<th id="subject-grade">Subject Grade</th>
 </tr>
-<tr ng-repeat="subject in user_object.checklist[$index].terms.subjects track by $index">
-	<td>{{subject.subject_code}}</td>
-	<td>{{subject.subj_desc}}</td>
+<tr ng-repeat="(y,subject) in term.subjects">
+	<td id="subject-code">{{subject.subject_code}}</td>
+	<td id="subject-code">{{subject.subj_desc}}</td>
 	<td>{{subject.units}}</td>
 	<td>{{subject.grade}}</td>
 </tr>

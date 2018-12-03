@@ -1,20 +1,39 @@
-<table class="table table-hover table-condensed table-bordered" class="span3">
+<table class="table table-bordered" >
 	<h2>Fees</h2>
-	<thead class="levelTwo">
-			<tr class="secondHeader">
-				<th>Term </td>
-				<th>Amount</th>
-				<th>Receipt</th>
-			</tr>
-	</thead>
-	<tbody>
-									<!--Content here-->
-		<tr class="table_student" data-ng-repeat="fee in user_object.fees track by $index">
-				<td id="subject-code">{{fee.term}}</td>
-				<td id="subject-code">P {{fee.amount}}</td>
-				<td id="subject-grade">{{fee.receipt}}</td>
-		</tr>
-									<!--End of Content-->
-	</tbody>
-									
-</table>
+				<thead>
+					<tr class="secondHeader">
+					<th>Fee</th>
+					<th>Amount</th>
+					</tr>
+				</thead>
+				<tbody ng-repeat="fee in user_object.fees track by $index">
+					<tr class="table-row">
+						<th class="thead">Entrance</th>
+						<td>{{fee.entrance}}</td>
+					</tr>
+					<tr class="table-row">
+						<th>Selection</th>
+						<td>{{fee.selection}}</td>
+					</tr>
+					<tr class="table-row">
+						<th>Id</th>
+						<td>{{fee.id}}</td>
+					</tr>
+					<tr class="table-row">
+						<th>Misc</th>
+						<td>{{fee.misc}}</td>
+					</tr>
+					<tr class="table-row">
+						<th>Tuition</th>
+						<td>{{fee.tuition}}</td>
+					</tr>
+					<tr class="table-row">
+						<th>Term</th>
+						<td>{{fee.term}}</td>
+					</tr>
+					<tr class="table-row">
+						<th>Receipt</th>
+						<td>{{fee.receipt}}</td>
+					</tr>
+				</tbody>
+			</table>
