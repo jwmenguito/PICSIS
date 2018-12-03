@@ -13,6 +13,8 @@ var studentSchema = new Schema({
 	mname:String,
 	mobile:Number,
 	course:String,
+	term:Number,
+	status:String,
 	major_degree:String,
 	checklist:Array,
 	hash: String,

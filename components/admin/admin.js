@@ -182,7 +182,7 @@ exports.admin_add_student = (req,res) => {
 				tuition: fee.tuition,
 				term:1,
 				year: today.getFullYear(),
-				receipt:""
+				status:"PAID"
 			}
 			
 			//Create new Fee entity
@@ -355,4 +355,20 @@ exports.admin_archive = (req,res) =>{
 	}
 	
 	return res.json({message:"Finished"});
+}
+
+exports.admin_listing = (req,res) => {
+	/*
+	Student.find({status:"ENROLLED"}).sort({lname:1}).exec(function(err,docs){
+		if(err) throw err;
+		if(!docs) return res.json({message:'Something went wrong...'});
+		if(docs){
+			//Get all ENROLLED students
+			//Get their current student.term
+			//Get 
+			
+		}
+		
+	});
+	*/
 }

@@ -381,7 +381,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	homeModule.controller("AddStudentCtrl",["$scope","$http",
 	function($scope,$http){
 		
-	
+		//when adding a student, intialize his first term
 		$scope.add = function(){
 			var data = {
 				student_no:$scope.student_no,
@@ -391,7 +391,9 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 				course:$scope.course,
 				major_degree:$scope.major_degree,
 				email:$scope.email,
-				mobile:$scope.mobile
+				mobile:$scope.mobile,
+				status:"ENROLLED",
+				term:1
 			}
 			$http
 			.post("/admin/records/add/student",data)
@@ -404,6 +406,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 				$scope.major_degree=null;
 				$scope.email=null;
 				$scope.mobile=null;
+				
 			})
 			.catch(angular.noop);
 		}

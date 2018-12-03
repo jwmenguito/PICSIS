@@ -12,7 +12,7 @@ var FeeSchema = new Schema ({
 	id:Number,
 	misc:Number,
 	tuition:Number,
-	receipt:String
+	status:String
 });
 
 module.exports = mongoose.model('Fee',FeeSchema,"fees");
