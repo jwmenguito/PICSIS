@@ -11,6 +11,7 @@ var FeeSchema = new Schema ({
 	entrance:Number,
 	id:Number,
 	misc:Number,
+	year:Number,
 	tuition:Number,
 	status:String
 });
