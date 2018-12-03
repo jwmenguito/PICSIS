@@ -23,7 +23,7 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
         $scope.get_announcements = function(){
           //alert("Start");
 		  $http
-          .get('http://localhost:3000/announcements')
+          .get('https://picsis.herokuapp.com/announcements')
           .then(
 			function(response){
 				$scope.announcement = response.data;
@@ -57,7 +57,7 @@ var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
 					
 				}
 					console.log(response.data.message);
-					window.location.assign('http://localhost:3000'+response.data.message)
+					window.location.assign('https://picsis.herokuapp.com'+response.data.message)
 				
 			})
 			.catch(angular.noop);

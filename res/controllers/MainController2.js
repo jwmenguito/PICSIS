@@ -109,7 +109,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 		$cookies.remove("user");
 		$cookies.remove("classes");
 		
-		window.location.assign('http://localhost:3000/');
+		window.location.assign('https://picsis.herokuapp.com/');
 		
 	}]);
 	homeModule.controller("StudentHomeCtrl",["$scope","$http","dataHolder",
@@ -118,7 +118,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 				student_no:dataHolder()
 		};
 		$http
-		.post('http://localhost:3000/student/home',data1)
+		.post('https://picsis.herokuapp.com/student/home',data1)
 		.then(
 			function(response){	
 				$scope.user_object = response.data;
@@ -137,7 +137,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 				student_no:dataHolder().student_no
 			}
 			$http
-			.post("http://localhost:3000/student/requests/send/",data)
+			.post("https://picsis.herokuapp.com/student/requests/send/",data)
 			.then(
 				function(response){
 					alert(response.data.message);
@@ -161,7 +161,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 				}
 				
 				$http
-				.post("http://localhost:3000/student/settings/",data)
+				.post("https://picsis.herokuapp.com/student/settings/",data)
 				.then(
 					function(response){
 						alert(response.data.message);
@@ -193,7 +193,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 			prof_id:dataHolder()
 		};
 		$http
-		.post('http://localhost:3000/faculty/home',data1)
+		.post('https://picsis.herokuapp.com/faculty/home',data1)
 		.then(
 			function(response){	
 				$scope.user_object = response.data;
@@ -210,7 +210,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 		
 		$scope.retrieveClasses = function(){
 			$http
-            .get('http://localhost:3000/faculty/classes/get/'+dataHolder())				//gets classes by profId
+            .get('https://picsis.herokuapp.com/faculty/classes/get/'+dataHolder())				//gets classes by profId
 			.then(
 			function(response){
 				console.log(response.data);
@@ -247,7 +247,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 			}
 			console.log(data);
 			$http
-			.post('http://localhost:3000/faculty/reminders',data)
+			.post('https://picsis.herokuapp.com/faculty/reminders',data)
 			.then(function(response){
 				alert(response.data.message);
 			});
@@ -274,7 +274,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 			} 				
 				console.log(data2);
 				$http
-				.post('http://localhost:3000/faculty/classes/grade',data2)
+				.post('https://picsis.herokuapp.com/faculty/classes/grade',data2)
 				.then(function(response){
 					$scope.gradeArray[$scope.student_index] = response.data.grade;
 					alert(response.data.message);
@@ -347,7 +347,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 				}
 				
 				$http
-				.post("http://localhost:3000/faculty/settings/",data)
+				.post("https://picsis.herokuapp.com/faculty/settings/",data)
 				.then(
 					function(response){
 						alert(response.data.message);
@@ -573,7 +573,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 						collection:$scope.display_table
 					}
 					$http
-					.post('http://localhost:3000/admin/records/archive/',data)
+					.post('https://picsis.herokuapp.com/admin/records/archive/',data)
 					.then(function(response){
 						alert(response.data.message);
 					}).catch(angular.noop);
@@ -588,7 +588,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 					table : $scope.display_table
 				}
 				$http
-				.post('http://localhost:3000/admin/records',data)
+				.post('https://picsis.herokuapp.com/admin/records',data)
 				.then(function(response){
 						console.log(response.data);
 						if($scope.display_table==='subject'){
