@@ -368,6 +368,7 @@ exports.admin_listing = (req,res) => {
 			//Get all ENROLLED students
 			//Get their current student.term
 			//Get student_no
+			console.log("Found "+docs.length+" students with status ENROLLED");
 			
 			for(var x=0;x<docs.length;x++){
 			    var curr_term = docs[x].term;    
@@ -378,7 +379,7 @@ exports.admin_listing = (req,res) => {
 			    //find in listing
 			    
 			    Listing.update({"term":curr_term,"degree":degree,"major_degree":major_degree},{$push:{students:std}},function(err,doc){
-		            
+		            console.log(doc);
 		            if(err) throw err;
 		            if(doc) res.json({message:"Listing of student number " + std +" success!"});
 		            else res.json({message:"Failed listing of student number " + std +" success!"});
