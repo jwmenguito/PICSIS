@@ -533,6 +533,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	            major_degree:$scope.major_degree
 	        }
 	        console.log(data);
+	       
 	       $scope.add = function(){
 	       
 	       
