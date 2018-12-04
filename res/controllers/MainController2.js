@@ -525,17 +525,21 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	
 	homeModule.controller("AdminListing",["$scope","$http","$stateParams",
 	    function($scope,$http,$stateParams){
-	    
-	        var data = {
-	            term:$scope.term,
-	            student_no:$scope.student_no,
-	            course:$scope.course,
-	            major_degree:$scope.major_degree
-	        }
-	        console.log(data);
+            $scope.load = function(){
+                var data = {
+	                term:$scope.term,
+	                student_no:$scope.student_no,
+	                course:$scope.course,
+	                major_degree:$scope.major_degree
+	            }
+	            console.log(data);
+                return data; 
+                
+            }	    
+	        
 	       
 	       $scope.add = function(){
-	        
+	            var data = $scope.load();
 	            $http
 	            .post('admin/listing/add',data)
 	            .then(function(response){
@@ -546,59 +550,59 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	       }
 	       
 	       $scope.remove = function(){
-	       
-	        $http
-	        .post('admin/listing/remove',data)
-	        .then(function(response){
-	             $scope.empty(response.data.message);
-	        });
-	       
+	            var data = $scope.load();
+	            $http
+	            .post('admin/listing/remove',data)
+	            .then(function(response){
+	                 $scope.empty(response.data.message);
+	            });
+	           
 	       }
 	       
 	       //ADD LISTING FOR ALL SUBJECTS OF A STUDENT
 	       $scope.addAll = function(){
-	       
-	        $http
-	        .post('admin/listing/add/all',data)
-	        .then(function(response){
-	             $scope.empty(response.data.message);
-	        })
+	            var data = $scope.load();
+	            $http
+	            .post('admin/listing/add/all',data)
+	            .then(function(response){
+	                 $scope.empty(response.data.message);
+	            });
 	            
 	       
 	       }
 	       
 	       //remove a student from ALL subjects
 	       $scope.removeAll = function(){
-	        
-	        $http
-	        .post('admin/listing/remove/all',data)
-	        .then(function(response){
-	             $scope.empty(response.data.message);
-	        });
+	            var data = $scope.load();
+	            $http
+	            .post('admin/listing/remove/all',data)
+	            .then(function(response){
+	                 $scope.empty(response.data.message);
+	            });
 	       
 	       } 
 	       
 	       //remove listing for all students
 	       //should be used end of sem
 	       $scope.clear = function(){
-	        
-	        $http
-	        .post('admin/listing/clear',data)
-	        .then(function(response){
-	            $scope.empty(response.data.message);
-	        
-	        });
+	            var data = $scope.load();
+	            $http
+	            .post('admin/listing/clear',data)
+	            .then(function(response){
+	                $scope.empty(response.data.message);
+	            
+	            });
 	       
 	       }
 	       
 	       //add listing for all enrolled student
 	       $scope.enroll = function(){
-	        
-	        $http
-	        .post('admin/listing/enroll',data)
-	        .then(function(response){
-	            $scope.empty(response.data.message);
-	        });
+	            var data = $scope.load();
+	            $http
+	            .post('admin/listing/enroll',data)
+	            .then(function(response){
+	                $scope.empty(response.data.message);
+	            });
 	       
 	       }
 	       $scope.empty = function(msg){
