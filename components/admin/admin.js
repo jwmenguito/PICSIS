@@ -451,14 +451,14 @@ exports.admin_listing_remove = (req,res) => {
      var std = [];
      std.push(req.body.student_no);
      var course = req.body.course;
-     var major_degree = req.body.major_degree;  
-     var subject_code = req.body.subject_code;
-      
-      Listing.find({"term":curr_term,"degree":course,"major_degree":major_degree,"subject_code":subject_code}).exec(function(err,docs){
+     var major = req.body.major_degree;  
+     var code = req.body.subject_code;
+       
+       Listing.find({term:curr_term,degree:course,major_degree:major,subject_code:subject_code}).exec(function(err,docs){
         if(err) throw err;
         if(!docs) console.log("Empty");
         if(docs) console.log(docs);
-      });
+      }); 
       Listing.update({"term":curr_term,"degree":course,"major_degree":major_degree,"subject_code":subject_code},{$pullAll:{students:std}},{multi:true},function(err,doc){
             //console.log(doc);
 		    if(err) throw err;
@@ -476,9 +476,10 @@ exports.admin_listing_remove_all = (req,res) => {
      var std = [];
      std.push(req.body.student_no);
      var course = req.body.course;
-     var major_degree = req.body.major_degree;  
+     var major = req.body.major_degree;  
+     var code = req.body.subject_code;
        
-       Listing.find({"term":curr_term,"degree":course,"major_degree":major_degree,"subject_code":subject_code}).exec(function(err,docs){
+       Listing.find({term:curr_term,degree:course,major_degree:major,subject_code:subject_code}).exec(function(err,docs){
         if(err) throw err;
         if(!docs) console.log("Empty");
         if(docs) console.log(docs);
