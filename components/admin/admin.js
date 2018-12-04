@@ -377,16 +377,33 @@ exports.admin_listing = (req,res) => {
 			    var major_degree = docs[x].major_degree;
 			    
 			    //find in listing
+			    //add to listing		    
+			    Listing.update({"term":curr_term,"degree":course,"major_degree":major_degree},{$push:{students:std}},{multi:true},
 			    
-			    Listing.update({"term":curr_term,"degree":course,"major_degree":major_degree},{$push:{students:std}},{multi:true},function(err,doc){
+			    function(err,doc){
 		            console.log(doc);
 		            if(err) throw err;
-		            if(doc) res.json({message:"Listing of student number " + std +" success!"});
-		            else res.json({message:"Failed listing of student number " + std +" success!"});
+		            if(doc) res.json({message:"Listing of student number " + std +" success! Inserted in "+docs.nModified+" subjects"});
+		            else res.json({message:"Failed listing of student number " + std});
 	            });
 			}	
 		}
 		
 	});
 	
+}
+//POST METHOD RECEIVING student_no, course, major_degree, current_term;
+exports.admin_clear_listing = (req,res) => {
+     
+     var curr_term = req.body.term;
+     var std = req.body.student_no;
+     var course = req.body.course;
+     var major_degree = req.body.major_degree;  
+     
+      Listing.update({"term":curr_term,"degree":course,"major_degree":major_degree},{$pull:{students:std}},{multi:true},function(err,doc){
+            console.log(doc);
+		    if(err) throw err;
+		    if(doc) res.json({message:"REMOVED from listing student number " + std +" from "+docs.nModified+" subjects"});
+		    else res.json({message:"Failed to remove from listing student number " + std});
+      });
 }

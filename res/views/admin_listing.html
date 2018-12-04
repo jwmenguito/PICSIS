@@ -1,0 +1,22 @@
+<div class="addEntryForm">	
+	<div class="inputFields">
+		<h3>Listing</h3>
+		<hr/>
+		<form method="post" class="addForm">
+			<div style="text-align:left;vertical-align:top">
+				<input type="text" class="form-control input-xs col-sm-8" placeholder="Student Number"  ng-model="student_no"/><br/>
+				<input type="text" class="form-control input-xs col-sm-8" placeholder="Subject Term"  ng-model="term"/><br/>
+				<input type="text" class="form-control input-xs col-sm-8" placeholder="Degree Type" ng-model="course"/><br/>
+				<input type="text" class="form-control input-xs col-sm-8" placeholder="Major/Degree"  ng-model="major_degree"/><br/>
+				<br/>
+				<input type="text" class="form-control input-xs col-sm-8" placeholder="[OPTIONAL] Subject Code"  ng-model="subject_code"/><br/>
+				
+			</div>																
+				<button type="submit" class="btn btn-success btn-lg col-sm-2" ng-click="add()">Add</button>
+			    <button type="submit" class="btn btn-success btn-lg col-sm-2" ng-click="addAll()">Add All</button>
+				
+				<button type="submit" class="btn btn-success btn-lg col-sm-2" ng-click="remove()">Remove</button>
+				<button type="submit" class="btn btn-success btn-lg col-sm-2" ng-click="removeAll()">Remove All</button>
+		</form>
+	</div>
+</div>

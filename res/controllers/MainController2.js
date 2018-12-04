@@ -91,6 +91,11 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 			state_url:'/admin/records',
 			
 		},{
+			name:'Listing',
+			state_name:'admin.listing',
+			state_url:'/admin/listing',
+			
+		},{
 			name:'Log out',
 			state_name:'log_out',
 			state_url:'/'
@@ -518,6 +523,50 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	
 	}]);
 	
+	homeModule.controller("AdminListing",["$scope","$http","$stateParams",
+	    function($scope,$http,$stateParams){
+	    
+	        var data = {
+	            term:$scope.term,
+	            student_no:$scope.student_no,
+	            course:$scope.course,
+	            major_degree:$scope.major_degree
+	        }
+	        console.log(data);
+	       $scope.add = function(){
+	       
+	       
+	       }
+	       
+	       $scope.remove = function(){
+	       
+	       
+	       
+	       }
+	        
+	       $scope.addAll = function(){
+	       
+	            
+	       
+	       }
+	       
+	       $scope.removeAll = function(){
+	        
+	        $http
+	        .post('admin/listing/remove',data)
+	        .then(function(response){
+	             $scope.term = "";
+	             $scope.student_no="";
+	             $scope.course = "";
+	             $scope.major_degree ="";
+	             alert(response.data.message);
+	        });
+	       
+	       } 
+	        
+	
+	}]);
+	
 	
 	homeModule.controller("EditFacultyCtrl",["$scope","$http","$stateParams",
 	function($scope,$http,$stateParams){
@@ -749,6 +798,11 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 			url:'/home',
 			template:'<h2>Home</h2>',
 			controller:'AdminHomeCtrl'
+		})
+        .state('admin.listing',{
+			url:'/listing',
+			templateUrl:'../views/admin_listing.html',
+			controller:'AdminListing'
 		})
 		.state('admin.records',{
 			url:'/records',
