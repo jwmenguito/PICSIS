@@ -378,7 +378,7 @@ exports.admin_listing = (req,res) => {
 			    
 			    //find in listing
 			    
-			    Listing.update({"term":curr_term,"degree":course,"major_degree":major_degree},{$push:{students:std},{multi:true}},function(err,doc){
+			    Listing.update({"term":curr_term,"degree":course,"major_degree":major_degree},{$push:{students:std}},{multi:true},function(err,doc){
 		            console.log(doc);
 		            if(err) throw err;
 		            if(doc) res.json({message:"Listing of student number " + std +" success!"});
