@@ -53,7 +53,7 @@ exports.admin_home = (req,res) =>{
 				//return res.send(userFound);
 				console.log(userFound);
 				
-				res.cookie('user',userFound);
+				res.cookie('user',userFound.email);
 				return res.status(200).sendFile(path.join(__dirname + '/../../home.html'));  
 			}
 			
