@@ -373,12 +373,12 @@ exports.admin_listing = (req,res) => {
 			for(var x=0;x<docs.length;x++){
 			    var curr_term = docs[x].term;    
 			    var std = docs[x].student_no;
-			    var degree = docs[x].degree;
+			    var course = docs[x].course;
 			    var major_degree = docs[x].major_degree;
 			    
 			    //find in listing
 			    
-			    Listing.update({"term":curr_term,"degree":degree,"major_degree":major_degree},{$push:{students:std}},function(err,doc){
+			    Listing.update({"term":curr_term,"degree":course,"major_degree":major_degree},{$push:{students:std},{multi:true}},function(err,doc){
 		            console.log(doc);
 		            if(err) throw err;
 		            if(doc) res.json({message:"Listing of student number " + std +" success!"});
