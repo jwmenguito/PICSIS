@@ -60,7 +60,7 @@
 									<tr class="secondHeader">
 										<th>Subject Code</th>
 										<th>Grade</th>
-										<th></th>
+										<th>Term</th>
 									</tr>
 								</thead>
 								<tbody data-ng-repeat="term in students[$index].checklist track by $index">
@@ -68,7 +68,7 @@
 									<tr class="table_student" data-ng-repeat="subject in term.subjects">
 										<td id="subject-code">{{subject.subject_code}}</td>
 										<td id="subject-grade">{{subject.grade}}</td>
-										
+										<td id="subject-grade">{{term.term}}</td>
 									</tr>
 									<!--End of Content-->
 								</tbody>
