@@ -454,7 +454,7 @@ exports.admin_listing_remove = (req,res) => {
      var subject_code = req.body.subject_code;
      
       Listing.update({"term":curr_term,"degree":course,"major_degree":major_degree,"subject_code":subject_code},{$pull:{students:std}},{multi:true},function(err,doc){
-            console.log(doc);
+            //console.log(doc);
 		    if(err) throw err;
 		    if(doc) res.json({message:"REMOVED from listing student number " + std +" from "+doc.nModified+" subject(s)"});
 		    else res.json({message:"Failed to remove from listing student number " + std});
@@ -472,9 +472,9 @@ exports.admin_listing_remove_all = (req,res) => {
      var major_degree = req.body.major_degree;  
      
       Listing.update({"term":curr_term,"degree":course,"major_degree":major_degree},{$pull:{students:std}},{multi:true},function(err,doc){
-            console.log(doc);
+            //console.log(doc);
 		    if(err) throw err;
-		    if(doc) res.json({message:"REMOVED from listing student number " + std +" from "+docs.nModified+" subjects"});
+		    if(doc) res.json({message:"REMOVED from listing student number " + std +" from "+doc.nModified+" subjects"});
 		    else res.json({message:"Failed to remove from listing student number " + std});
       });
 }
