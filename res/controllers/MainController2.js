@@ -539,7 +539,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	            $http
 	            .post('admin/listing/add',data)
 	            .then(function(response){
-	                scope.empty(response.data);
+	                $scope.empty(response.data);
 	            
 	            });
 	       
@@ -550,7 +550,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	        $http
 	        .post('admin/listing/remove',data)
 	        .then(function(response){
-	             scope.empty(response.data);
+	             $scope.empty(response.data);
 	        });
 	       
 	       }
@@ -561,7 +561,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	        $http
 	        .post('admin/listing/add/all',data)
 	        .then(function(response){
-	             scope.empty(response.data);
+	             $scope.empty(response.data);
 	        })
 	            
 	       
