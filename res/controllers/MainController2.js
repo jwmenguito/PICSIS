@@ -535,36 +535,80 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	        console.log(data);
 	       
 	       $scope.add = function(){
-	       
+	        
+	            $http
+	            .post('admin/listing/add',data)
+	            .then(function(response){
+	                scope.empty(response.data);
+	            
+	            });
 	       
 	       }
 	       
 	       $scope.remove = function(){
 	       
-	       
+	        $http
+	        .post('admin/listing/remove',data)
+	        .then(function(response){
+	             scope.empty(response.data);
+	        });
 	       
 	       }
-	        
+	       
+	       //ADD LISTING FOR ALL SUBJECTS OF A STUDENT
 	       $scope.addAll = function(){
 	       
+	        $http
+	        .post('admin/listing/add/all',data)
+	        .then(function(response){
+	             scope.empty(response.data);
+	        })
 	            
 	       
 	       }
 	       
+	       //remove a student from ALL subjects
 	       $scope.removeAll = function(){
 	        
 	        $http
-	        .post('admin/listing/remove',data)
+	        .post('admin/listing/remove/all',data)
 	        .then(function(response){
+	             $scope.empty(response.data);
+	        });
+	       
+	       } 
+	       
+	       //remove listing for all students
+	       //should be used end of sem
+	       $scope.clear = function(){
+	        
+	        $http
+	        .post('admin/listing/clear',data)
+	        .then(function(response){
+	            $scope.empty(response.data);
+	        
+	        });
+	       
+	       }
+	       
+	       //add listing for all enrolled student
+	       $scope.enroll = function(){
+	        
+	        $http
+	        .post('admin/listing/enroll',data)
+	        .then(function(response){
+	            $scope.empty(response.data);
+	        });
+	       
+	       }
+	       $scope.empty = function(msg){
 	             $scope.term = "";
 	             $scope.student_no="";
 	             $scope.course = "";
 	             $scope.major_degree ="";
-	             alert(response.data.message);
-	        });
+	             alert(message);
 	       
 	       } 
-	        
 	
 	}]);
 	

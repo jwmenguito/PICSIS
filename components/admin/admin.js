@@ -357,7 +357,7 @@ exports.admin_archive = (req,res) =>{
 	return res.json({message:"Finished"});
 }
 
-exports.admin_listing = (req,res) => {
+exports.admin_listing_enroll = (req,res) => {
 	
 	
 	
@@ -392,8 +392,79 @@ exports.admin_listing = (req,res) => {
 	});
 	
 }
-//POST METHOD RECEIVING student_no, course, major_degree, current_term;
-exports.admin_clear_listing = (req,res) => {
+
+
+exports.admin_listing_clear = (req,res) => {
+    
+    Listing.update({},{$set:{students:[]}},{multi:true},function(err,doc){
+            console.log(doc);
+		    if(err) throw err;
+		    if(doc) res.json({message:"REMOVED from listing student number " + std +" from "+docs.nModified+" subjects"});
+		    else res.json({message:"Failed to remove from listing student number " + std});
+    });
+
+}
+
+
+//ADD ONE STUDENT TO A SUBJECT
+exports.admin_listing_add = (req,res) => {
+	
+	var curr_term = req.body.term;
+    var std = req.body.student_no;
+    var course = req.body.course;
+    var major_degree = req.body.major_degree;  
+    var subject_code = req.body.subject_code;
+	
+    Listing.update({"term":curr_term,"degree":course,"major_degree":major_degree, "subject_code":subject_code},{$push:{students:std}},
+    
+    function(err,doc){
+        console.log(doc);
+        if(err) throw err;
+        if(doc) res.json({message:"Listing of student number " + std +" success! Inserted in "+docs.nModified+" subjects"});
+        else res.json({message:"Failed listing of student number " + std});
+    });
+	
+}
+
+
+//ADD ONE STUDENT TO ALL SUBJECTS
+exports.admin_listing_add_all = (req,res) => {
+     
+     var curr_term = req.body.term;
+     var std = req.body.student_no;
+     var course = req.body.course;
+     var major_degree = req.body.major_degree;  
+     
+      Listing.update({"term":curr_term,"degree":course,"major_degree":major_degree},{$push:{students:std}},{multi:true},function(err,doc){
+            console.log(doc);
+		    if(err) throw err;
+		    if(doc) res.json({message:"REMOVED from listing student number " + std +" from "+docs.nModified+" subjects"});
+		    else res.json({message:"Failed to remove from listing student number " + std});
+      });
+}
+
+
+//REMOVE ONE STUDENT FROM A SUBJECT
+exports.admin_listing_remove = (req,res) => {
+     
+     var curr_term = req.body.term;
+     var std = req.body.student_no;
+     var course = req.body.course;
+     var major_degree = req.body.major_degree;  
+     var subject_code = req.body.subject_code;
+     
+      Listing.update({"term":curr_term,"degree":course,"major_degree":major_degree,"subject_code":subject_code},{$pull:{students:std}},{multi:true},function(err,doc){
+            console.log(doc);
+		    if(err) throw err;
+		    if(doc) res.json({message:"REMOVED from listing student number " + std +" from "+docs.nModified+" subject(s)"});
+		    else res.json({message:"Failed to remove from listing student number " + std});
+      });
+}
+
+
+
+//REMOVE ONE STUDENT TO ALL SUBJECTS OF TERM, COURSE, MAJOR
+exports.admin_listing_remove_all = (req,res) => {
      
      var curr_term = req.body.term;
      var std = req.body.student_no;
@@ -407,3 +478,6 @@ exports.admin_clear_listing = (req,res) => {
 		    else res.json({message:"Failed to remove from listing student number " + std});
       });
 }
+
+
+

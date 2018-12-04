@@ -45,9 +45,17 @@ module.exports = (router) =>{
 	router.get('/admin/',admin.admin_home);
 	router.get('/admin/home',admin.admin_home);
 	router.get('/admin/records',admin.admin_records);
-    router.get('/admin/listing',admin.admin_listing);
     
-    router.post('/admin/listing/remove',admin.admin_listing);	
+    //For Adding
+    router.post('/admin/listing/add',admin.admin_listing_add);
+    router.post('/admin/listing/add/all',admin.admin_listing_add_all);
+    router.post('/admin/listing/enroll',admin.admin_listing_enroll);
+    
+    //For Clearing
+    router.post('/admin/listing/remove',admin.admin_listing_remove);
+    router.post('/admin/listing/remove/all',admin.admin_listing_remove_all);
+    router.post('/admin/listing/clear',admin.admin_listing_clear);
+    	
 	router.post('/admin/records',admin.admin_get_records);
 	router.post('/admin/records/add/student',admin.admin_add_student);
 	router.post('/admin/records/add/subject',admin.admin_add_subject);
