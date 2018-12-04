@@ -13,7 +13,7 @@ var cookieExtractor = require(__dirname+'/../../config/cookieExtractor');
 var FeeRef = require(__dirname+'/../fee_ref');
 var Curriculum = require(__dirname+'/../curriculum');
 var Fees = require(__dirname+'/../fee');
-
+var Listing = require(__dirname+'/../listing');
 //Admin Home
 exports.admin_home = (req,res) =>{
 	console.log("HELLO WORLD! ADMIN!!!");
@@ -358,17 +358,34 @@ exports.admin_archive = (req,res) =>{
 }
 
 exports.admin_listing = (req,res) => {
-	/*
+	
+	
+	
 	Student.find({status:"ENROLLED"}).sort({lname:1}).exec(function(err,docs){
 		if(err) throw err;
 		if(!docs) return res.json({message:'Something went wrong...'});
 		if(docs){
 			//Get all ENROLLED students
 			//Get their current student.term
-			//Get 
+			//Get student_no
 			
+			for(var x=0;x<docs.length;x++){
+			    var curr_term = docs[x].term;    
+			    var std = docs[x].student_no;
+			    var degree = docs[x].degree;
+			    var major_degree = docs[x].major_degree;
+			    
+			    //find in listing
+			    
+			    Listing.update({"term":curr_term,"degree":degree,"major_degree":major_degree},{$push:{students:std}},function(err,doc){
+		            
+		            if(err) throw err;
+		            if(doc) res.json({message:"Listing of student number " + std +" success!"});
+		            else res.json({message:"Failed listing of student number " + std +" success!"});
+	            });
+			}	
 		}
 		
 	});
-	*/
+	
 }
