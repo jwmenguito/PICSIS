@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 var ListingSchema = new schema({
+	term:Number,
 	subject_code:String,
 	subj_desc:String,
 	units:Number,
