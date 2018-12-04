@@ -505,6 +505,11 @@ exports.admin_term_sections = (req,res) => {
 
     //create sections
     //Get Listing
+    Listing.find({subjects:{$ne:[]}}).exec(function(err,response){
+        if(err) throw err;
+        if(!docs) console.log("Sectioning empty");
+        if
+    });
 }
 
 
@@ -513,6 +518,6 @@ exports.admin_term_end = (req,res) => {
     //get grade
     //mark to students
     //archive
-
+    
 }
 

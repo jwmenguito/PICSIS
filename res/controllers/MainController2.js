@@ -482,15 +482,16 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	
 	homeModule.controller("EditStudentCtrl",["$scope","$http","$stateParams",
 	function($scope,$http,$stateParams){
-		var data = {
-			student_no:$stateParams.obj.student_no,
-			selected_field:$scope.fieldEdit,
-			value: $scope.entered_data
-		}
-		console.log(data);
+		
 		
 		$scope.editTheField = function(){
 			
+			var data = {
+			    student_no:$stateParams.obj.student_no,
+			    selected_field:$scope.fieldEdit,
+			    value: $scope.entered_data
+		    }
+		    console.log(data);
 			
 			$http
 			.post('admin/records/edit/student',data)
@@ -506,15 +507,15 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	
 	homeModule.controller("EditSubjectCtrl",["$scope","$http","$stateParams",
 	function($scope,$http,$stateParams){
-		var data = {
-			subject_code:$stateParams.obj.subject_code,
-			selected_field:$scope.fieldEdit,
-			value: $scope.entered_data
-		}
-		console.log(data);
+		
 		
 		$scope.editTheField = function(){
-			
+			var data = {
+			    subject_code:$stateParams.obj.subject_code,
+			    selected_field:$scope.fieldEdit,
+			    value: $scope.entered_data
+		    }
+		    console.log(data);
 			
 			$http
 			.post('admin/records/edit/subject',data)
@@ -601,12 +602,16 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	
 	homeModule.controller("EditFacultyCtrl",["$scope","$http","$stateParams",
 	function($scope,$http,$stateParams){
-		var data = {
-			prof_id:$stateParams.obj.prof_id,
-			selected_field:$scope.fieldEdit,
-			value: $scope.entered_data
-		}
+		
 		$scope.editTheField = function(){
+			var data = {
+			    prof_id:$stateParams.obj.prof_id,
+			    selected_field:$scope.fieldEdit,
+			    value: $scope.entered_data
+		    }
+		    console.log("EDIT FACULTY DATA: ");
+		    console.log(data);
+			
 			
 			$http
 			.post('admin/records/edit/faculty',data)
