@@ -63,9 +63,9 @@
 										<th></th>
 									</tr>
 								</thead>
-								<tbody>
+								<tbody data-ng-repeat="term in students[$index].checklist track by $index">
 									<!--Content here-->
-									<tr class="table_student" data-ng-repeat="subject in students[$index].checklist track by $index">
+									<tr class="table_student" data-ng-repeat="subject in term.subjects">
 										<td id="subject-code">{{subject.subject_code}}</td>
 										<td id="subject-grade">{{subject.grade}}</td>
 										
