@@ -454,7 +454,7 @@ exports.admin_listing_remove = (req,res) => {
      var major = req.body.major_degree;  
      var code = req.body.subject_code;
        
-       Listing.find({term:curr_term,degree:course,major_degree:major,subject_code:subject_code}).exec(function(err,docs){
+       Listing.find({term:curr_term,degree:course,major_degree:major,subject_code:code}).exec(function(err,docs){
         if(err) throw err;
         if(!docs) console.log("Empty");
         if(docs) console.log(docs);
@@ -479,7 +479,7 @@ exports.admin_listing_remove_all = (req,res) => {
      var major = req.body.major_degree;  
      var code = req.body.subject_code;
        
-       Listing.find({term:curr_term,degree:course,major_degree:major,subject_code:subject_code}).exec(function(err,docs){
+       Listing.find({term:curr_term,degree:course,major_degree:major,subject_code:code}).exec(function(err,docs){
         if(err) throw err;
         if(!docs) console.log("Empty");
         if(docs) console.log(docs);
