@@ -623,14 +623,14 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	//TERM CONTROLS
     homeModule.controller("AdminTerm",["$scope","$http","$stateParams","dataHolder",
 	function($scope,$http,$stateParams, dataHolder){
-            
+            console.log(dataHolder());
             $scope.load = function(){
                 var data = {
                     password: $scope.password,
                     email: dataHolder().email
 	            }
 	            
-	            console.log(data);
+	            alert(data);
                 return data; 
                 
             }
