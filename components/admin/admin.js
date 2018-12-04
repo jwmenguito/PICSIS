@@ -508,7 +508,7 @@ exports.admin_term_sections = (req,res) => {
     Listing.find({subjects:{$ne:[]}}).exec(function(err,response){
         if(err) throw err;
         if(!docs) console.log("Sectioning empty");
-        if
+        else if(docs) console.log(docs);
     });
 }
 
