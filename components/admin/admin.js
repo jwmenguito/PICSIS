@@ -448,7 +448,8 @@ exports.admin_listing_add_all = (req,res) => {
 exports.admin_listing_remove = (req,res) => {
      console.log(req.body);
      var curr_term = req.body.term;
-     var std = req.body.student_no;
+     var std = [];
+     std.push(req.body.student_no);
      var course = req.body.course;
      var major_degree = req.body.major_degree;  
      var subject_code = req.body.subject_code;
@@ -472,7 +473,8 @@ exports.admin_listing_remove = (req,res) => {
 exports.admin_listing_remove_all = (req,res) => {
       console.log(req.body);
      var curr_term = req.body.term;
-     var std = req.body.student_no;
+     var std = [];
+     std.push(req.body.student_no);
      var course = req.body.course;
      var major_degree = req.body.major_degree;  
        
