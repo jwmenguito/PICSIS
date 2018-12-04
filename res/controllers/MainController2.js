@@ -606,7 +606,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	             $scope.student_no="";
 	             $scope.course = "";
 	             $scope.major_degree ="";
-	             alert(message);
+	             alert(msg);
 	       
 	       } 
 	
