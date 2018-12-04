@@ -88,16 +88,45 @@
 							<table class="table table-hover table-condensed">
 								<thead class="levelTwo">
 									<tr class="secondHeader">
+										<th>Fee</th>
 										<th>Amount</th>
-										<th>Receipt</th>
 									</tr>
 								</thead>
-								<tbody>
+								<tbody data-ng-repeat="fee in students[$index].fees track by $index">
 									<!--Content here-->
-									<tr class="table_student" data-ng-repeat="fee in students[$index].fees track by $index">
-										<td id="subject-code">{{fee.amount}}</td>
-										<td id="subject-grade">{{fee.receipt}}</td>
-									</tr>
+							    		
+									<tr class="table_student">
+						                <th class="thead">Entrance</th>
+						                <td>{{fee.entrance}}</td>
+					                </tr>
+					                <tr class="table_student">
+						                <th>Selection</th>
+						                <td>{{fee.selection}}</td>
+					                </tr>
+					                <tr class="table_student">
+						                <th>Id</th>
+						                <td>{{fee.id}}</td>
+					                </tr>
+					                <tr class="table_student">
+						                <th>Misc</th>
+						                <td>{{fee.misc}}</td>
+					                </tr>
+					                <tr class="table_student">
+						                <th>Tuition</th>
+						                <td>{{fee.tuition}}</td>
+					                </tr>
+					                <tr class="table_student">
+						                <th>Term</th>
+						                <td>{{fee.term}}</td>
+					                </tr>
+					                <tr class="table_student">
+						                <th>Year</th>
+						                <td>{{fee.year}}</td>
+					                </tr>
+					                <tr class="table_student">
+						                <th>Status</th>
+						                <td>{{fee.status}}</td>
+					                </tr>
 									<!--End of Content-->
 								</tbody>
 									
