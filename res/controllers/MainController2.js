@@ -96,6 +96,11 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 			state_url:'/admin/listing',
 			
 		},{
+			name:'Term Controls',
+			state_name:'admin.term',
+			state_url:'/admin/term',
+			
+		},{
 			name:'Log out',
 			state_name:'log_out',
 			state_url:'/'
@@ -582,33 +587,9 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	            });
 	       
 	       } 
-	       
-	       //remove listing for all students
-	       //should be used end of sem
-	       $scope.clear = function(){
-	            var data = $scope.load();
-	            $http
-	            .post('admin/listing/clear',data)
-	            .then(function(response){
-	                $scope.empty(response.data.message);
-	            
-	            });
-	       
-	       }
-	       
-	       //add listing for all enrolled student
-	       $scope.enroll = function(){
-	            var data = $scope.load();
-	            $http
-	            .post('admin/listing/enroll',data)
-	            .then(function(response){
-	                $scope.empty(response.data.message);
-	            });
-	       
-	       }
+
 	       $scope.empty = function(msg){
 	             $scope.term = "";
-	             $scope.student_no="";
 	             $scope.course = "";
 	             $scope.major_degree ="";
 	             alert(msg);
@@ -638,6 +619,49 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	
 	
 	}]);
+	
+	//TERM CONTROLS
+    homeModule.controller("AdminTerm",["$scope","$http","$stateParams","dataHolder",
+	function($scope,$http,$stateParams, dataHolder){
+            
+            $scope.load = function(){
+                var data = {
+                    password: $scope.password,
+                    email: dataHolder().email
+	            }
+	            
+	            console.log(data);
+                return data; 
+                
+            }				       
+	       //remove listing for all students
+	       //should be used end of sem
+	       $scope.clear = function(){
+	            var data = $scope.load();
+	            $http
+	            .post('admin/listing/clear',data)
+	            .then(function(response){
+	                $scope.empty(response.data.message);
+	            
+	            });
+	       
+	       }
+	       
+	       //add listing for all enrolled student
+	       $scope.enroll = function(){
+	            var data = $scope.load();
+	            $http
+	            .post('admin/listing/enroll',data)
+	            .then(function(response){
+	                $scope.empty(response.data.message);
+	            });
+	       
+	       }
+	
+	
+	}]);
+	
+	
 	homeModule.controller("AdminRecordsCtrl",["$scope","$http","dataHolder","$state",
 	function($scope,$http,dataHolder,$state){
 	
@@ -853,6 +877,11 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 			url:'/listing',
 			templateUrl:'../views/admin_listing.html',
 			controller:'AdminListing'
+		})
+		.state('admin.term',{
+			url:'/term',
+			templateUrl:'../views/admin-term.html',
+			controller:'AdminTerm'
 		})
 		.state('admin.records',{
 			url:'/records',
