@@ -621,19 +621,10 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	}]);
 	
 	//TERM CONTROLS
-    homeModule.controller("AdminTerm",["$scope","$http","$stateParams","dataHolder",
-	function($scope,$http,$stateParams, dataHolder){
-            console.log(dataHolder());
-            $scope.load = function(){
-                var data = {
-                    password: $scope.password,
-                    email: dataHolder().email
-	            }
-	            
-	            alert(data);
-                return data; 
-                
-            }
+    homeModule.controller("AdminTerm",["$scope","$http","$stateParams",
+	function($scope,$http,$stateParams){
+           
+
             
             $scope.empty = function(msg){
                 $scope.password="";
@@ -643,25 +634,43 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	       //remove listing for all students
 	       //should be used end of sem
 	       $scope.clear = function(){
-	            var data = $scope.load();
-	            $http
-	            .post('admin/listing/clear',data)
-	            .then(function(response){
-	                $scope.empty(response.data.message);
+	       
+	       
+	       var warning = confirm("Are you sure you want to CLEAR the LISTING database?");
+				if(warning == true){
+					var data = {}
+                    $http
+                    .post('admin/listing/clear',data)
+                    .then(function(response){
+                        $scope.empty(response.data.message);
+                    
+                    });
+			
+					
+				}else if(warning == false){
+					
+				}
 	            
-	            });
 	       
 	       }
 	       
 	       //add listing for all enrolled student
 	       $scope.enroll = function(){
-	            var data = $scope.load();
-	            $http
-	            .post('admin/listing/enroll',data)
-	            .then(function(response){
-	                $scope.empty(response.data.message);
-	            });
-	       
+	            var warning = confirm("Are you sure you want to ADD LISTING to ALL ENROLLED students?");
+				
+				if(warning == true){
+					var data = {}
+                     
+	                $http
+	                .post('admin/listing/enroll',data)
+	                .then(function(response){
+	                    $scope.empty(response.data.message);
+	                });
+			
+					
+				}else if(warning == false){
+					
+				}
 	       }
 	
 	
