@@ -383,7 +383,7 @@ exports.admin_listing_enroll = (req,res) => {
 			    function(err,doc){
 		            console.log(doc);
 		            if(err) throw err;
-		            if(doc) res.json({message:"Listing of student number " + std +" success! Inserted in "+docs.nModified+" subjects"});
+		            if(doc) res.json({message:"Listing of student number " + std +" success! Inserted in "+doc.nModified+" subjects"});
 		            else res.json({message:"Failed listing of student number " + std});
 	            });
 			}	
