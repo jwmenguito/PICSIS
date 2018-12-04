@@ -633,6 +633,12 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	            console.log(data);
                 return data; 
                 
+            }
+            
+            $scope.empty = function(msg){
+                $scope.password="";
+                console.log(msg);
+            
             }				       
 	       //remove listing for all students
 	       //should be used end of sem
