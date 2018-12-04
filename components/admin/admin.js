@@ -258,6 +258,10 @@ exports.admin_edit_faculty = (req,res) => {
 	var value = req.body.value;
 		var update = {};
 	update[selected]=value;
+	console.log("Edit Faculty");
+	console.log("Selected: "+selected);
+	console.log("Change to: "+value);
+	
 	Faculty.updateOne({prof_id:req.body.prof_id},{$set:update},function(err,doc){
 		if(err) throw err;
 		if(!doc) return res.json({message:"No document found"});
@@ -273,6 +277,11 @@ exports.admin_edit_student = (req,res) => {
 	var value = req.body.value;
 	var update = {};
 	update[selected]=value;
+	
+	console.log("Edit Student");
+	console.log("Selected: "+selected);
+	console.log("Change to: "+value);
+	console.log(update[selected]);
 	Student.updateOne({student_no:req.body.student_no},{$set:update},function(err,doc){
 		if(err) throw err;
 		if(!doc) return res.json({message:"No document found"});

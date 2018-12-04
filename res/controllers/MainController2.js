@@ -628,7 +628,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
             
             $scope.empty = function(msg){
                 $scope.password="";
-                console.log(msg);
+                alert(msg);
             
             }				       
 	       //remove listing for all students
@@ -680,11 +680,11 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	homeModule.controller("AdminRecordsCtrl",["$scope","$http","dataHolder","$state",
 	function($scope,$http,dataHolder,$state){
 	
-			var dataBlock = {
-				students:[],
-				faculties:[],
-				subjects:[]
-			}
+			
+				$scope.students=[];
+				$scope.faculties=[];
+				$scope.subjects=[];
+			
 			$scope.edit = function(index){
 				
 				if($scope.display_table==='subject'){
