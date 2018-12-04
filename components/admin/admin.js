@@ -447,19 +447,18 @@ exports.admin_listing_add_all = (req,res) => {
 //REMOVE ONE STUDENT FROM A SUBJECT
 exports.admin_listing_remove = (req,res) => {
      console.log(req.body);
-     var curr_term = req.body.term;
      var std = [];
      std.push(req.body.student_no);
-     var course = req.body.course;
-     var major = req.body.major_degree;  
-     var code = req.body.subject_code;
+
        
-       Listing.find({term:curr_term,degree:course,major_degree:major,subject_code:code}).exec(function(err,docs){
+       Listing.find({term:req.body.term,degree:req.body.course,major_degree:req.body.major_degree,subject_code:req.body.subject_code}).exec
+       
+       (function(err,docs){
         if(err) throw err;
         if(!docs) console.log("Empty");
         if(docs) console.log(docs);
       }); 
-      Listing.update({"term":curr_term,"degree":course,"major_degree":major,"subject_code":code},{$pullAll:{students:std}},{multi:true},function(err,doc){
+      Listing.update({term:req.body.term,degree:req.body.course,major_degree:req.body.major_degree,subject_code:req.body.subject_code},{$pullAll:{students:std}},{multi:true},function(err,doc){
             //console.log(doc);
 		    if(err) throw err;
 		    if(doc) res.json({message:"REMOVED from listing student number " + std +" from "+doc.nModified+" subject(s)"});
@@ -472,21 +471,19 @@ exports.admin_listing_remove = (req,res) => {
 //REMOVE ONE STUDENT TO ALL SUBJECTS OF TERM, COURSE, MAJOR
 exports.admin_listing_remove_all = (req,res) => {
       console.log(req.body);
-     var curr_term = req.body.term;
+     
      var std = [];
      std.push(req.body.student_no);
-     var course = req.body.course;
-     var major = req.body.major_degree;  
-     var code = req.body.subject_code;
+
        
-       Listing.find({term:curr_term,degree:course,major:major,subject_code:code}).exec(function(err,docs){
+     Listing.find({term:req.body.term,degree:req.body.course,major_degree:req.body.major_degree,subject_code:req.body.subject_code}).exec(function(err,docs){
         if(err) throw err;
         if(!docs) console.log("Empty");
         if(docs) console.log(docs);
       }); 
        
      
-      Listing.update({"term":curr_term,"degree":course,"major_degree":major_degree},{$pullAll:{students:std}},{multi:true},function(err,doc){
+      Listing.update({term:req.body.term,degree:req.body.course,major_degree:req.body.major_degree},{$pullAll:{students:std}},{multi:true},function(err,doc){
             //console.log(doc);
 		    if(err) throw err;
 		    if(doc) res.json({message:"REMOVED from listing student number " + std +" from "+doc.nModified+" subjects"});
