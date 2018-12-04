@@ -451,7 +451,7 @@ exports.admin_listing_remove = (req,res) => {
      std.push(req.body.student_no);
 
        
-       Listing.find({term:req.body.term,degree:req.body.course,major_degree:req.body.major_degree,subject_code:req.body.subject_code}).exec
+       Listing.find({subject_code:req.body.subject_code}).exec
        
        (function(err,docs){
         if(err) throw err;
