@@ -395,7 +395,7 @@ exports.admin_listing_enroll = (req,res) => {
 
 
 exports.admin_listing_clear = (req,res) => {
-    
+     console.log(req.body);
     Listing.update({},{$set:{students:[]}},{multi:true},function(err,doc){
             console.log(doc);
 		    if(err) throw err;
@@ -408,7 +408,7 @@ exports.admin_listing_clear = (req,res) => {
 
 //ADD ONE STUDENT TO A SUBJECT
 exports.admin_listing_add = (req,res) => {
-	
+	 console.log(req.body);
 	var curr_term = req.body.term;
     var std = req.body.student_no;
     var course = req.body.course;
@@ -429,7 +429,7 @@ exports.admin_listing_add = (req,res) => {
 
 //ADD ONE STUDENT TO ALL SUBJECTS
 exports.admin_listing_add_all = (req,res) => {
-     
+      console.log(req.body);
      var curr_term = req.body.term;
      var std = req.body.student_no;
      var course = req.body.course;
@@ -446,7 +446,7 @@ exports.admin_listing_add_all = (req,res) => {
 
 //REMOVE ONE STUDENT FROM A SUBJECT
 exports.admin_listing_remove = (req,res) => {
-     
+     console.log(req.body);
      var curr_term = req.body.term;
      var std = req.body.student_no;
      var course = req.body.course;
@@ -465,7 +465,7 @@ exports.admin_listing_remove = (req,res) => {
 
 //REMOVE ONE STUDENT TO ALL SUBJECTS OF TERM, COURSE, MAJOR
 exports.admin_listing_remove_all = (req,res) => {
-     
+      console.log(req.body);
      var curr_term = req.body.term;
      var std = req.body.student_no;
      var course = req.body.course;
