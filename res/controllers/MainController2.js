@@ -539,7 +539,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	            $http
 	            .post('admin/listing/add',data)
 	            .then(function(response){
-	                $scope.empty(response.data);
+	                $scope.empty(response.data.message);
 	            
 	            });
 	       
@@ -550,7 +550,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	        $http
 	        .post('admin/listing/remove',data)
 	        .then(function(response){
-	             $scope.empty(response.data);
+	             $scope.empty(response.data.message);
 	        });
 	       
 	       }
@@ -561,7 +561,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	        $http
 	        .post('admin/listing/add/all',data)
 	        .then(function(response){
-	             $scope.empty(response.data);
+	             $scope.empty(response.data.message);
 	        })
 	            
 	       
@@ -573,7 +573,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	        $http
 	        .post('admin/listing/remove/all',data)
 	        .then(function(response){
-	             $scope.empty(response.data);
+	             $scope.empty(response.data.message);
 	        });
 	       
 	       } 
@@ -585,7 +585,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	        $http
 	        .post('admin/listing/clear',data)
 	        .then(function(response){
-	            $scope.empty(response.data);
+	            $scope.empty(response.data.message);
 	        
 	        });
 	       
@@ -597,7 +597,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	        $http
 	        .post('admin/listing/enroll',data)
 	        .then(function(response){
-	            $scope.empty(response.data);
+	            $scope.empty(response.data.message);
 	        });
 	       
 	       }
