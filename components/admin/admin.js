@@ -534,5 +534,18 @@ exports.admin_listing_remove_all = (req,res) => {
       });
 }
 
+exports.admin_term_sections = (req,res) => {
 
+    //create sections
+
+}
+
+
+exports.admin_term_end = (req,res) => {
+    
+    //get grade
+    //mark to students
+    //archive
+
+}
 
