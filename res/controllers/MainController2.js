@@ -627,7 +627,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
             $scope.load = function(){
                 var data = {
                     password: $scope.password,
-                    email: dataHolder().email
+                    email: dataHolder().j.email
 	            }
 	            
 	            alert(data);
