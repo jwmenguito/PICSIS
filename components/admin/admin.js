@@ -504,7 +504,7 @@ exports.admin_listing_remove_all = (req,res) => {
 exports.admin_term_sections = (req,res) => {
 
     //create sections
-
+    //Get Listing
 }
 
 

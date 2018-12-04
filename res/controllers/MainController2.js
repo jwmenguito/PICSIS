@@ -694,7 +694,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 					$state.go('admin.records.editSubject',{obj:myData});
 				}else if($scope.display_table==='faculty'){
 					var myData = {
-						prof_id:$scope.faculty[index].prof_id
+						prof_id:$scope.faculties[index].prof_id
 					}
 					$state.go('admin.records.editFaculty',{obj:myData});
 				}else if($scope.display_table==='student'){
