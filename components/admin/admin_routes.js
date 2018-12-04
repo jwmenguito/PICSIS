@@ -45,7 +45,7 @@ module.exports = (router) =>{
 	router.get('/admin/',admin.admin_home);
 	router.get('/admin/home',admin.admin_home);
 	router.get('/admin/records',admin.admin_records);
-	
+    router.get('/admin/listing',admin.admin_listing);	
 	router.post('/admin/records',admin.admin_get_records);
 	router.post('/admin/records/add/student',admin.admin_add_student);
 	router.post('/admin/records/add/subject',admin.admin_add_subject);
@@ -54,6 +54,6 @@ module.exports = (router) =>{
 	router.post('/admin/records/edit/student',admin.admin_edit_student);
 	router.post('/admin/records/edit/subject',admin.admin_edit_subject);
 	router.post('/admin/records/archive',admin.admin_archive);
-	
+    	
 	return router;
 }
