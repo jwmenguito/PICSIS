@@ -715,6 +715,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 					
 				}
 			}
+			
 			$scope.getTable = function(){
 				var data ={
 					table : $scope.display_table
