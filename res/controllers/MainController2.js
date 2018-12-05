@@ -686,7 +686,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 				if(warning == true){
 					var data = {}
                     $http
-                    .post('admin/listing/clear',data)
+                    .post('admin/term/sections',data)
                     .then(function(response){
                         $scope.empty(response.data.message);
                     
