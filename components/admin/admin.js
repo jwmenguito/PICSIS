@@ -565,7 +565,7 @@ exports.admin_term_sections = (req,res) => {
              
                 }
                 
-                var new_class = newClasses(one_class);
+                var new_class = new Classes(one_class);
                 
                 new_class.save(function(err){
                     if(err) console.log("Error occurred.");
