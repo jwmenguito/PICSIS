@@ -6,11 +6,11 @@ var ClassesSchema = new schema({
 	//subj_desc:String,
 	section:String,
 	units:Number,
-	prof_id:{type:Schema.Types.ObjectId},
+	prof_id:{type:schema.Types.ObjectId},
 	term:Number,
 	degree:String,
 	major_degree:String,
-	student_ids:[{type: Schema.Types.ObjectId}]
+	student_ids:[{type: schema.Types.ObjectId}]
  	
 },{ toJSON: { virtuals: true }, toObject: { virtuals: true }});
 
