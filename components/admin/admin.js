@@ -510,7 +510,7 @@ exports.admin_term_sections = (req,res) => {
     var sections = [];
     Sections.find({}).exec(function(err,docs){
         if(err) throw err;
-        if(!docs) return res.json({message"No sections retrieved"});
+        if(!docs) return res.json({message:"No sections retrieved"});
         else if (docs) {
               for(var x=0;x<docs.length;x++){
                 sections.push(docs[x].name);
