@@ -527,7 +527,7 @@ exports.admin_term_sections = (req,res) => {
      
     
     //Get Listing
-    Listing.find({subjects:{$ne:[]}}).exec(function(err,listing){
+    Listing.find({subjects:{$not:{$size:0}}}).exec(function(err,listing){
         if(err) throw err;
         if(!listing) console.log("No listing retrieved");
         else if(listing) {
@@ -538,6 +538,7 @@ exports.admin_term_sections = (req,res) => {
             //for each listing
             for(var y=0;y<listing.length;y++){
                 //create class
+                
                 var one_class = {
                     subject_code: listing[y].subject_code,
                     section: sections[counter],
@@ -548,7 +549,8 @@ exports.admin_term_sections = (req,res) => {
                     term: listing[y].term,
                     student_ids:[]
                 }
-                
+                console.log("one_class\n\n");
+                console.log(one_class+"\n\n");
                 //get students
                 var z = 0;
                 var limit = 5;
@@ -558,7 +560,7 @@ exports.admin_term_sections = (req,res) => {
                         
                         limit_count = 0;
                         counter++;
-                        console.log("One_class:");
+                        console.log("One_class again:");
                         console.log(one_class);
                         var new_class = new Classes(one_class);
                         
