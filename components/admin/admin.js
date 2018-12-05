@@ -548,12 +548,14 @@ exports.admin_term_sections = (req,res) => {
                 var limit_count = 0;
                 for(z = limit_count;z<listing[y].students.length;z++){
                     if(limit_count > limit) {
+                        
                         limit_count = 0;
                         counter++;
                         var new_class = new Classes(one_class);
                         
+                        
                         new_class.save(function(err){
-				            if(err) return res.json({message:"Class not saved."});
+				            if(err) return console.log("Class not saved.");
 			                
 			            });
 			            
@@ -568,7 +570,7 @@ exports.admin_term_sections = (req,res) => {
             
             }
             
-            return res.kson({message:"Classes saved."});
+            return res.json({message:"Classes saved."});
         
         }
     });
