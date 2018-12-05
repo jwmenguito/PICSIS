@@ -566,7 +566,7 @@ exports.admin_term_sections = (req,res) => {
                 }
                 
                 var new_class = new Classes(one_class);
-                
+                counter++;
                 new_class.save(function(err){
                     if(err) throw err;
                     
