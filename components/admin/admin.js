@@ -511,7 +511,7 @@ exports.admin_term_sections = (req,res) => {
     var sections = [];
     Sections.find({}).exec(function(err,docs){
         if(err) throw err;
-        if(!docs) return res.json({message:"No sections retrieved"});
+        if(!docs) return console.log("No sections retrieved");
         else if (docs) {
               for(var x=0;x<docs.length;x++){
                 sections.push(docs[x].name);
@@ -524,7 +524,7 @@ exports.admin_term_sections = (req,res) => {
     //Get Listing
     Listing.find({subjects:{$ne:[]}}).exec(function(err,listing){
         if(err) throw err;
-        if(!listing) res.json({message:"No listing retrieved"});
+        if(!listing) console.log("No listing retrieved");
         else if(listing) {
             
             var classes = [];
@@ -567,6 +567,8 @@ exports.admin_term_sections = (req,res) => {
                 }
             
             }
+            
+            return res.kson({message:"Classes saved."});
         
         }
     });
