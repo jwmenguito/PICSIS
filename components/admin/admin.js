@@ -513,9 +513,14 @@ exports.admin_term_sections = (req,res) => {
         if(err) throw err;
         if(!docs) return console.log("No sections retrieved");
         else if (docs) {
+              console.log("Sections: ");
+              console.log(docs);
               for(var x=0;x<docs.length;x++){
                 sections.push(docs[x].name);
               }
+              
+              console.log("Array of section names:");
+              console.log(sections);
         } 
     
     });
@@ -526,6 +531,8 @@ exports.admin_term_sections = (req,res) => {
         if(err) throw err;
         if(!listing) console.log("No listing retrieved");
         else if(listing) {
+            console.log("Listing:");
+            console.log(listing);
             
             var classes = [];
             //for each listing
@@ -546,13 +553,16 @@ exports.admin_term_sections = (req,res) => {
                 var z = 0;
                 var limit = 5;
                 var limit_count = 0;
-                for(z = limit_count;z<listing[y].students.length;z++){
+                for(z = 0;z<listing[y].students.length;z++){
                     if(limit_count > limit) {
                         
                         limit_count = 0;
                         counter++;
+                        console.log("One_class:");
+                        console.log(one_class);
                         var new_class = new Classes(one_class);
                         
+                        console.log(new_class)
                         
                         new_class.save(function(err){
 				            if(err) return console.log("Class not saved.");
