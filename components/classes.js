@@ -4,7 +4,7 @@ var schema = mongoose.Schema;
 var ClassesSchema = new schema({
 	subject_code:String,
 	//subj_desc:String,
-	section,String,
+	section:String,
 	units:Number,
 	prof_id:{type:Schema.Types.ObjectId},
 	term:Number,
