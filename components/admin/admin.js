@@ -508,7 +508,7 @@ exports.admin_term_sections = (req,res) => {
     //create sections
     var counter = 0;
     var sections = [];
-    Sections.find({}).exec(function(err,listing)){
+    Sections.find({}).exec(function(err,listing){
         if(err) throw err;
         if(!docs) return res.json({message"No sections retrieved"});
         else if (docs) {
@@ -517,7 +517,7 @@ exports.admin_term_sections = (req,res) => {
               }
         } 
     
-    }
+    })
      
     
     //Get Listing
