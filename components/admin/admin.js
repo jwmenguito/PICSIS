@@ -10,6 +10,7 @@ var jwt = require('jsonwebtoken');
 var mongoose = require('mongoose');
 var cookieExtractor = require(__dirname+'/../../config/cookieExtractor');
 
+var Sections = require(__dirname+'/../section');
 var FeeRef = require(__dirname+'/../fee_ref');
 var Curriculum = require(__dirname+'/../curriculum');
 var Fees = require(__dirname+'/../fee');
