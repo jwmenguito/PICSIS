@@ -527,7 +527,7 @@ exports.admin_term_sections = (req,res) => {
      
     
     //Get Listing
-    Listing.find({subjects:{$not:{$size:0}}}).exec(function(err,listing){
+    Listing.find({subjects:{$exists:true,$not:{$size:0}}}).exec(function(err,listing){
         if(err) throw err;
         if(!listing) console.log("No listing retrieved");
         else if(listing) {
@@ -555,31 +555,22 @@ exports.admin_term_sections = (req,res) => {
                 var z = 0;
                 var limit = 5;
                 var limit_count = 0;
+                
+                
+                
+                
                 for(z = 0;z<listing[y].students.length;z++){
-                    console.log("INNERMOST LOOPS");
-                    if(limit_count > limit) {
-                        
-                        limit_count = 0;
-                        counter++;
-                        console.log("One_class again:");
-                        console.log(one_class);
-                        var new_class = new Classes(one_class);
-                        
-                        console.log(new_class)
-                        
-                        new_class.save(function(err){
-				            if(err) return console.log("Class not saved.");
-			                
-			            });
-			            
-			            one_class.section = sections[counter];
-                        one_class.student_ids = [];
-                        //change section
-                        
-                    }                    
+                    console.log("INNERMOST LOOPS");                 
                     one_class.student_ids.push(listing[y].students[z]);
-                    limit_count++;
+             
                 }
+                
+                var new_class = newClasses(one_class);
+                
+                new_class.save(function(err){
+                    if(err) console.log("Error occurred.");
+                    
+                });
             
             }
             
