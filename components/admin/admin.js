@@ -523,7 +523,7 @@ exports.admin_term_sections = (req,res) => {
     //Get Listing
     Listing.find({subjects:{$ne:[]}}).exec(function(err,listing){
         if(err) throw err;
-        if(!listing) res.json({message"No listing retrieved"});;
+        if(!listing) res.json({message:"No listing retrieved"});;
         else if(listing) {
             
             var classes = [];
