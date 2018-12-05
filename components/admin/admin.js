@@ -569,8 +569,37 @@ exports.admin_term_sections = (req,res) => {
         
         }
     });
+      
+     /* 
+    Classes.find({}).exec(function(err,docs){
         
-
+        //find all classes
+        if(err) throw err;
+        if(!docs) return res.json({message:"Error occurred retrieving classes"});
+        if(docs) {
+            
+            //per class
+            for(var i=0;i<docs.length;i++){
+                
+                //docs[i].
+                Faculty.find({major_degree:docs[i].major_degree,degree:docs[i].degree}).exec(function(err2,docs2){
+                    if(err2) throw err2;
+                    if(!docs2) return res.json({message:"Failed to retrieve faculty when retrieving classes"});
+                    else if(docs2){
+                    
+                        //get count of faculty
+                        var number_of_prof = docs2.length;
+                        
+                        //get 
+                        
+                    }
+                    
+                });
+            }
+        }
+    
+    }); 
+    */
 }
 
 
