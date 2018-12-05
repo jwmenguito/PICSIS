@@ -14,6 +14,8 @@ var FeeRef = require(__dirname+'/../fee_ref');
 var Curriculum = require(__dirname+'/../curriculum');
 var Fees = require(__dirname+'/../fee');
 var Listing = require(__dirname+'/../listing');
+var Classes = require(__dirname+'/../classes');
+
 //Admin Home
 exports.admin_home = (req,res) =>{
 	console.log("HELLO WORLD! ADMIN!!!");
@@ -313,7 +315,7 @@ exports.admin_archive = (req,res) =>{
 	var year = new Date().getFullYear();
 	
 	if(req.body.collection=='student'){
-		var archiveDb = mongoose.createConnection('mongodb://localhost/PICSIS_ARCHIVE');
+		var archiveDb = mongoose.createConnection('mongodb://james:123qwe@ds159670.mlab.com:59670/heroku_9t8tj7k2');
 		archiveDb.createCollection('studentArchive'+month+year).then(function(err,collection){
 			if(err) throw err;
 		});
@@ -329,24 +331,24 @@ exports.admin_archive = (req,res) =>{
 		
 		})
 		
-	}else if(req.body.collection=='subject'){
-		var archiveDb = mongoose.createConnection('mongodb://localhost/PICSIS_ARCHIVE');
-		archiveDb.createCollection('subjectArchive'+month+year).then(function(err,collection){
+	}else if(req.body.collection=='listing'){
+		var archiveDb = mongoose.createConnection('mmongodb://james:123qwe@ds159670.mlab.com:59670/heroku_9t8tj7k2');
+		archiveDb.createCollection('listingArchive'+month+year).then(function(err,collection){
 			if(err) throw err;
 		});
-		var subjectArchive = archiveDb.collection('subjectArchive'+month+year);
-		Subjects.find({}).sort({lname:1}).exec(function(err,docs){
+		var listingArchive = archiveDb.collection('listingArchive'+month+year);
+	    Listing.find({}).sort({term:1,subject_code:1}).exec(function(err,docs){
 			if(err) throw err;
 			if(!docs) return res.json({message:'Something went wrong...'});
 			if(docs){
-				subjectArchive.insertMany(docs,function(err,docs){
+				listingArchive.insertMany(docs,function(err,docs){
 					if(err) throw err;
 				});
 			};
 		
 		})
 	}else if(req.body.collection=='faculty'){
-		var archiveDb = mongoose.createConnection('mongodb://localhost/PICSIS_ARCHIVE');
+		var archiveDb = mongoose.createConnection('mongodb://james:123qwe@ds159670.mlab.com:59670/heroku_9t8tj7k2');
 		archiveDb.createCollection('facultyArchive'+month+year).then(function(err,collection){
 			if(err) throw err;
 		});
@@ -504,12 +506,71 @@ exports.admin_listing_remove_all = (req,res) => {
 exports.admin_term_sections = (req,res) => {
 
     //create sections
-    //Get Listing
-    Listing.find({subjects:{$ne:[]}}).exec(function(err,response){
+    var counter = 0;
+    var sections = [];
+    Sections.find({}).exec(function(err,listing)){
         if(err) throw err;
-        if(!docs) console.log("Sectioning empty");
-        else if(docs) console.log(docs);
+        if(!docs) return res.json({message"No sections retrieved"});
+        else if (docs) {
+              for(var x=0;x<docs.length;x++){
+                sections.push(docs[x].name);
+              }
+        } 
+    
+    }
+     
+    
+    //Get Listing
+    Listing.find({subjects:{$ne:[]}}).exec(function(err,listing){
+        if(err) throw err;
+        if(!listing) res.json({message"No listing retrieved"});;
+        else if(listing) {
+            
+            var classes = [];
+            //for each listing
+            for(var y=0;y<listing.length;y++){
+                //create class
+                var one_class = {
+                    subject_code: listing[y].subject_code,
+                    section: sections[counter],
+                    major_degree: listing[y].major_degree,
+                    degree: listing[y].degree,
+                    prof_id: "",
+                    units: listing[y].units,
+                    term: listing[y].term,
+                    student_ids:[]
+                }
+                
+                //get students
+                var z = 0;
+                var limit = 5;
+                var limit_count = 0;
+                for(z = limit_count;z<listing[y].students.length;z++){
+                    if(limit_count > limit) {
+                        limit_count = 0;
+                        counter++;
+                        var new_class = new Classes(one_class);
+                        
+                        new_class.save(function(err){
+				            if(err) return res.json({message:"Class not saved."});
+			                
+			            });
+			            
+			            one_class.section = sections[counter];
+                        one_class.student_ids = [];
+                        //change section
+                        
+                    }                    
+                    one_class.student_ids.push(listing[y].students[z]);
+                    limit_count++;
+                }
+            
+            }
+        
+        }
     });
+        
+
 }
 
 
