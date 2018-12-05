@@ -550,13 +550,13 @@ exports.admin_term_sections = (req,res) => {
                     student_ids:[]
                 }
                 console.log("one_class\n\n");
-                console.log(one_class+"\n\n");
+                console.log(JSON.stringify(one_class)+"\n\n");
                 //get students
                 var z = 0;
                 var limit = 5;
                 var limit_count = 0;
                 for(z = 0;z<listing[y].students.length;z++){
-                    
+                    console.log("INNERMOST LOOPS");
                     if(limit_count > limit) {
                         
                         limit_count = 0;
