@@ -677,6 +677,28 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 					
 				}
 	       }
+	       
+	       
+	       $scope.section = function(){
+	       
+	       
+	       var warning = confirm("Are you sure you want to CREATE CLASSES WITH SECTIONS?");
+				if(warning == true){
+					var data = {}
+                    $http
+                    .post('admin/listing/clear',data)
+                    .then(function(response){
+                        $scope.empty(response.data.message);
+                    
+                    });
+			
+					
+				}else if(warning == false){
+					
+				}
+	            
+	       
+	       }
 	
 	
 	}]);

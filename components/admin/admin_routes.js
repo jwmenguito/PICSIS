@@ -57,7 +57,7 @@ module.exports = (router) =>{
     router.post('/admin/listing/remove',admin.admin_listing_remove);
     router.post('/admin/listing/remove/all',admin.admin_listing_remove_all);
     router.post('/admin/listing/clear',admin.admin_listing_clear);
-    	
+    router.post('/admin/term/sections',admin.admin_term_sections);
 	router.post('/admin/records',admin.admin_get_records);
 	router.post('/admin/records/add/student',admin.admin_add_student);
 	router.post('/admin/records/add/subject',admin.admin_add_subject);
