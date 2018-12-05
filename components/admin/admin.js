@@ -527,7 +527,7 @@ exports.admin_term_sections = (req,res) => {
      
     
     //Get Listing
-    Listing.find({subjects:{$exists:true,$not:{$size:0}}}).exec(function(err,listing){
+    Listing.find({subjects:{$not:{$size:0}}}).exec(function(err,listing){
         if(err) throw err;
         if(!listing) console.log("No listing retrieved");
         else if(listing) {
