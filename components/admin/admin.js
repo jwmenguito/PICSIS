@@ -556,6 +556,7 @@ exports.admin_term_sections = (req,res) => {
                 var limit = 5;
                 var limit_count = 0;
                 for(z = 0;z<listing[y].students.length;z++){
+                    
                     if(limit_count > limit) {
                         
                         limit_count = 0;
