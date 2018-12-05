@@ -6,14 +6,14 @@ var ClassesSchema = new schema({
 	//subj_desc:String,
 	section:String,
 	units:Number,
-	prof_id:{type:schema.Types.ObjectId},
+	prof_id:String,
 	term:Number,
 	degree:String,
 	major_degree:String,
-	student_ids:[{type: schema.Types.ObjectId}]
+	student_ids:Array
  	
 },{ toJSON: { virtuals: true }, toObject: { virtuals: true }});
-
+/*
 ClassesSchema.virtual('students',{
 	ref:'Student',
 	localField:'student_ids',
@@ -27,5 +27,5 @@ ClassesSchema.virtual('professor',{
     foreignField:'prof_id',
     justOne:true
 });
-
+*/
 module.exports = mongoose.model('Classes',ClassesSchema,'classes');
