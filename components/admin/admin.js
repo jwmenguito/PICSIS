@@ -633,7 +633,7 @@ exports.admin_section_create = (req,res) => {
 
 }
 
-set_message => (msg) {
+exports.set_message => (msg) {
 
     var mjson = {
         message: msg
