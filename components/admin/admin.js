@@ -623,7 +623,7 @@ exports.admin_term_end = (req,res) => {
 exports.admin_section_create = (req,res) => {
      Listing.find({subjects:{$size:{$not:0}}}).exec(function(err,listing){
         if(err) throw err;
-        if(!docs) return res.json(set_message("Something went wrong in retrieving listing with non-empty sections."));
+        if(!docs) return res.json({message:"Something went wrong in retrieving listing with non-empty sections."});
         if(docs) {
             
             console.log(docs);
@@ -631,12 +631,4 @@ exports.admin_section_create = (req,res) => {
         }
      });
 
-}
-
-exports.set_message => (msg) {
-
-    var mjson = {
-        message: msg
-    }
-    return mjson;
 }
