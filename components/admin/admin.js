@@ -527,7 +527,7 @@ exports.admin_term_sections = (req,res) => {
      
     
     //Get Listing
-    Listing.find({subjects:{$not:{$size:0}}}).exec(function(err,listing){
+    Listing.find({subjects:{{$size:{$not:0}}}}).exec(function(err,listing){
         if(err) throw err;
         if(!listing) console.log("No listing retrieved");
         else if(listing) {
@@ -620,3 +620,23 @@ exports.admin_term_end = (req,res) => {
     
 }
 
+exports.admin_section_create = (req,res) => {
+     Listing.find({subjects:{{$size:{$not:0}}}}).exec(function(err,listing){
+        if(err) throw err;
+        if(!docs) return res.json(set_message("Something went wrong in retrieving listing with non-empty sections."));
+        if(docs) {
+            
+            console.log(docs);
+            return res.json(docs);
+        }
+     });
+
+}
+
+function set_message(var msg) {
+
+    var mjson = {
+        message: msg
+    }
+    return mjson;
+}
