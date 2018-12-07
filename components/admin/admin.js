@@ -525,7 +525,7 @@ exports.admin_term_sections = (req,res) => {
     
     });
      
-    
+    /*
     //Get Listing
     Listing.find({subjects:{{$size:{$not:0}}}}).exec(function(err,listing){
         if(err) throw err;
