@@ -619,14 +619,51 @@ exports.admin_term_end = (req,res) => {
     //archive
     
 }
-
+/**
+Given a number of sections,
+Equally divide the number of students per listing
+**/
 exports.admin_section_create = (req,res) => {
+     
+     var section_count = req.body.section_count;
+     var sections = [];
+     
+     var chosen_sections = [];
+     /*
+        Query returns a list of existing section names
+     */
+     Sections.find({}).exec(function(err,docs){
+        if(err) throw err;
+        if(!docs) return console.log("No sections retrieved");
+        else if (docs) {
+              console.log("Sections: ");
+              console.log(docs);
+              
+              for(var x=0;x<docs.length;x++){
+                sections.push(docs[x].name);
+              }
+              
+              
+              console.log("Array of section names:");
+              console.log(sections);
+        } 
+    
+    });
+     
+     /*
+        Query returns existing listing
+     */
      Listing.find({students:{$not:{$size:0}}}).exec(function(err,docs){
         if(err) throw err;
         if(!docs) return res.json({message:"Something went wrong in retrieving listing with non-empty sections."});
-        if(docs) {
-            
+        if(docs) {   
             console.log(docs);
+            
+            for(var x=0;x<docs.length;x++){
+            
+                for(var 
+            }
+            
             return res.json(docs);
         }
      });
