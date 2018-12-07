@@ -621,7 +621,7 @@ exports.admin_term_end = (req,res) => {
 }
 
 exports.admin_section_create = (req,res) => {
-     Listing.find({subjects:{$size:{$gt:0}}}).exec(function(err,listing){
+     Listing.find({subjects:{$not:{$size:0}}}).exec(function(err,listing){
         if(err) throw err;
         if(!docs) return res.json({message:"Something went wrong in retrieving listing with non-empty sections."});
         if(docs) {
