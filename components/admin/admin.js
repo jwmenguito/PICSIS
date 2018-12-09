@@ -249,6 +249,7 @@ exports.admin_add_subject = (req,res) => {
 
 exports.admin_add_faculty = (req,res) => {
 	var faculty = new Faculty(req.body);
+	faculty.setPassword(req.body.lname);
 	faculty._id = new mongoose.Types.ObjectId();
 	faculty.save(function(err,faculty){
 		if(err) throw err;
