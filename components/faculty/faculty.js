@@ -180,9 +180,10 @@ exports.faculty_sections_assign = (req,res) => {
         if(err) throw err;
         if(!doc) return res.json({message:"Unable to retrieve professor data."});
         else if (doc){
-        
+            console.log(doc);
             //if data is found, find sections based on degree and major
-            Classes.find({degree:doc.degree,major_degree:doc.major_degree}).exec(function(err2,doc2){
+            
+            Classes.find({major_degree:doc.major_degree}).exec(function(err2,doc2){
                 if(err2) throw err2;
                 console.log(doc2);
                 console.log(doc2);
