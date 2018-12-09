@@ -663,7 +663,7 @@ exports.admin_section_create = (req,res) => {
     });
     
     while(chosen_sections.length != section_count){
-        var index = (Math.floor(Math.random() * section_count));
+        var index = (Math.floor(Math.random() * sections.length));
         console.log("Index is: ");1
         console.log(index);
         chosen_sections.add(sections[index]);
