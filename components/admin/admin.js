@@ -577,6 +577,7 @@ exports.admin_section_create = (req,res) => {
         } 
     
     });
+    console.log(sections.length);
     var max_section = sections.length;
     var options = {
         min:0,
