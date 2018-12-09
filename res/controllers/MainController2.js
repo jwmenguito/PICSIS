@@ -965,7 +965,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 			templateUrl:'../views/admin-term.html',
 			controller:'AdminTerm'
 		})
-		.state('admin.section.create',{
+		.state('admin.section',{
 		    url:'/section',
 		    templateUrl:'../views/admin-create-section.html',
 		    controller:'AdminCreateSection'
