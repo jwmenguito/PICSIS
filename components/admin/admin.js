@@ -702,7 +702,7 @@ exports.admin_section_create = (req,res) => {
                     if(z==created_classes.length){
                         z=0;
                     }
-                    created_classes[z].students.push(docs.students[x]);
+                    created_classes[z].student_ids.push(docs.students[x]);
                     z++;                                                     
                 }
                 console.log("\n\nCreated Classes: ");
