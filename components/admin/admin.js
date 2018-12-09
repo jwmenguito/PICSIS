@@ -619,9 +619,20 @@ exports.admin_term_end = (req,res) => {
     //archive
     
 }
+
+exports.admin_section_get_listing = (req,res) => {
+    Listing.find({students:{$not:{$size:0}}}).exec(function(err,docs){
+    
+        if(err) throw err;
+        if(!docs) return res.json({message:"No listing returned."});
+        else if(docs) return res.json(docs);
+    });
+
+}
+
 /**
 Given a number of sections,
-Equally divide the number of students per listing
+Equally divide the number of students of the selected listing.
 **/
 exports.admin_section_create = (req,res) => {
      
@@ -649,22 +660,66 @@ exports.admin_section_create = (req,res) => {
         } 
     
     });
+    
+    while(chose_sections.length != chosen_sections){
+        var index = (Math.floor(Math.random() * sections.length));
+        
+        chosen_sections.push(sections[index]);
+        
+        chosen_sections.distinct();
+         
+    }
      
      /*
         Query returns existing listing
      */
-     Listing.find({students:{$not:{$size:0}}}).exec(function(err,docs){
+     Listing.findOne({subject_code:req.body.subject_code,students:{$not:{$size:0}}}).exec(function(err,docs){
         if(err) throw err;
         if(!docs) return res.json({message:"Something went wrong in retrieving listing with non-empty sections."});
         if(docs) {   
             console.log(docs);
+                
+                var created_classes=[]
+                //CREATE CLASSES BASED ON THE NUMBER OF SECTIONS
+                for(var y=0;y<chosen_sections.length;y++){
+                    //FOR EACH SECTION, CREATE A CLASS OBJECT
+                    var one_class = {
+                        subject_code: docs.subject_code,
+                        section: chosen_sections[y],
+                        major_degree: docs.major_degree,
+                        degree: docs.degree,
+                        prof_id: "",
+                        units: docs.units,
+                        term: docs.term,
+                        student_ids:[]
+                    }
+                    console.log("\n\nCreated class["+y+"]: ");
+                    console.log(one_class);
+                    created_classes.push(one_class);
+                }
+                
+                //FILL CLASSES WITH STUDENTS
+                var z=0;
+                for(var x=0;x<docs.students.length;x++){
+                    //add student to classes
+                    if(z==create_classes.length){
+                        z=0;
+                    }
+                    created_classes[z].students.push(docs.students[x]);
+                    z++;                                                     
+                }
+                console.log("\n\nCreated Classes: ");
+                console.log(created_classes);
+                for(var w=0;w<created_classes.length;w++){
+                
+                    new_class = new Classes(created_classes[w]);
+                    new_class.save(function(err){
+                        if(err) throw err;
+                    });
+                }
             
-            for(var x=0;x<docs.length;x++){
+            return res.json({message:"Created "+y+" sections."});
             
-                for(var 
-            }
-            
-            return res.json(docs);
         }
      });
 

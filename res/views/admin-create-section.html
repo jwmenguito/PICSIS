@@ -1,0 +1,19 @@
+<div class="addEntryForm">	
+	<div class="inputFields">
+		<h3>Create Sections</h3>
+		<hr/>
+		<form method="post" class="addForm">
+		    <label>Select a section</label>
+		    <select name="table_data" class="custom-select" ng-options="subject in subjects" ng-model="selected_subject" style="max-width:200%;margin-bottom:20px">
+	        <option value ="" disabled selected>Select a section</option>
+	        </select>
+			<br/>
+			<br/>
+			<div style="text-align:left;vertical-align:top">
+			    <label>Number of Sections to create for: &nbsp</label>
+			    <strong>{{selected_subject}}</strong>
+				<input type="number" class="form-control input-xs col-sm-8" placeholder="Number of Sections" ng-model="no_of_sections"/><br/>               <button type="submit" class="btn btn-success btn-lg col-sm-2" ng-click="add()">Add</button>
+			</div>
+		</form>
+	</div>
+</div>
