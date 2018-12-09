@@ -668,9 +668,9 @@ exports.admin_section_create = (req,res) => {
         console.log(index);
         chosen_sections.add(sections[index]);
         console.log("Section is:" + sections[index]);
-        if(chosen_sections.length == section_count){
+        
             break;
-        }
+        
     }
      chosen_sections = chosen_sections.toArray();
      /*
