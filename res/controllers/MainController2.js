@@ -604,6 +604,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	       } 
 	
 	}]);
+	
 	homeModule.controller("AdminCreateSection",["$scope","$http",
 	function($scope,$http){
 	   $scope.subjects = [];
@@ -622,8 +623,12 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	        
 	        $http
 	        .post('admin/section/create',data)
-	        .then(function(response){});
-	   }
+	        .then(function(response){
+	            
+	            alert(response.data.message);
+	        
+	        });
+	    }
 	   
 	});
 	
