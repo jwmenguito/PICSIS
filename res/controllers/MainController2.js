@@ -235,7 +235,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 			.then(
 			function(response){
 				console.log(response.data);
-				$scope.classes = response.data.classes;
+				$scope.classes = response.data;
 				for(var i=0;i<$scope.classes.length;i++){
 					var currSubjectCode = $scope.classes[i].subject_code;
 					//for each student
