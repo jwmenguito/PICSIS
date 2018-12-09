@@ -621,7 +621,7 @@ exports.admin_term_end = (req,res) => {
 }
 
 exports.admin_section_get_listing = (req,res) => {
-    Listing.find({students:{$not:{$size:0}}}).exec(function(err,docs){
+    Listing.find({students:{$not:{$size:0}}}).sort({subject_code:1}).exec(function(err,docs){
     
         if(err) throw err;
         if(!docs) return res.json({message:"No listing returned."});
