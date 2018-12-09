@@ -7,6 +7,7 @@
     "angular-route": "^1.6.10",
     "array-flatten": "^2.1.1",
     "body-parser": "^1.18.2",
+    "collections": "^5.1.5",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
     "crypto": "^1.0.1",
@@ -31,8 +32,7 @@
     "request": "^2.85.0",
     "serve-favicon": "^2.5.0"
   },
-  
-  "engines":{
+  "engines": {
     "node": "8.10.0"
   }
 }

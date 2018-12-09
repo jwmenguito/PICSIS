@@ -5,6 +5,7 @@ var Subjects = require(__dirname+'/../subjects');
 var Student = require(__dirname+'/../user_student');
 var admin = require(__dirname+'/../user_admin');
 var Usr = require(__dirname+'/../usr');
+var Set = require('collections/set');
 
 var jwt = require('jsonwebtoken');
 var mongoose = require('mongoose');
@@ -639,7 +640,7 @@ exports.admin_section_create = (req,res) => {
      var section_count = req.body.section_count;
      var sections = [];
     
-     var chosen_sections = [];
+     var chosen_sections = new Set();
      /*
         Query returns a list of existing section names
      */
@@ -663,13 +664,9 @@ exports.admin_section_create = (req,res) => {
     
     while(chosen_sections.length != section_count){
         var index = (Math.floor(Math.random() * sections.length));
-        
-        chosen_sections.push(sections[index]);
-        
-        chosen_sections.distinct();
-         
+        chosen_sections.add(sections[index]);
     }
-     
+     choen_sections = chosen_sections.toArray();
      /*
         Query returns existing listing
      */
