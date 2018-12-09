@@ -6,7 +6,7 @@ var Student = require(__dirname+'/../user_student');
 var admin = require(__dirname+'/../user_admin');
 var Usr = require(__dirname+'/../usr');
 var Set = require('collections/set');
-
+var rn = require('random-number');
 var jwt = require('jsonwebtoken');
 var mongoose = require('mongoose');
 var cookieExtractor = require(__dirname+'/../../config/cookieExtractor');
@@ -525,91 +525,7 @@ exports.admin_term_sections = (req,res) => {
         } 
     
     });
-     
-    /*
-    //Get Listing
-    Listing.find({subjects:{{$size:{$not:0}}}}).exec(function(err,listing){
-        if(err) throw err;
-        if(!listing) console.log("No listing retrieved");
-        else if(listing) {
-            console.log("Listing:");
-            console.log(listing);
-            
-            var classes = [];
-            //for each listing
-            for(var y=0;y<listing.length;y++){
-                //create class
-                
-                var one_class = {
-                    subject_code: listing[y].subject_code,
-                    section: sections[counter],
-                    major_degree: listing[y].major_degree,
-                    degree: listing[y].degree,
-                    prof_id: "",
-                    units: listing[y].units,
-                    term: listing[y].term,
-                    student_ids:[]
-                }
-                console.log("one_class\n\n");
-                console.log(JSON.stringify(one_class)+"\n\n");
-                //get students
-                var z = 0;
-                var limit = 5;
-                var limit_count = 0;
-                
-                
-                
-                
-                for(z = 0;z<listing[y].students.length;z++){
-                    console.log("INNERMOST LOOPS");                 
-                    one_class.student_ids.push(listing[y].students[z]);
-             
-                }
-                
-                var new_class = new Classes(one_class);
-                counter++;
-                new_class.save(function(err){
-                    if(err) throw err;
-                    
-                });
-            
-            }
-            
-            return res.json({message:"Classes saved."});
-        
-        }
-    });
-      
-     /* 
-    Classes.find({}).exec(function(err,docs){
-        
-        //find all classes
-        if(err) throw err;
-        if(!docs) return res.json({message:"Error occurred retrieving classes"});
-        if(docs) {
-            
-            //per class
-            for(var i=0;i<docs.length;i++){
-                
-                //docs[i].
-                Faculty.find({major_degree:docs[i].major_degree,degree:docs[i].degree}).exec(function(err2,docs2){
-                    if(err2) throw err2;
-                    if(!docs2) return res.json({message:"Failed to retrieve faculty when retrieving classes"});
-                    else if(docs2){
-                    
-                        //get count of faculty
-                        var number_of_prof = docs2.length;
-                        
-                        //get 
-                        
-                    }
-                    
-                });
-            }
-        }
     
-    }); 
-    */
 }
 
 
@@ -661,15 +577,21 @@ exports.admin_section_create = (req,res) => {
         } 
     
     });
-    
+    var max_section = sections.length;
+    var options = {
+        min:0,
+        max:max_section-1,
+        integer:true
+    }
     while(chosen_sections.length != section_count){
-        var index = (Math.floor(Math.random() * sections.length));
+        
+        var index = rn(options);
         console.log("Index is: ");
         console.log(index);
         chosen_sections.add(sections[index]);
         console.log("Section is:" + sections[index]);
         
-            break;
+            //break;
         
     }
      chosen_sections = chosen_sections.toArray();
