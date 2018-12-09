@@ -7,7 +7,8 @@ var ListingSchema = new schema({
 	units:Number,
 	degree:String,
 	major_degree:String,
- 	students:Array
+ 	students:Array,
+ 	processed:Boolean
 });
 
 

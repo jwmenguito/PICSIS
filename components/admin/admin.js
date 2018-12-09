@@ -575,26 +575,6 @@ exports.admin_section_create = (req,res) => {
               console.log("Array of section names:");
               console.log(sections);
               console.log(sections.length);
-              console.log(sections.length);
-              console.log(sections.length);
-              console.log(sections.length);
-              console.log(sections.length);
-              console.log(sections.length);
-              console.log(sections.length);
-              console.log(sections.length);
-        
-    
-    
-    console.log("Sections");
-    console.log("Sections");
-    console.log("Sections");
-    console.log("Sections");
-    console.log("Sections");
-    console.log("Sections");
-    console.log("Sections");
-    console.log("Sections");
-    console.log("Sections");
-    console.log(sections);
     
     
     
@@ -621,7 +601,7 @@ exports.admin_section_create = (req,res) => {
      */
      
      
-     Listing.findOne({subject_code:req.body.subject_code,students:{$not:{$size:0}}}).exec(function(err,docs){
+     Listing.findOneAndUpdate({subject_code:req.body.subject_code,students:{$not:{$size:0}}},{$set:{processed:true}}).exec(function(err,docs){
         if(err) throw err;
         if(!docs) return res.json({message:"Something went wrong in retrieving listing with non-empty sections."});
         if(docs) {   
