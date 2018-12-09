@@ -68,6 +68,11 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 			state_name:'faculty.classes',
 			state_url:'/faculty/classes'
 		},{
+			name:'Assign Sections',
+			state_name:'faculty.sections.assign',
+			state_url:'/faculty/sections'
+		},
+		{
 			name:'Account Settings',
 			state_name:'faculty.settings2',
 			state_url:'/faculty/settings'
