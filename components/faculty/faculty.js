@@ -175,6 +175,7 @@ exports.faculty_grades = (req,res) => {
 
 exports.faculty_sections_assign = (req,res) => {
     //First, find self
+    console.log(req.body.prof_id);
     
     Faculty.findOne({prof_id:req.body.prof_id}).exec(function(err,doc){
         if(err) throw err;
@@ -185,9 +186,7 @@ exports.faculty_sections_assign = (req,res) => {
             
             Classes.find({major_degree:doc.major_degree}).exec(function(err2,doc2){
                 if(err2) throw err2;
-                console.log(doc2);
-                console.log(doc2);
-                console.log(doc2);
+               
                 //return doc2
                 var data = {
                     classes:doc2
