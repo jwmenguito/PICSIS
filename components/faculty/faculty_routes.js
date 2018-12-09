@@ -46,6 +46,7 @@ module.exports = (router)=>{
 	router.get('/faculty/classes/get/:prof_id',faculty.faculty_get_classes);
 	router.get('/faculty/settings',faculty.faculty_settings);
 	router.get('/faculty/reminders',faculty.faculty_reminders);
+	router.get('/faculty/sections',faculty.faculty_home2);
 	
 	router.post('/faculty/sections/assign',faculty.faculty_sections_assign);
 	router.post('/faculty/reminders',faculty.faculty_send_reminders);

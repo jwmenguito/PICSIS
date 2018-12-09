@@ -1,0 +1,24 @@
+<table class="table table-hover table-condensed">
+
+<tr>
+<h2>Course Checklist</h2>
+</tr>
+<tbody>
+<tr id="no-hover">
+	<th>Subject Code</th>
+	<th>Subject Description</th>
+	<th>Units</th>
+	<th>Degree</th>
+	<th>Major</th>
+	<th>Assigned Faculty</th>
+</tr>
+<tr ng-repeat="section in sections">
+	<td id="subject-code">{{section.subject_code}}</td>
+	<td id="subject-code">{{section.section}}</td>
+	<td id="subject-code">{{section.units}}</td>
+	<td id="subject-code">{{section.degree}}</td>
+	<td id="subject-code">{{section.major_degree}}</td>
+	<td id="subject-code">{{section.prof_id}}</td>
+</tr>
+</tbody>
+</table>

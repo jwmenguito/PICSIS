@@ -187,8 +187,11 @@ exports.faculty_sections_assign = (req,res) => {
                 console.log(doc2);
                 console.log(doc2);
                 console.log(doc2);
-                
-                return res.json({message:"Found "+ doc2.length+ " sections."});
+                //return doc2
+                var data = {
+                    classes:doc2
+                }
+                return res.json(data);
                 
             });
                 
