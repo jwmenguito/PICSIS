@@ -65,6 +65,7 @@ exports.faculty_classes = (req,res) =>{
 }
 exports.faculty_get_classes = (req,res) =>{
 	//req.params.prof_id;
+	/*
 	Subjects.find({prof_id:req.params.prof_id})
 	.populate({
 		path:'students',
@@ -82,6 +83,23 @@ exports.faculty_get_classes = (req,res) =>{
 			else console.log("Something is wrong");
 
 	});
+	
+	*/
+	
+	    Classes.find({prof_id:req.params.prof_id}).populate({path:'students',options:{sort:{'lname':1}}}).exec(function(err,docs){
+
+            if(err) throw err;
+            if(!docs) return res.json({message:"No sections."});
+            else if(docs) {
+                var obj = {
+                    classes: docs,
+                    message: "Found "+docs.length+" sections!"
+                }
+                return res.json(docs)
+                
+            };    
+
+	    });
 
 }
 
@@ -216,7 +234,7 @@ exports.faculty_sections_assign_class = (req,res) => {
         if(err) throw err;
         if(!doc) return res.json({message:"Was unable to update section."});
         else if (doc){
-            return res.json({message:"Successfully assigned to" + doc.nMofidified +" section."});
+            return res.json({message:"Successfully assigned to" + doc.nModified +" section."});
         }    
     
     });

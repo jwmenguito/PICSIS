@@ -235,16 +235,22 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 			.then(
 			function(response){
 				console.log(response.data);
-				$scope.classes = response.data;
+				$scope.classes = response.data.classes;
 				for(var i=0;i<$scope.classes.length;i++){
 					var currSubjectCode = $scope.classes[i].subject_code;
-					
+					//for each student
 					for(var j=0;j<$scope.classes[i].students.length;j++){
-						
-						for(var k=0;k<$scope.classes[i].students[j].checklist.length;k++){							//gets the student's grade for the current subjectCode ( for loop i )
-							if($scope.classes[i].students[j].checklist[k].subject_code == currSubjectCode){
-								$scope.classes[i].students[j].grade = $scope.classes[i].students[j].checklist[k].grade;
-							}
+						//for each term
+						for(var k=0;k<$scope.classes[i].students[j].checklist.length;k++){  	//gets the student's grade for the current subjectCode ( for loop i )   
+						    // for each subject
+						    for(var h=0;h<$scope.classes[i].students[j].checklist[k].subjects.length;h++){
+						        
+						        if($scope.classes[i].students[j].checklist[k].subjects[h].subject_code == currSubjectCode){
+								    $scope.classes[i].students[j].grade = $scope.classes[i].students[j].checklist[k].subjects[h].grade;
+							    }
+						    
+						    }
+							
 						}
 						
 					}

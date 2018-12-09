@@ -1,12 +1,14 @@
 <table class="table table-hover table-condensed">
 
 <tr>
-<h2>Course Checklist</h2>
+<h2>List of Sections</h2>
+<p> This page displays the possible sections you can handle based on your major. </p>
 </tr>
 <tbody>
 <tr id="no-hover">
 	<th>Subject Code</th>
-	<th>Subject Description</th>
+	<th>Description</th>
+	<th>Section</th>
 	<th>Units</th>
 	<th>Degree</th>
 	<th>Major</th>
@@ -14,6 +16,7 @@
 </tr>
 <tr ng-repeat="section in sections track by $index">
 	<td id="subject-code">{{section.subject_code}}</td>
+	<td id="subject-code">{{section.subj_desc}}</td>
 	<td id="subject-code">{{section.section}}</td>
 	<td id="subject-code">{{section.units}}</td>
 	<td id="subject-code">{{section.degree}}</td>

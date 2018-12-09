@@ -3,7 +3,7 @@ var schema = mongoose.Schema;
 
 var ClassesSchema = new schema({
 	subject_code:String,
-	//subj_desc:String,
+	subj_desc:String,
 	section:String,
 	units:Number,
 	prof_id:String,
@@ -13,14 +13,14 @@ var ClassesSchema = new schema({
 	student_ids:Array
  	
 },{ toJSON: { virtuals: true }, toObject: { virtuals: true }});
-/*
+
 ClassesSchema.virtual('students',{
 	ref:'Student',
 	localField:'student_ids',
 	foreignField:'student_no',
     	
 });
-
+/*
 ClassesSchema.virtual('professor',{
     ref:'Faculty',
     localField:'prof_id',

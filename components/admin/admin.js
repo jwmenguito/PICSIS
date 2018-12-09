@@ -635,6 +635,7 @@ exports.admin_section_create = (req,res) => {
                     //FOR EACH SECTION, CREATE A CLASS OBJECT
                     var one_class = {
                         subject_code: docs.subject_code,
+                        subj_desc:docs.subj_desc,
                         section: chosen_sections[y],
                         major_degree: docs.major_degree,
                         degree: docs.degree,
