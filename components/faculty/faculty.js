@@ -184,7 +184,7 @@ exports.faculty_sections_assign = (req,res) => {
             console.log("\n\n\n\nDOCUMENT FOUND: "+doc);
             //if data is found, find sections based on degree and major
             
-            Classes.find({major_degree:"EE"}).exec(function(err2,doc2){
+            Classes.find({major_degree:doc.major}).exec(function(err2,doc2){
                 if(err2) throw err2;
                
                 //return doc2
