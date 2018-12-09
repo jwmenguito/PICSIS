@@ -605,32 +605,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	
 	}]);
 	
-	homeModule.controller("AdminCreateSection",["$scope","$http",
-	function($scope,$http){
-	   $scope.subjects = [];
-	   $http
-	   .get('admin/section/create/get/list')
-	   .then(function(response){
-	        $scope.subjects = response.data;
-	   
-  	   });
-	   
-	   $scope.add = function(){
-	        var data = {
-	            section_count: $scope.no_of_sections,
-	            subject_code: $scope.selected_subject
-	        }
-	        
-	        $http
-	        .post('admin/section/create',data)
-	        .then(function(response){
-	            
-	            alert(response.data.message);
-	        
-	        });
-	    }
-	   
-	});
+
 	
 	homeModule.controller("EditFacultyCtrl",["$scope","$http","$stateParams",
 	function($scope,$http,$stateParams){
