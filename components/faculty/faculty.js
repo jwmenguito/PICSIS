@@ -174,7 +174,7 @@ exports.faculty_getData = (req,res) =>{
 
 exports.faculty_grades = (req,res) => {
 
-		Student.findOneAndUpdate({"checklist.$.subjects.subject_code":req.body.subject_code,student_no:req.body.student_no},{$set:{"checklist.$.subjects.$.grade":req.body.grade}}).exec(function(err,doc){
+		Student.findOneAndUpdate({student_no:req.body.student_no},{$set:{"checklist.$.subjects.$.grade":req.body.grade}}).exec(function(err,doc){
 			if(err) throw err;
 			if(!doc) res.json({message:"Failed to update grade"});
 			if(doc) {
@@ -182,12 +182,7 @@ exports.faculty_grades = (req,res) => {
 				res.json({message:"Success! Refresh the page to see updates.", grade: req.body.grade});
 			}
 });
-		/*
-		Student.update({student_no:req.body.student_no},{$set:{reminders:reminder}},function(err,doc){
-		if(err) throw err;
-		if(doc) res.json({message:"Success!"});
-		else res.json({message:'Failed!'});
-	});*/
+	
 	
 }
 
