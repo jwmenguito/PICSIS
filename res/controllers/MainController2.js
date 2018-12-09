@@ -416,7 +416,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 		$scope.retrieveSections();
 	    $scope.assign = function(index){
 	        
-	        console.log("Selected: " $scope.sections[index]);
+	        console.log("Selected: " + $scope.sections[index]);
 	        var data2={
                 prof_id: dataHolder(),
                 subject_code: $scope.sections[index].subject_code,
