@@ -178,12 +178,14 @@ exports.faculty_grades = (req,res) => {
 			if(err) throw err;
 			if(!doc) res.json({message:"Failed to update grade"});
 			if(doc) {
+			    console.log("FOUND: "+doc);
 			    for(var x=0;x<doc.checklist.length;x++){
 			        
 			        for(var y=0;y<doc.checklist[x].subjects.length;y++){
 			            
 			            if(doc.checklist[x].subjects[y].subject_code == req.body.subject_code){
-			                doc.checklist[x].subjects[y].grade == req.body.grade;
+			                doc.checklist[x].subjects[y].grade = req.body.grade;
+			                console.log("GRADED: "+doc.checklist[x].subjects[y].grade);
 			            }
 			        }
 			    
