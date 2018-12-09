@@ -72,8 +72,17 @@
 												<td class=	"pullright">
 												<!--<button class="btn-xs" ng-click="checkIndex(class_index,$index)">CHECK </button>-->
 												<button class="btn-xs btn-warning" data-toggle="modal" data-target="#gradeModal" ng-click="store_index(class_index,$index)">Grade</button>
-												<select class="custom-select" ng-model="$parent.gradeArray[$index]" ng-option="grade for grades in possible_grades"/>
+												<select class="custom-select" ng-model="$parent.gradeArray[$index]" ng-option="grade for grades in possible_grades" style="max-width:200%;margin-bottom:20px"/>
 												    <option value ="" disabled selected>Select a grade</option>
+												    <option value="4.5">4.5 </option>
+												    <option value="4">4 </option>
+												    <option value="3.5">3.5 </option>
+												    <option value="3">3 </option>
+												    <option value="2.5">2.5 </option>
+												    <option value="2"> 2</option>
+												    <option value="1.5">1.5 </option>
+												    <option value="1"> 1</option>
+												    
 												</select><br/>
 												
 												</td>
