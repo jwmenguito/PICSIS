@@ -401,7 +401,7 @@ exports.admin_listing_enroll = (req,res) => {
             //Get their current student.term
             //Get student_no
             console.log("Found "+docs.length+" students with status ENROLLED");
-
+            var total = 0;
             for(var x=0;x<docs.length;x++){
                 var curr_term = docs[x].term;    
                 var std = docs[x].student_no;
@@ -411,14 +411,14 @@ exports.admin_listing_enroll = (req,res) => {
                 //find in listing
                 //add to listing		    
                 Listing.update({"term":curr_term,"degree":course,"major_degree":major_degree},{$push:{students:std}},{multi:true},
-                
-                function(err,doc){
-                    console.log(doc);
-                    if(err) throw err;
-                    if(doc) res.json({message:"Listing success! Inserted in "+docs.length+" students to "+doc.nModified+" subjects"});
-                    else res.json({message:"Failed listing of student number " + std});
-                });
-           }	
+                    function(err,doc){
+                        console.log(doc);
+                        counter+= doc.nModified;
+                        
+                    });
+           }
+           
+           return res.json({message:"Listing success! Inserted "+docs.length+" students to "+counter+" subjects"});	
       }
 
     });
