@@ -392,7 +392,7 @@ exports.admin_archive = (req,res) =>{
 }
 //ENROLLING
 exports.admin_listing_enroll = (req,res) => {
-      
+      var total = 0;
     Student.find({status:"ENROLLED"}).sort({lname:1}).exec(function(err,docs){
         if(err) throw err;
         if(!docs) return res.json({message:'Something went wrong...'});
@@ -401,7 +401,7 @@ exports.admin_listing_enroll = (req,res) => {
             //Get their current student.term
             //Get student_no
             console.log("Found "+docs.length+" students with status ENROLLED");
-            var total = 0;
+            
             for(var x=0;x<docs.length;x++){
                 var curr_term = docs[x].term;    
                 var std = docs[x].student_no;
@@ -418,7 +418,7 @@ exports.admin_listing_enroll = (req,res) => {
                         total = total + doc.nModified;
                     });
            }
-           
+            
            	return res.json({message:"Listing success! Inserted in "+docs.length+" students to "+total+" subjects"});
       }
 
