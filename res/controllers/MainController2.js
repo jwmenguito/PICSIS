@@ -465,7 +465,8 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 				degree:$scope.degree,
 				major:$scope.major,
 				email:$scope.email,
-				mobile:$scope.mobile
+				mobile:$scope.mobile,
+				gender:$scope.gender
 			}
 			
 			console.log(data);
@@ -480,6 +481,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 				$scope.major=null;
 				$scope.email=null;
 				$scope.mobile=null;
+				$scope.gender=null;
 			})
 			.catch(angular.noop);
 		}
