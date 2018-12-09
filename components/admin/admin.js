@@ -699,7 +699,7 @@ exports.admin_section_create = (req,res) => {
                 var z=0;
                 for(var x=0;x<docs.students.length;x++){
                     //add student to classes
-                    if(z==create_classes.length){
+                    if(z==created_classes.length){
                         z=0;
                     }
                     created_classes[z].students.push(docs.students[x]);
