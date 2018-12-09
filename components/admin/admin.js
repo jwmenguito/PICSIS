@@ -665,6 +665,7 @@ exports.admin_section_create = (req,res) => {
     while(chosen_sections.length != section_count){
         var index = (Math.floor(Math.random() * sections.length));
         chosen_sections.add(sections[index]);
+        console.log(sections[index]);
     }
      chosen_sections = chosen_sections.toArray();
      /*
