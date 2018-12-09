@@ -554,6 +554,11 @@ exports.admin_term_sections = (req,res) => {
 exports.admin_term_end = (req,res) => {
     
     //get grade
+    Students.update({},{$inc:{term:1},$set:{status:"NOT ENROLLED"}},{multi:true}).exec(function(err,doc){
+        if (err) throw err;
+        if (docs) return res.json({message:"Term ended!"});
+    
+    });
     //mark to students
     //archive
     
