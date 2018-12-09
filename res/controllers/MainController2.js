@@ -977,7 +977,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 		})
 		.state('faculty.sections.assign',{
 			url:'/sections',
-			template:'../views/faculty-sections-assign.html',
+			templateUrl:'../views/faculty-sections-assign.html',
 			controller:'FacultyAssignSections'
 		})
 		.state('faculty.settings2',{
