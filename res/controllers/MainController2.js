@@ -406,13 +406,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 		}
 		//Retrieve sections
 		$scope.retrieveSections();
-		
-		
-		
-		
 	}]);
-	
-	
 	
 	
 	homeModule.controller("AdminHomeCtrl",["$scope","dataHolder","$http",
@@ -974,6 +968,11 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 		.state('faculty.reminders',{
 			url:'/reminders',
 			template:'<p>Faculty Reminders</p>'
+		})
+		.state('faculty.sections.assign',{
+			url:'/sections',
+			template:'../views/faculty-sections-assign.html',
+			controller:'FacultyAssignSections'
 		})
 		.state('faculty.settings2',{
 			url:'/settings',
