@@ -500,6 +500,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 			$http
 			.post("/admin/records/add/faculty",data)
 			.then(function(response){
+			    alert(response.data.message);
 				$scope.prof_id = null;
 				$scope.lname=null;
 				$scope.fname=null;
@@ -509,7 +510,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 				$scope.email=null;
 				$scope.mobile=null;
 				$scope.gender=null;
-			    alert(response.data.message);
+			   
 			})
 			.catch(angular.noop);
 		}

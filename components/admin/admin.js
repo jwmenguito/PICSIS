@@ -251,15 +251,15 @@ exports.admin_add_faculty = (req,res) => {
 	var faculty = new Faculty(req.body);
 	faculty._id = new mongoose.Types.ObjectId();
 	faculty.save(function(err,faculty){
-		if(err) throw errl
+		if(err) throw err;
 		else console.log("Adding new faculty member:\n"+faculty);
 	});
 	
 	//create user
 			var usr = {
 				email: req.body.email,
-				hash:student.hash,
-				salt:student.salt,
+				hash:faculty.hash,
+				salt:faculty.salt,
 				type:"f"
 			}
 			console.log(usr);
