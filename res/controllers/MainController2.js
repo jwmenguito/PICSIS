@@ -640,7 +640,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	         $http
 	            .get('admin/section/create/get/list')
 	            .then(function(response){
-	                $scope.subjects = response.data;
+	                $scope.subjects = response.data
 	   
   	            });
 	   
@@ -654,8 +654,8 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	        }
 	        
 	        $http
-	        .post('admin/section/create',data)
 	        .then(function(response){
+	        .post('admin/section/create',data)
 	            
 	            alert(response.data.message);
 	        
