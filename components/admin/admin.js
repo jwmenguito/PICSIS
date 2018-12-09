@@ -663,7 +663,6 @@ exports.admin_section_create = (req,res) => {
     
     });
     var options = {
-    
        min: 0,
        max: (sections.length)-1,
        integer:true
