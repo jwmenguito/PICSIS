@@ -670,6 +670,8 @@ exports.admin_section_create = (req,res) => {
      /*
         Query returns existing listing
      */
+     
+     
      Listing.findOne({subject_code:req.body.subject_code,students:{$not:{$size:0}}}).exec(function(err,docs){
         if(err) throw err;
         if(!docs) return res.json({message:"Something went wrong in retrieving listing with non-empty sections."});
@@ -709,7 +711,7 @@ exports.admin_section_create = (req,res) => {
                 console.log(created_classes);
                 for(var w=0;w<created_classes.length;w++){
                 
-                    new_class = new Classes(created_classes[w]);
+                    var new_class = new Classes(created_classes[w]);
                     new_class.save(function(err){
                         if(err) throw err;
                     });
