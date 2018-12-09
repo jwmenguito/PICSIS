@@ -553,10 +553,7 @@ Equally divide the number of students of the selected listing.
 **/
 exports.admin_section_create = (req,res) => {
      
-     var section_count = req.body.section_count;
-     var sections = [];
-    
-     var chosen_sections = new Set();
+
      /*
         Query returns a list of existing section names
      */
@@ -566,7 +563,10 @@ exports.admin_section_create = (req,res) => {
         else if (docs) {
               console.log("Sections: ");
               console.log(docs);
-              
+              var section_count = req.body.section_count;
+              var sections = [];
+            
+              var chosen_sections = new Set();
               //for(var x=0;x<docs.length;x++){
                 //sections.push(docs[x].name);
               //}
@@ -582,9 +582,9 @@ exports.admin_section_create = (req,res) => {
               console.log(sections.length);
               console.log(sections.length);
               console.log(sections.length);
-        } 
+        
     
-    });
+    
     console.log("Sections");
     console.log("Sections");
     console.log("Sections");
@@ -670,5 +670,6 @@ exports.admin_section_create = (req,res) => {
             
         }
      });
-
+    }
+});
 }
