@@ -184,7 +184,7 @@ exports.faculty_sections_assign = (req,res) => {
             console.log("\n\n\n\nDOCUMENT FOUND: "+doc);
             //if data is found, find sections based on degree and major
             
-            Classes.find({major_degree:doc.major}).exec(function(err2,doc2){
+            Classes.find({major_degree:doc.major}).sort({subject_code:1}).exec(function(err2,doc2){
                 if(err2) throw err2;
                
                 //return doc2
@@ -195,6 +195,28 @@ exports.faculty_sections_assign = (req,res) => {
                 
             });
                 
+        }    
+    
+    });
+    
+    
+
+}
+
+
+exports.faculty_sections_assign_class = (req,res) => {
+    //First, find self
+    console.log("Incoming data: ");
+    
+    console.log(req.body.subject_code);
+    console.log(req.body.section);
+    console.log(req.body.prof_id);
+    
+    Classes.updateOne({subject_code:req.body.subject_code,section:req.body.section},{$set:{prof_id:req.body.prof_id}}).exec(function(err,doc){
+        if(err) throw err;
+        if(!doc) return res.json({message:"Was unable to update section."});
+        else if (doc){
+            return res.json({message:"Successfully assigned to" + doc.nMofidified +" section."});
         }    
     
     });
