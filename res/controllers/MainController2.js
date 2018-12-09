@@ -605,7 +605,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	
 	}]);
 	homeModule.controller("AdminCreateSection",["$scope","$http",
-	function($scope.$http){
+	function($scope,$http){
 	   $scope.subjects = [];
 	   $http
 	   .get('admin/section/create/get/list')
