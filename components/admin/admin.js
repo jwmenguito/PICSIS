@@ -254,7 +254,27 @@ exports.admin_add_faculty = (req,res) => {
 		if(err) throw errl
 		else console.log("Adding new faculty member:\n"+faculty);
 	});
-	return res.json({message:"New faculty added"});
+	
+	//create user
+			var usr = {
+				email: req.body.email,
+				hash:student.hash,
+				salt:student.salt,
+				type:"f"
+			}
+			console.log(usr);
+			console.log(usr);
+			
+			var new_usr = new Usr(usr);
+			
+			new_usr.save(function(err){
+				if(err) return res.json({message:'Cannot create account'});
+				else return res.json({message:'Faculty Account created successfully'});
+				
+				
+			});
+	
+	//return res.json({message:"New faculty added"});
 }
 
 exports.admin_edit_faculty = (req,res) => {
