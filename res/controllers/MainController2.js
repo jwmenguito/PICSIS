@@ -640,7 +640,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	         $http
 	            .get('admin/section/create/get/list')
 	            .then(function(response){
-	                $scope.subjects = response.data
+	                $scope.subjects = response.data;
 	   
   	            });
 	   
@@ -650,7 +650,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	   $scope.add = function(){
 	        var data = {
 	            section_count: $scope.no_of_sections,
-	            subject_code: $scope.selected_subject.subject_code;
+	            subject_code: $scope.selected_subject.subject_code
 	        }
 	        
 	        $http
