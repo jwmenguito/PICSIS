@@ -6,6 +6,7 @@ var Student = require(__dirname+'/../user_student');
 var admin = require(__dirname+'/../user_admin');
 var Usr = require(__dirname+'/../usr');
 var Set = require('collections/set');
+var rn = require('random-number');
 
 var jwt = require('jsonwebtoken');
 var mongoose = require('mongoose');
@@ -661,16 +662,20 @@ exports.admin_section_create = (req,res) => {
         } 
     
     });
+    var options = {
     
+       min: 0,
+       max: (sections.length)-1,
+       integer:true
+    }
     while(chosen_sections.length != section_count){
-        var index = (Math.floor(Math.random() * sections.length));
-        console.log("Index is: ");1
+        var index = rn(options);
+        console.log("Index is: ");
         console.log(index);
         chosen_sections.add(sections[index]);
         console.log("Section is:" + sections[index]);
-        
-            break;
-        
+       
+        }
     }
      chosen_sections = chosen_sections.toArray();
      /*
