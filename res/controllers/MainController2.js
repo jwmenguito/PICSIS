@@ -662,7 +662,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	        });
 	    }
 	   
-	});
+	}]);
 	
 	//TERM CONTROLS
     homeModule.controller("AdminTerm",["$scope","$http","$stateParams",
