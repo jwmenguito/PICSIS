@@ -185,6 +185,9 @@ exports.faculty_grades = (req,res) => {
 			            
 			            if(doc.checklist[x].subjects[y].subject_code == req.body.subject_code){
 			                doc.checklist[x].subjects[y].grade = req.body.grade;
+			                doc.save(function(err){
+			                    if (err) throw err;});
+			                    
 			                console.log("GRADED: "+doc.checklist[x].subjects[y].grade);
 			            }
 			        }
