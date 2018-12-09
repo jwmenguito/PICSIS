@@ -88,12 +88,12 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 		},{
 			name:'Records',
 			state_name:'admin.records',
-			state_url:'/admin/records',
+			state_url:'/admin/records'
 			
 		},{
 			name:'Listing',
 			state_name:'admin.listing',
-			state_url:'/admin/listing',
+			state_url:'/admin/listing'
 			
 		},
 		{
@@ -104,7 +104,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 		},{
 			name:'Term Controls',
 			state_name:'admin.term',
-			state_url:'/admin/term',
+			state_url:'/admin/term'
 			
 		},{
 			name:'Log out',
@@ -605,7 +605,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	
 	}]);
 	homeModule.controller("AdminCreateSection",["$scope","$http",
-	function($scope.$http,$stateParams){
+	function($scope.$http){
 	   $scope.subjects = [];
 	   $http
 	   .get('admin/section/create/get/list')
