@@ -96,7 +96,7 @@ exports.admin_get_records = (req,res) => {
 			}
 		});
 	}else if(req.body.table==='faculty'){
-		Faculty.find({}).sort({lname:1}).exec(function(err,docs){
+		Faculty.find({}).sort({prof_id:1}).exec(function(err,docs){
 			if(err) throw err;
 			if(!docs){
 				console.log(docs);

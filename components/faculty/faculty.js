@@ -2,6 +2,8 @@
 var Faculty = require(__dirname+'/../user_faculty');	//mongoose user
 var Subjects = require(__dirname+'/../subjects');
 var Student = require(__dirname+'/../user_student');
+var Classes = require(__dirname+'/../classes');
+
 var path = require('path');
 var jwt = require('jsonwebtoken');
 var cookieExtractor = require(__dirname+'/../../config/cookieExtractor');
@@ -169,4 +171,31 @@ exports.faculty_grades = (req,res) => {
 		else res.json({message:'Failed!'});
 	});*/
 	
+}
+
+exports.faculty_sections_assign = (req,res) => {
+    //First, find self
+    
+    Faculty.findOne({prof_id:req.body.prof_id}).exec(function(err,doc){
+        if(err) throw err;
+        if(!doc) return res.json({message:"Unable to retrieve professor data."});
+        else if (doc){
+        
+            //if data is found, find sections based on degree and major
+            Classes.find({degree:doc.degree,major_degree:doc.major_degree}).exec(function(err2,doc2){
+                if(err2) throw err2;
+                console.log(doc2);
+                console.log(doc2);
+                console.log(doc2);
+                
+                return res.json({message:"Found "+ doc2.length+ " sections."});
+                
+            });
+                
+        }    
+    
+    });
+    
+    
+
 }

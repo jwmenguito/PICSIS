@@ -47,6 +47,7 @@ module.exports = (router)=>{
 	router.get('/faculty/settings',faculty.faculty_settings);
 	router.get('/faculty/reminders',faculty.faculty_reminders);
 	
+	router.post('/faculty/sections/assign',faculty.faculty_sections_assign);
 	router.post('/faculty/reminders',faculty.faculty_send_reminders);
 	router.post('/faculty/home',faculty.faculty_getData);
 	router.post('/faculty/settings',faculty.faculty_changePassword);

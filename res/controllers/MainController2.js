@@ -292,6 +292,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 				$http
 				.post('https://picsis.herokuapp.com/faculty/classes/grade',data2)
 				.then(function(response){
+				
 					$scope.gradeArray[$scope.student_index] = response.data.grade;
 					alert(response.data.message);
 				});
@@ -382,6 +383,33 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 		
 		
 	}]);
+	
+	//FACULTY ASSIGN SECTIONS
+	
+	homeModule.controller("FacultyAssignSections",["$scope","$http","dataHolder",
+	function($scope,$http,dataHolder){
+		
+		$scope.retrieveSections = function(){
+				var data = {
+					prof_id : dataHolder().prof_id
+				}
+				
+				$http
+				.post("/faculty/sections/assign",data)
+				.then(
+					function(response){
+						alert(response.data.message);
+					}
+				);
+			
+		}
+		
+		
+		
+	}]);
+	
+	
+	
 	
 	homeModule.controller("AdminHomeCtrl",["$scope","dataHolder","$http",
 	function($scope,dataHolder,$http){
