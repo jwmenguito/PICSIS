@@ -632,6 +632,38 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	
 	}]);
 	
+	
+    homeModule.controller("AdminCreateSection",["$scope","$http",
+	function($scope,$http){
+	   $scope.subjects = [];
+	   $scope.retrieveListing = function(){
+	         $http
+	            .get('admin/section/create/get/list')
+	            .then(function(response){
+	                $scope.subjects = response.data;
+	   
+  	            });
+	   
+	   }
+	  
+	   $scope.retrieveListing();
+	   $scope.add = function(){
+	        var data = {
+	            section_count: $scope.no_of_sections,
+	            subject_code: $scope.selected_subject
+	        }
+	        
+	        $http
+	        .post('admin/section/create',data)
+	        .then(function(response){
+	            
+	            alert(response.data.message);
+	        
+	        });
+	    }
+	   
+	});
+	
 	//TERM CONTROLS
     homeModule.controller("AdminTerm",["$scope","$http","$stateParams",
 	function($scope,$http,$stateParams){
@@ -934,7 +966,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 			controller:'AdminTerm'
 		})
 		.state('admin.section.create',{
-		    url:'/section/',
+		    url:'/section',
 		    templateUrl:'../views/admin-create-section.html',
 		    controller:'AdminCreateSection'
 		})
