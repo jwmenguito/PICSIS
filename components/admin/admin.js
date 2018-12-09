@@ -410,7 +410,7 @@ exports.admin_listing_enroll = (req,res) => {
 exports.admin_listing_clear = (req,res) => {
      console.log(req.body);                
      
-     Listing.update({},{$set:{students:[]}},{multi:true},function(err,doc){
+     Listing.update({},{$set:{students:[],processed:false}},{multi:true},function(err,doc){
         console.log(doc);
 	    if(err) throw err;
 	    if(doc) res.json({message:"Cleared Listing: "+doc.nModified+" subjects"});
@@ -538,7 +538,8 @@ exports.admin_term_end = (req,res) => {
 }
 
 exports.admin_section_get_listing = (req,res) => {
-    Listing.find({students:{$not:{$size:0}}}).sort({subject_code:1}).exec(function(err,docs){
+    //find Listings with listed students and UNPROCESSED
+    Listing.find({students:{$not:{$size:0}},processed:false}).sort({subject_code:1}).exec(function(err,docs){
     
         if(err) throw err;
         if(!docs) return res.json({message:"No listing returned."});
