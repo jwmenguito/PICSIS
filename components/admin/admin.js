@@ -638,7 +638,7 @@ exports.admin_section_create = (req,res) => {
      
      var section_count = req.body.section_count;
      var sections = [];
-     var code = req.body.selected_subject.subject_code;
+    
      var chosen_sections = [];
      /*
         Query returns a list of existing section names

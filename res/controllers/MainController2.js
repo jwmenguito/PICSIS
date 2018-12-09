@@ -650,12 +650,13 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	   $scope.add = function(){
 	        var data = {
 	            section_count: $scope.no_of_sections,
-	            subject_code: ($scope.selected_subject)
+	            subject_code: ($scope.selected_subject.subject_code)
 	        }
 	        
 	        $http
-	        .then(function(response){
 	        .post('admin/section/create',data)
+	        .then(function(response){
+	        
 	            
 	            alert(response.data.message);
 	        
