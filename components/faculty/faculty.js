@@ -174,13 +174,6 @@ exports.faculty_getData = (req,res) =>{
 
 exports.faculty_grades = (req,res) => {
         
-        Student.findOne({student_no:req.body.student_no,checklist.subjects.subject_code:req.body.subject_code}).exec(function(err1,doc1){
-        
-            if(err1) throw err1;
-            if(!doc1) console.log("\n\nNo docs");
-            else if(doc1) console.log("\n\n"+doc);
-        });
-        
 		Student.findOne({student_no:req.body.student_no}).exec(function(err,doc){
 			if(err) throw err;
 			if(!doc) res.json({message:"Failed to update grade"});

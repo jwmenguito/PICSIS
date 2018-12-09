@@ -3,6 +3,7 @@ var path = require('path');
 var Faculty = require(__dirname+'/../user_faculty');	//mongoose user
 var Subjects = require(__dirname+'/../subjects');
 var Student = require(__dirname+'/../user_student');
+
 var admin = require(__dirname+'/../user_admin');
 var Usr = require(__dirname+'/../usr');
 var Set = require('collections/set');
@@ -386,6 +387,38 @@ exports.admin_archive = (req,res) =>{
 			};
 		
 		})
+	}else if(req.body.collection=='classes'){
+		var archiveDb = mongoose.createConnection('mongodb://james:123qwe@ds159670.mlab.com:59670/heroku_9t8tj7k2');
+		archiveDb.createCollection('classesArchive'+month+year).then(function(err,collection){
+			if(err) throw err;
+		});
+		var classesArchive = archiveDb.collection('classesArchive'+month+year);
+		Classes.find({}).sort({lname:1}).exec(function(err,docs){
+			if(err) throw err;
+			if(!docs) return res.json({message:'Something went wrong...'});
+			if(docs){
+				classesArchive.insertMany(docs,function(err,docs){
+					if(err) throw err;
+				});
+			};
+		
+		})
+	}else if(req.body.collection=='fees'){
+		var archiveDb = mongoose.createConnection('mongodb://james:123qwe@ds159670.mlab.com:59670/heroku_9t8tj7k2');
+		archiveDb.createCollection('feesArchive'+month+year).then(function(err,collection){
+			if(err) throw err;
+		});
+		var feesArchive = archiveDb.collection('feesArchive'+month+year);
+		Fees.find({}).sort({lname:1}).exec(function(err,docs){
+			if(err) throw err;
+			if(!docs) return res.json({message:'Something went wrong...'});
+			if(docs){
+				feesArchive.insertMany(docs,function(err,docs){
+					if(err) throw err;
+				});
+			};
+		
+		})
 	}
 	
 	return res.json({message:"Finished"});
@@ -536,6 +569,8 @@ exports.admin_term_end = (req,res) => {
         if (docs) return res.json({message:"Term ended!"});
     
     });
+    
+    
     //mark to students
     //archive
     
