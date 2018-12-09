@@ -286,7 +286,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 			alert(index1+":"+index2);
 		}
 		$scope.gradeArray = [];
-		
+		$scope.possible_grades = ['1','1.5','2.0','2.5','3.0','3.5','4.0','4.5'];
 		//UPDATES THE SELECTED GRADE
 		$scope.store_index = function(subjectIndex,studentIndex){
 			$scope.student_index = studentIndex;
