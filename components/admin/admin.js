@@ -574,10 +574,34 @@ exports.admin_section_create = (req,res) => {
               
               console.log("Array of section names:");
               console.log(sections);
+              console.log(sections.length);
+              console.log(sections.length);
+              console.log(sections.length);
+              console.log(sections.length);
+              console.log(sections.length);
+              console.log(sections.length);
+              console.log(sections.length);
+              console.log(sections.length);
         } 
     
     });
     console.log(sections.length);
+    console.log(sections.length);
+    console.log(sections.length);
+    console.log(sections.length);
+    console.log(sections.length);
+    console.log(sections.length);
+    console.log(sections.length);
+    console.log(sections.length);
+    console.log(sections.length);
+    console.log(sections.length);
+    console.log(sections.length);
+    console.log(sections.length);
+    console.log(sections.length);
+    console.log(sections.length);
+    console.log(sections.length);
+    console.log(sections.length);
+    
     
     
     var max_section = sections.length;
