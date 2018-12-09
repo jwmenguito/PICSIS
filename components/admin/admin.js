@@ -585,22 +585,16 @@ exports.admin_section_create = (req,res) => {
         } 
     
     });
-    console.log(sections.length);
-    console.log(sections.length);
-    console.log(sections.length);
-    console.log(sections.length);
-    console.log(sections.length);
-    console.log(sections.length);
-    console.log(sections.length);
-    console.log(sections.length);
-    console.log(sections.length);
-    console.log(sections.length);
-    console.log(sections.length);
-    console.log(sections.length);
-    console.log(sections.length);
-    console.log(sections.length);
-    console.log(sections.length);
-    console.log(sections.length);
+    console.log("Sections");
+    console.log("Sections");
+    console.log("Sections");
+    console.log("Sections");
+    console.log("Sections");
+    console.log("Sections");
+    console.log("Sections");
+    console.log("Sections");
+    console.log("Sections");
+    console.log(sections);
     
     
     
