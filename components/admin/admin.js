@@ -564,7 +564,7 @@ exports.admin_listing_remove_all = (req,res) => {
 exports.admin_term_end = (req,res) => {
     
     //get grade
-    Students.updateOne({},{$inc:{term:1},$set:{status:"NOT ENROLLED"}},{multi:true}).exec(function(err,doc){
+    Student.updateOne({},{$inc:{term:1},$set:{status:"NOT ENROLLED"}},{multi:true}).exec(function(err,doc){
         if (err) throw err;
         if (docs) return res.json({message:"Term ended!"});
     

@@ -188,7 +188,9 @@ exports.faculty_grades = (req,res) => {
 			                
 			                doc.checklist[x].subjects[y].grade = req.body.grade;
 			                doc.save(function(err){
-			                    if (err) throw err;});
+			                    if (err) throw err;
+			                    
+			                });
 			                    
 			                console.log("GRADED: "+doc.checklist[x].subjects[y].grade);
 			            }
