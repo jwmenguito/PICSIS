@@ -780,14 +780,14 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	       }
 	       
 	       
-	       $scope.section = function(){
+	       $scope.end = function(){
 	       
 	       
-	       var warning = confirm("Are you sure you want to CREATE CLASSES WITH SECTIONS?");
+	       var warning = confirm("Are you sure you want to END the term? This will progress all student terms if pressed.");
 				if(warning == true){
 					var data = {}
                     $http
-                    .post('admin/term/sections',data)
+                    .post('admin/term/end',data)
                     .then(function(response){
                         $scope.empty(response.data.message);
                     

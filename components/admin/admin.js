@@ -527,34 +527,11 @@ exports.admin_listing_remove_all = (req,res) => {
       });
 }
 
-exports.admin_term_sections = (req,res) => {
-
-    //create sections
-    var counter = 0;
-    var sections = [];
-    Sections.find({}).exec(function(err,docs){
-        if(err) throw err;
-        if(!docs) return console.log("No sections retrieved");
-        else if (docs) {
-              console.log("Sections: ");
-              console.log(docs);
-              for(var x=0;x<docs.length;x++){
-                sections.push(docs[x].name);
-              }
-              
-              console.log("Array of section names:");
-              console.log(sections);
-        } 
-    
-    });
-    
-}
-
 
 exports.admin_term_end = (req,res) => {
     
     //get grade
-    Students.update({},{$inc:{term:1},$set:{status:"NOT ENROLLED"}},{multi:true}).exec(function(err,doc){
+    Students.updateOne({},{$inc:{term:1},$set:{status:"NOT ENROLLED"}},{multi:true}).exec(function(err,doc){
         if (err) throw err;
         if (docs) return res.json({message:"Term ended!"});
     
