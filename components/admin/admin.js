@@ -666,7 +666,7 @@ exports.admin_section_create = (req,res) => {
         var index = (Math.floor(Math.random() * sections.length));
         chosen_sections.add(sections[index]);
     }
-     choen_sections = chosen_sections.toArray();
+     chosen_sections = chosen_sections.toArray();
      /*
         Query returns existing listing
      */
@@ -690,7 +690,7 @@ exports.admin_section_create = (req,res) => {
                         term: docs.term,
                         student_ids:[]
                     }
-                    console.log("\n\nCreated class["+y+"]: ");
+                    console.log("\n\nCreated class[1]: ");
                     console.log(one_class);
                     created_classes.push(one_class);
                 }

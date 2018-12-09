@@ -657,7 +657,6 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	        .post('admin/section/create',data)
 	        .then(function(response){
 	        
-	            
 	            alert(response.data.message);
 	        
 	        });
