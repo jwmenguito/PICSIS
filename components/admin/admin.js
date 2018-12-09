@@ -6,7 +6,6 @@ var Student = require(__dirname+'/../user_student');
 var admin = require(__dirname+'/../user_admin');
 var Usr = require(__dirname+'/../usr');
 var Set = require('collections/set');
-var rn = require('random-number');
 
 var jwt = require('jsonwebtoken');
 var mongoose = require('mongoose');
@@ -671,7 +670,7 @@ exports.admin_section_create = (req,res) => {
         console.log("Section is:" + sections[index]);
         
             break;
-        }
+        
     }
      chosen_sections = chosen_sections.toArray();
      /*
