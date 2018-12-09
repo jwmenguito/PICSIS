@@ -95,6 +95,12 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 			state_name:'admin.listing',
 			state_url:'/admin/listing',
 			
+		},
+		{
+			name:'Sectioning',
+			state_name:'admin.section.create',
+			state_url:'/admin/section'
+			
 		},{
 			name:'Term Controls',
 			state_name:'admin.term',
@@ -608,7 +614,6 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	   
   	   });
 	   
-	   
 	   $scope.add = function(){
 	        var data = {
 	            section_count: $scope.no_of_sections,
@@ -616,7 +621,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	        }
 	        
 	        $http
-	        .post('admin/section/create')
+	        .post('admin/section/create',data)
 	        .then(function(response){});
 	   }
 	   
@@ -947,6 +952,11 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 			url:'/term',
 			templateUrl:'../views/admin-term.html',
 			controller:'AdminTerm'
+		})
+		.state('admin.section.create',{
+		    url:'/section/',
+		    templateUrl:'../views/admin-create-section.html',
+		    controller:'AdminCreateSection'
 		})
 		.state('admin.records',{
 			url:'/records',

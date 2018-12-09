@@ -47,6 +47,7 @@ module.exports = (router) =>{
 	router.get('/admin/records',admin.admin_records);
     router.get('/admin/listing',admin.admin_records);
     router.get('/admin/term',admin.admin_records);
+    router.get('/admin/section',admin.admin_records);
     router.get('/admin/section/create/get/list',admin.admin_section_get_listing);
     //For Adding
     router.post('/admin/section/create',admin.admin_section_create);
