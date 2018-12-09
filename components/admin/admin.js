@@ -411,14 +411,15 @@ exports.admin_listing_enroll = (req,res) => {
                 //find in listing
                 //add to listing		    
                 Listing.update({"term":curr_term,"degree":course,"major_degree":major_degree},{$push:{students:std}},{multi:true},
+                    
                     function(err,doc){
                         console.log(doc);
-                        total+= doc.nModified;
-                        
+                        if(err) throw err;
+                        total = total + doc.nModified;
                     });
            }
            
-           return res.json({message:"Listing success! Inserted "+docs.length+" students to "+total+" subjects"});	
+           	return res.json({message:"Listing success! Inserted in "+docs.length+" students to "+total+" subjects"});
       }
 
     });
