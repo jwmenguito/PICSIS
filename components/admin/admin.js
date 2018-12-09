@@ -662,13 +662,10 @@ exports.admin_section_create = (req,res) => {
         } 
     
     });
-    var options = {
-       min: 0,
-       max: (sections.length)-1,
-       integer:true
-    }
+   
+    
     while(chosen_sections.length != section_count){
-        var index = rn(options);
+        var index = rn(sections.length-1);
         console.log("Index is: ");
         console.log(index);
         chosen_sections.add(sections[index]);
