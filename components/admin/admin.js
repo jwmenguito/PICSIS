@@ -567,10 +567,10 @@ exports.admin_section_create = (req,res) => {
               console.log("Sections: ");
               console.log(docs);
               
-              for(var x=0;x<docs.length;x++){
-                sections.push(docs[x].name);
-              }
-              
+              //for(var x=0;x<docs.length;x++){
+                //sections.push(docs[x].name);
+              //}
+              sections = docs;
               
               console.log("Array of section names:");
               console.log(sections);
@@ -578,6 +578,8 @@ exports.admin_section_create = (req,res) => {
     
     });
     console.log(sections.length);
+    
+    
     var max_section = sections.length;
     var options = {
         min:0,
@@ -589,7 +591,7 @@ exports.admin_section_create = (req,res) => {
         var index = rn(options);
         console.log("Index is: ");
         console.log(index);
-        chosen_sections.add(sections[index]);
+        chosen_sections.add(sections[index].name);
         console.log("Section is:" + sections[index]);
         
             //break;
