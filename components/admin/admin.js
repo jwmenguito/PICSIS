@@ -419,7 +419,7 @@ exports.admin_listing_enroll = (req,res) => {
                     });
            }
             
-           	return res.json({message:"Listing success! Inserted in "+docs.length+" students to "+total+" subjects"});
+           	return res.json({message:"Listing success! Inserted in "+docs.length+" students to subjects"});
       }
 
     });
