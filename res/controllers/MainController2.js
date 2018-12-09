@@ -404,7 +404,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 				.then(
 					function(response){
 						$scope.sections = response.data.classes;
-						console.log($scope.sections);
+						console.log(response.data);
 					}
 				);
 			
