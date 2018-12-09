@@ -395,10 +395,11 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	function($scope,$http,dataHolder){
 		$scope.sections = []
 		$scope.retrieveSections = function(){
+				alert(dataHolder());
 				var data = {
-					prof_id : dataHolder().prof_id
+					prof_id : dataHolder()
 				}
-				
+				//$http("/faculty/sections/assign/
 				$http
 				.post("/faculty/sections/assign",data)
 				.then(
