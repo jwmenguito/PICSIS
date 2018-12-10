@@ -179,13 +179,40 @@ exports.faculty_grades = (req,res) => {
         console.log("student_no: "+req.body.student_no);
         
         console.log("\n\n\n");
-        Student.findOneAndUpdate({student_no:req.body.student_no,"checklist.subjects.subject_code":req.body.subject_code},{$set:{"checklist.subjects.$.grade":req.body.grade}}).exec(function(err,docs){
+        Student.findOne({student_no:req.body.student_no,"checklist.subjects.subject_code":req.body.subject_code}).exec(function(err,docs){
             
             if(err) throw err;
             if(docs) { 
-            
+                console.log("\n\n\n");
+                console.log("\n\n\n");
                 console.log(docs);
-                return res.json({message:"Successfully updated grade of student number "+ req.body.student_no});
+                console.log("\n\n\n");
+                console.log("\n\n\n");
+                for(var x=0;x<doc.checklist.length;x++){
+			        
+			        for(var y=0;y<doc.checklist[x].subjects.length;y++){
+			            
+			            if(doc.checklist[x].subjects[y].subject_code == req.body.subject_code){
+			                
+			                console.log("\n\nBEFORE GRADED: "+doc.checklist[x].subjects[y].grade);
+			                doc.checklist[x].subjects[y].grade = req.body.grade;
+			                doc.save(function(err){
+			                    if (err) throw err;
+			                    
+			                });
+			                    
+			                console.log("GRADED: "+doc.checklist[x].subjects[y].grade);
+			                console.log("\n\n");
+			            }
+			        }
+			    
+			    }
+                
+                
+                
+                
+                
+                return res.json({message:docs});
             
             }
         
