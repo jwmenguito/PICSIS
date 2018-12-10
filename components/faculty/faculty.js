@@ -179,7 +179,7 @@ exports.faculty_grades = (req,res) => {
         console.log("student_no: "+req.body.student_no);
         
         console.log("\n\n\n");
-        Student.findOne({student_no:req.body.student_no,"checklist.subjects.subject_code":req.body.subject_code}).exec(function(err,doc){
+        Student.findOne({student_no:req.body.student_no}).exec(function(err,doc){
             
             if(err) throw err;
             if(doc) { 
@@ -207,12 +207,8 @@ exports.faculty_grades = (req,res) => {
 			        }
 			    
 			    }
-                
-                
-                
-                
-                
-                return res.json({message:doc});
+
+                return res.json({message:"Successfully graded student number "+req.body.student_no});
             
             }
         
