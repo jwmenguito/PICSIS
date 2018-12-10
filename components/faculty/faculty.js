@@ -212,7 +212,7 @@ exports.faculty_grades = (req,res) => {
                 
                 
                 
-                return res.json({message:docs});
+                return res.json({message:doc});
             
             }
         
