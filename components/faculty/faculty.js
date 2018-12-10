@@ -173,7 +173,13 @@ exports.faculty_getData = (req,res) =>{
 
 
 exports.faculty_grades = (req,res) => {
-        Student.findOne({student:no:req.body.student_no,checklist.subjects.subject_code:req.body.subject_code}).exec(function(err,docs){
+        console.log("\n\n\n");
+        console.log("GRADE: "+req.body.grade);
+        console.log("Subject_code: "+req.body.subject_code);
+        console.log("student_no: "+req.body.student_no);
+        
+        console.log("\n\n\n");
+        Student.findOne({student_no:req.body.student_no,checklist.subjects.subject_code:req.body.subject_code}).exec(function(err,docs){
             
             if(err) throw err;
             if(docs) { 
