@@ -16,7 +16,18 @@ var studentSchema = new Schema({
 	term:Number,
 	status:String,
 	major_degree:String,
-	checklist:Array,
+	checklist:[{
+	    term:Number,
+	    units:Number,
+	    subjects:[
+	        {
+	            subject_code:String,
+	            subj_desc:String,
+	            units:Number,
+	            grade:String
+	        }
+	    ]
+	}],
 	hash: String,
 	salt: String,
 	reminders:Array,
