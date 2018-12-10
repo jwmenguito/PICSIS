@@ -173,7 +173,20 @@ exports.faculty_getData = (req,res) =>{
 
 
 exports.faculty_grades = (req,res) => {
+        Student.findOne({student:no:req.body.student_no,checklist.subjects.subject_code:req.body.subject_code}).exec(function(err,docs){
+            
+            if(err) throw err;
+            if(docs) { 
+            
+                console.log(docs);
+                return res.json({message:docs});
+            
+            }
         
+        });
+        
+        
+        /**
 		Student.findOne({student_no:req.body.student_no}).exec(function(err,doc){
 			if(err) throw err;
 			if(!doc) res.json({message:"Failed to update grade"});
@@ -202,7 +215,7 @@ exports.faculty_grades = (req,res) => {
 				res.json({message:"Success! Refresh the page to see updates.", grade: req.body.grade});
 			}
 });
-	
+	**/
 	
 }
 
