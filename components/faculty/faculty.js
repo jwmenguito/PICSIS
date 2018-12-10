@@ -114,7 +114,7 @@ exports.faculty_settings = (req,res) =>{
 exports.faculty_send_reminders = (req,res) =>{
 	var month = new Date().getMonth();
 	var day = new Date().getDay();
-	var year = new Date.getFullYear();
+	var year = new Date().getFullYear();
 	var reminder = {
 		
 		title:req.body.title,
