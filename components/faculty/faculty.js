@@ -179,13 +179,13 @@ exports.faculty_grades = (req,res) => {
         console.log("student_no: "+req.body.student_no);
         
         console.log("\n\n\n");
-        Student.findOne({student_no:req.body.student_no,"checklist.subjects.subject_code":req.body.subject_code}).exec(function(err,docs){
+        Student.findOne({student_no:req.body.student_no,"checklist.subjects.subject_code":req.body.subject_code}).exec(function(err,doc){
             
             if(err) throw err;
-            if(docs) { 
+            if(doc) { 
                 console.log("\n\n\n");
                 console.log("\n\n\n");
-                console.log(docs);
+                console.log(doc);
                 console.log("\n\n\n");
                 console.log("\n\n\n");
                 for(var x=0;x<doc.checklist.length;x++){
