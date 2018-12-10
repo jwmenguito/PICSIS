@@ -74,7 +74,7 @@ exports.admin_records = (req,res) =>{
 exports.admin_get_records = (req,res) => {
 		console.log("GET");
 	if(req.body.table==='subject'){
-		Subjects.find({}).sort({subject_code:1}).exec(function(err,docs){
+		Classes.find({}).sort({subject_code:1}).exec(function(err,docs){
 			if(err) throw err;
 			if(!docs){
 				console.log(docs);
@@ -323,7 +323,7 @@ exports.admin_edit_subject = (req,res) => {
 	var value = req.body.value;
 		var update = {};
 	update[selected]=value;
-	Subjects.updateOne({subject_code:req.body.subject_code},{$set:update},function(err,doc){
+	Classes.updateOne({subject_code:req.body.subject_code},{$set:update},function(err,doc){
 		if(err) throw err;
 		if(!doc) return res.json({message:"No document found"});
 		else {
@@ -562,15 +562,15 @@ exports.admin_listing_remove_all = (req,res) => {
 
 
 exports.admin_term_end = (req,res) => {
-    
+    var curr_year = new Date().getFullYear();
     //get grade
-    Student.updateOne({},{$inc:{term:1},$set:{status:"NOT ENROLLED"}},{multi:false}).exec(function(err,doc){
+    Student.update({},{$inc:{term:1},$set:{status:"NOT ENROLLED"}},{multi:true}).exec(function(err,doc){
         if (err) throw err;
         
     
     });
     
-    Fees.updateOne({},{$inc:{term:1},$set:{status:"UNPAID"}},{multi:false}).exec(function(err1,doc1){
+    Fees.update({},{$inc:{term:1},$set:{status:"UNPAID",year:curr_year}},{multi:true}).exec(function(err1,doc1){
         if (err) throw err;
         if(doc) return res.json({message:"Term ended!"});
     });

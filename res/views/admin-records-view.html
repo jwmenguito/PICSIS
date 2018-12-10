@@ -176,12 +176,12 @@
 		<table class="table table-bordered">
 			<thead>
 				<tr class="topHeader">
-					<th>Class Code</th>
-					<th>Class Description</th>
+					<th>Subject Code</th>
+					<th>Description</th>
 					<th id="subject-grade">Units </th>
 					<th>Prof ID </th>
 					<th>Major/Degree </th>
-					<th></th>
+					<th>Section</th>
 				</tr>
 			</thead>
         <tr	ng-repeat="subject in subjects">
@@ -190,7 +190,7 @@
 				<td class="subject" id="subject-grade">{{subject.units}}</td>
 				<td class="subject" id="subject-grade">{{subject.prof_id}}</td>
 				<td class="subject" id="subject-grade">{{subject.major_degree}}</td>
-								<td><button class="btn-primary btn-xs" ng-click="edit($index)">Edit</button></td>
+				<td class="subject" id="subject-grade">{{subject.section}}</td>
 		</tr>
 		
 		</table>
