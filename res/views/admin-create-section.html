@@ -3,7 +3,7 @@
 		<h3>Create Sections</h3>
 		<hr/>
 		<form method="post" class="addForm">
-		    <label>Select a section</label>
+		    <label>Select a section</label><br/>
 		    <select name="table_data" class="custom-select" ng-options="subject.subject_code for subject in subjects" ng-model="selected_subject" style="max-width:200%;margin-bottom:20px">
 	        <option value ="" disabled selected>Select a section</option>
 	        </select>
@@ -12,8 +12,54 @@
 			<div style="text-align:left;vertical-align:top">
 			    <label>Number of Sections to create for: &nbsp</label>
 			    <strong>{{selected_subject.subject_code}}</strong>
-				<input type="number" class="form-control input-xs col-sm-8" placeholder="Number of Sections" ng-model="no_of_sections"/><br/>               <button type="submit" class="btn btn-success btn-lg col-sm-2" ng-click="add()">Add</button>
+				<input type="number" class="form-control input-xs col-sm-4" placeholder="Number of Sections" ng-model="no_of_sections"/>
+				<button type="submit" class="btn btn-warning btn-log col-sm-2" ng-click="generate()">Generate</button>
+				<br/>               
+				<br/>
+				<button type="submit" class="btn btn-success btn-lg col-sm-2" ng-click="add()">Add</button>
 			</div>
 		</form>
 	</div>
+	
+	
+	<table class="table table-hover table-condensed">
+
+        <tr>
+        <h2>List of Sections</h2>
+       
+        </tr>
+        <tbody>
+        <tr id="no-hover" class="topHeader">
+	        <th>Subject Code</th>
+	        <th>Description</th>
+	        <th>Section</th>
+	        <th>Units</th>
+	        <th>Degree</th>
+	        <th>Major</th>
+	        <th>Assigned Faculty</th>
+        </tr>
+        <tr ng-repeat="class in classes track by $index">
+	        <td id="subject-code">{{class.subject_code}}</td>
+	        <td id="subject-code">{{class.subj_desc}}</td>
+	        <td id="subject-code">{{class.section}}</td>
+	        <td id="subject-code">{{class.units}}</td>
+	        <td id="subject-code">{{class.degree}}</td>
+	        <td id="subject-code">{{class.major_degree}}</td>
+	        <td id="subject-code">{{class.prof_id}}</td>
+	        
+	        <td>
+	            <button class="btn-primary btn-xs" ng-click="assign($index)">Assign</button>
+	            <select class="custom-select" ng-model="$parent.prof_array[$index]" ng-option="prof.prof_id for prof in prof_list" style="max-width:200%;margin-bottom:20px">
+		              
+		            
+		        </select>
+	        
+	        
+	        
+	        </td>
+        </tr>
+        </tbody>
+    </table>
+	
+	
 </div>

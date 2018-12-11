@@ -564,13 +564,13 @@ exports.admin_listing_remove_all = (req,res) => {
 exports.admin_term_end = (req,res) => {
     var curr_year = new Date().getFullYear();
     //get grade
-    Student.update({},{$inc:{term:1},$set:{status:"NOT ENROLLED"}},{multi:true}).exec(function(err,doc){
+    Student.update({},{$inc:{term:-2},$set:{status:"ENROLLED"}},{multi:true}).exec(function(err,doc){
         if (err) throw err;
         
     
     });
     
-    Fees.update({},{$inc:{term:1},$set:{status:"UNPAID",year:curr_year}},{multi:true}).exec(function(err1,doc1){
+    Fees.update({},{$inc:{term:-21},$set:{status:"PAID",year:curr_year}},{multi:true}).exec(function(err1,doc1){
         if(err1) throw err1;
         if(doc1) return res.json({message:"Term ended!"});
     });
@@ -671,8 +671,8 @@ exports.admin_section_create = (req,res) => {
                     created_classes.push(one_class);
                 }
                 
-                //FILL CLASSES WITH STUDENTS
                 var z=0;
+                //FILL CLASSES WITH STUDENTS
                 for(var x=0;x<docs.students.length;x++){
                     //add student to classes
                     if(z==created_classes.length){
@@ -683,6 +683,28 @@ exports.admin_section_create = (req,res) => {
                 }
                 console.log("\n\nCreated Classes: ");
                 console.log(created_classes);
+                
+                Faculty.find({major:docs.major_degree}).sort({lname:1}).exec(function(err1,docs1){
+                
+                    if(err1) throw err1;
+                    if(!docs1) return res.json({message:"Unable to find professors for subject."});
+                    else if(docs1) {
+                        var obj = {
+                       
+                            message: "Successfully retrieved subjects and professors.",
+                            generated: created_classes,
+                            profs: docs1
+                        }
+                
+                 
+                return res.json(obj); 
+                    
+                    }
+                });
+                
+                
+                                        //RETURN THE GENERATED CLASSES
+                /*
                 for(var w=0;w<created_classes.length;w++){
                 
                     var new_class = new Classes(created_classes[w]);
@@ -692,9 +714,26 @@ exports.admin_section_create = (req,res) => {
                 }
             
             return res.json({message:"Created "+y+" sections."});
-            
+            */
         }
      });
     }
 });
+}
+
+exports.admin_section_generate = (req,res) => {
+   var classes = req.body.classes;
+   if(!classes){
+        return res.json({message:"No classes generated. "});
+   } else{
+       for(var x=0;x<classes.length;x++){
+       
+           var new_class = new Classes(classes[x]);
+           new_class.save(function(err){
+                if(err) throw err;
+           });    
+       
+       }
+       return res.json({message:"Classes successfully generated."});
+    }
 }

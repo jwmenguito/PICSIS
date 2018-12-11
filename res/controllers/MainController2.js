@@ -400,6 +400,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	homeModule.controller("FacultyAssignSections",["$scope","$http","dataHolder",
 	function($scope,$http,dataHolder){
 		$scope.sections = []
+		
 		$scope.retrieveSections = function(){
 				
 				var data = {
@@ -696,7 +697,10 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	
     homeModule.controller("AdminCreateSection",["$scope","$http",
 	function($scope,$http){
+	   $scope.prof_array = [];
+	   $scope.prof_list = [];
 	   $scope.subjects = [];
+	   $scope.classes = [];
 	   $scope.retrieveListing = function(){
 	         $http
 	            .get('admin/section/create/get/list')
@@ -708,21 +712,46 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	   }
 	  
 	   $scope.retrieveListing();
-	   $scope.add = function(){
+	   $scope.generate = function(){
 	        var data = {
 	            section_count: $scope.no_of_sections,
 	            subject_code: ($scope.selected_subject.subject_code)
 	        }
             console.log(data);
-            console.log("HEY");	        
+                   
 	        $http
 	        .post('admin/section/create',data)
 	        .then(function(response){
 	            console.log("sent");
 	            alert(response.data.message);
+	            $scope.classes = response.data.classes;
+	            $scope.prof_list = response.data.profs;
+	            for(var c=0;c<$scope.prof_list.length;c++){
+	                
+	                $scope.prof_array[c] = $scope.prof_list.prof_id;
+	            }
+	            //alert(response.data.message);
 	        
 	        });
-	    }
+	  }
+	  
+	  $scope.add = function(){
+	        
+	        for(var x=0;x<$scope.classes.length;x++){
+	           $scope.classes[x].prof_id = $scope.prof_array[x]; 
+	        }
+	        
+	        var data2={
+	            classes_obj: $scope.classes
+	        }
+	        
+	        $http
+	        .post('admin/section/generate',data2)
+	        .then(function(response){
+	            alert(response.data.message);
+	        
+	        });
+	  }
 	   
 	}]);
 	
