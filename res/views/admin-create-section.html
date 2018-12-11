@@ -26,7 +26,7 @@
 	<table class="table table-hover table-condensed">
          <h4>List of Sections</h4>
         <tbody>
-        <tr id="no-hover" class="secondLevel">
+        <tr class="topHeader">
 	        <th>Subject Code</th>
 	        <th>Description</th>
 	        <th>Section</th>
@@ -34,6 +34,8 @@
 	        <th>Degree</th>
 	        <th>Major</th>
 	        <th>Assigned Faculty</th>
+	        <th></th>
+	        <th></th>
         </tr>
         <tr ng-repeat="class in classes track by $index">
 	        <td id="subject-code">{{class.subject_code}}</td>
