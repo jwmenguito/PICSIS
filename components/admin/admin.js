@@ -642,9 +642,9 @@ exports.admin_section_create = (req,res) => {
               /**
                ** Query returns existing listing
                **/
-         Listing.findOneAndUpdate({subject_code:req.body.subject_code,students:{$not:{$size:0}}}).exec(function(err,docs){
+         Listing.findOne({subject_code:req.body.subject_code,students:{$not:{$size:0}}}).exec(function(err,docs){
             if(err) throw err;
-            if(!docs) return res.json({message:"Something went wrong in retrieving listing with non-empty sections."});
+            if(!docs) return res.json({message:"Something went wrong in retrieving listing."});
             if(docs) {   
                 console.log(docs);
                     
