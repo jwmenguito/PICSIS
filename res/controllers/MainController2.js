@@ -538,8 +538,8 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 				lname:$scope.lname,
 				fname:$scope.fname,
 				mname:$scope.mname,
-				degree:$scope.degree,
-				major:$scope.major,
+				degree:$scope.degree.course_id,
+				major:$scope.major.degree_id,
 				email:$scope.email,
 				mobile:$scope.mobile,
 				gender:$scope.gender

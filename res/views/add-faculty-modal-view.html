@@ -13,10 +13,10 @@
 				<label><input class="radio-inline" type="radio" value="F" ng-model="gender"/>Female</label><br/>
 				<input type="email" class="form-control input-xs col-sm-8" placeholder="Email Address" ng-model="email" style="margin-top:5px"/><br/>
 				<input type="text" class="form-control input-xs col-sm-8" placeholder="Mobile" ng-model="mobile"/><br/>
-				<select name="table_data" class="custom-select" ng-model="degree" style="max-width:200%" ng-options="degree.course_id  for degree in degrees">
+				<select name="table_data" class="custom-select" ng-model="degree" style="max-width:200%" ng-options="degree.course_id  for degree in degrees" style="margin-bottom:10px">
 	                <option value ="" disabled selected>Degree Course</option>
 	                </select><br/>
-					<select name="table_data" class="custom-select" ng-model="major_degree" style="max-width:200%" ng-options="major.degree_id  for major in majors">
+					<select name="table_data" class="custom-select" ng-model="major_degree" style="max-width:200%" ng-options="major.degree_id  for major in majors" style="margin-bottom:10px">
 	                <option value ="" disabled selected>Major</option>
 	                </select><br/>
 				
