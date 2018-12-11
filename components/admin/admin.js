@@ -450,13 +450,13 @@ exports.admin_listing_enroll = (req,res) => {
             //Get their current student.term
             //Get student_no
             console.log("Found "+docs.length+" students with status ENROLLED");
-            
+            var ids = []
             for(var x=0;x<docs.length;x++){
                 var curr_term = docs[x].term;    
                 var std = docs[x].student_no;
                 var course = docs[x].course;
                 var major_degree = docs[x].major_degree;
-                
+                ids.push(docs[x]._id);
                 //find in listing
                 //add to listing		    
                 Listing.update({"term":curr_term,"degree":course,"major_degree":major_degree},{$push:{students:std}},{multi:true},
@@ -467,6 +467,12 @@ exports.admin_listing_enroll = (req,res) => {
                         total = total + doc.nModified;
                     });
            }
+           
+           
+           Fees.update({student:{$in:ids}},{selection:0,entrance:0,misc:0,id:0,tuition:0},{multi:true}).exec(function(err2,docs2){
+                if(err2) throw err2;
+                if(docs2) console.log("Success!");
+           });
             
            	return res.json({message:"Listing success! Inserted in "+docs.length+" students to subjects"});
       }
