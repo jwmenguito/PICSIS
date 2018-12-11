@@ -48,7 +48,7 @@ module.exports = (router) =>{
 	router.get('/student/grades*/',student.student_grades);
 	router.get('/student/requests*/',student.student_requests);
 	router.get('/student/settings',student.student_settings);
-	
+	router.post('/student/settings/reminders',student.student_clear_reminders);
 	router.post('/student/settings',student.student_changePassword);
 	router.post('/student/home',student.student_getData);
 	router.post('/student/requests/send',student.student_send_request);

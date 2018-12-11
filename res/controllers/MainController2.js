@@ -195,6 +195,21 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 			}
 		}
 		
+		$scope.clear_reminders = function(){
+	        var data = {
+	        
+	            student_no :dataHolder().student_no
+	        }
+	        
+	        $http
+				.post("https://picsis.herokuapp.com/student/settings/reminders",data)
+				.then(
+					function(response){
+						alert(response.data.message);
+					}
+				);
+		}
+		
 		
 		
 	}]);
