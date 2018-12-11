@@ -622,103 +622,87 @@ exports.admin_section_create = (req,res) => {
     
     
     
-    var max_section = sections.length;
-    var options = {
-        min:0,
-        max:max_section-1,
-        integer:true
-    }
-    while(chosen_sections.length < section_count){
-        
-        var index = rn(options);
-        console.log("Index is: ");
-        console.log(index);
-        chosen_sections.add(sections[index].name);
-        console.log("Section is:" + sections[index]);
-        
-            //break;
-        
-    }
-     chosen_sections = chosen_sections.toArray();
-     /*
-        Query returns existing listing
-     */
-     
-     
-     Listing.findOneAndUpdate({subject_code:req.body.subject_code,students:{$not:{$size:0}}},{$set:{processed:true}}).exec(function(err,docs){
-        if(err) throw err;
-        if(!docs) return res.json({message:"Something went wrong in retrieving listing with non-empty sections."});
-        if(docs) {   
-            console.log(docs);
-                
-                var created_classes=[]
-                //CREATE CLASSES BASED ON THE NUMBER OF SECTIONS
-                for(var y=0;y<chosen_sections.length;y++){
-                    //FOR EACH SECTION, CREATE A CLASS OBJECT
-                    var one_class = {
-                        subject_code: docs.subject_code,
-                        subj_desc:docs.subj_desc,
-                        section: chosen_sections[y],
-                        major_degree: docs.major_degree,
-                        degree: docs.degree,
-                        prof_id: "",
-                        units: docs.units,
-                        term: docs.term,
-                        student_ids:[]
-                    }
-                    console.log("\n\nCreated class[1]: ");
-                    console.log(one_class);
-                    created_classes.push(one_class);
-                }
-                
-                var z=0;
-                //FILL CLASSES WITH STUDENTS
-                for(var x=0;x<docs.students.length;x++){
-                    //add student to classes
-                    if(z==created_classes.length){
-                        z=0;
-                    }
-                    created_classes[z].student_ids.push(docs.students[x]);
-                    z++;                                                     
-                }
-                console.log("\n\nCreated Classes: ");
-                console.log(created_classes);
-                
-                Faculty.find({major:docs.major_degree}).sort({lname:1}).exec(function(err1,docs1){
-                
-                    if(err1) throw err1;
-                    if(!docs1) return res.json({message:"Unable to find professors for subject."});
-                    else if(docs1) {
-                        var obj = {
-                       
-                            message: "Successfully retrieved subjects and professors.",
-                            generated: created_classes,
-                            profs: docs1
-                        }
-                
-                 
-                return res.json(obj); 
-                    
-                    }
-                });
-                
-                
-                                        //RETURN THE GENERATED CLASSES
-                /*
-                for(var w=0;w<created_classes.length;w++){
-                
-                    var new_class = new Classes(created_classes[w]);
-                    new_class.save(function(err){
-                        if(err) throw err;
-                    });
-                }
-            
-            return res.json({message:"Created "+y+" sections."});
-            */
+        var max_section = sections.length;
+        var options = {
+            min:0,
+            max:max_section-1,
+            integer:true
         }
-     });
-    }
-});
+        while(chosen_sections.length < section_count){         
+            var index = rn(options);
+            console.log("Index is: ");
+            console.log(index);
+            chosen_sections.add(sections[index].name);
+            console.log("Section is:" + sections[index]);
+    
+        }
+         chosen_sections = chosen_sections.toArray();
+   
+     
+              /**
+               ** Query returns existing listing
+               **/
+         Listing.findOneAndUpdate({subject_code:req.body.subject_code,students:{$not:{$size:0}}}).exec(function(err,docs){
+            if(err) throw err;
+            if(!docs) return res.json({message:"Something went wrong in retrieving listing with non-empty sections."});
+            if(docs) {   
+                console.log(docs);
+                    
+                    var created_classes=[]
+                    //CREATE CLASSES BASED ON THE NUMBER OF SECTIONS
+                    for(var y=0;y<chosen_sections.length;y++){
+                        //FOR EACH SECTION, CREATE A CLASS OBJECT
+                        var one_class = {
+                            subject_code: docs.subject_code,
+                            subj_desc:docs.subj_desc,
+                            section: chosen_sections[y],
+                            major_degree: docs.major_degree,
+                            degree: docs.degree,
+                            prof_id: "",
+                            units: docs.units,
+                            term: docs.term,
+                            student_ids:[]
+                        }
+                        console.log("\n\nCreated class[1]: ");
+                        console.log(one_class);
+                        created_classes.push(one_class);
+                    }
+                    
+                    var z=0;
+                    //FILL CLASSES WITH STUDENTS
+                    for(var x=0;x<docs.students.length;x++){
+                        //add student to classes
+                        if(z==created_classes.length){
+                            z=0;
+                        }
+                        created_classes[z].student_ids.push(docs.students[x]);
+                        z++;                                                     
+                    }
+                    console.log("\n\nCreated Classes: ");
+                    console.log(created_classes);
+                    
+                    Faculty.find({major:docs.major_degree}).sort({lname:1}).exec(function(err1,docs1){
+                    
+                        if(err1) throw err1;
+                        if(!docs1) return res.json({message:"Unable to find professors for subject."});
+                        else if(docs1) {
+                            var obj = {
+                           
+                                message: "Successfully retrieved subjects and professors.",
+                                generated: created_classes,
+                                profs: docs1
+                            }
+                    
+                     
+                    return res.json(obj); 
+                        
+                        }
+                    });
+
+            }
+         });
+        }
+    });
 }
 
 exports.admin_section_generate = (req,res) => {
@@ -734,6 +718,11 @@ exports.admin_section_generate = (req,res) => {
            });    
        
        }
+       
+       Listing.findOneAndUpdate({subject_code:req.body.subject_code},{$set:{processed:true}}).exec(function(err,docs){
+            if(err) throw err;
+            
+       });
        return res.json({message:"Classes successfully generated."});
     }
 }

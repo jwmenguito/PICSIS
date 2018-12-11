@@ -3,7 +3,7 @@
 		<h3>Create Sections</h3>
 		<hr/>
 		<form method="post" class="addForm">
-		    <label>Select a section</label><br/>
+		    <label><strong>Select a section</strong></label><br/>
 		    <select name="table_data" class="custom-select" ng-options="subject.subject_code for subject in subjects" ng-model="selected_subject" style="max-width:200%;margin-bottom:20px">
 	        <option value ="" disabled selected>Select a section</option>
 	        </select>
@@ -11,7 +11,7 @@
 			<br/>
 			<div style="text-align:left;vertical-align:top">
 			    <label>Number of Sections to create for: &nbsp</label>
-			    <strong>{{selected_subject.subject_code}}</strong>
+			    <strong><em>{{selected_subject.subject_code}}</em></strong>
 				<input type="number" class="form-control input-xs col-sm-4" placeholder="Number of Sections" ng-model="no_of_sections" style="margin-bottom:5px"/>
 				<button type="submit" class="btn btn-warning btn-md col-md-4" ng-click="generate()">Generate</button>
 				<br/>               
@@ -25,10 +25,6 @@
 	
 	<table class="table table-hover table-condensed">
          <h4>List of Sections</h4>
-        <tr>
-       
-       
-        </tr>
         <tbody>
         <tr id="no-hover" class="topHeader">
 	        <th>Subject Code</th>
