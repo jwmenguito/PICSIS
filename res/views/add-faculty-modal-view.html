@@ -15,6 +15,13 @@
 				<input type="text" class="form-control input-xs col-sm-8" placeholder="Mobile" ng-model="mobile"/><br/>
 				<input type="text" class="form-control input-xs col-sm-8" placeholder="Degree" ng-model="degree"/><br/>
 				<input type="text" class="form-control input-xs col-sm-8" placeholder="Major" ng-model="major" /><br/>
+				<select name="table_data" class="custom-select" ng-model="degree" style="max-width:200%" ng-options="degree.course_id  for degree in degrees">
+	                <option value ="" disabled selected>Degree Course</option>
+	                </select><br/>
+					<select name="table_data" class="custom-select" ng-model="major_degree" style="max-width:200%" ng-options="major.degree_id  for major in majors">
+	                <option value ="" disabled selected>Major</option>
+	                </select><br/>
+				
 			</div>																
 				<button type="submit" class="btn btn-success btn-lg col-sm-2" ng-click="add()">Submit</button>
 		</form>

@@ -453,6 +453,22 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	}]);
 	homeModule.controller("AddStudentCtrl",["$scope","$http",
 	function($scope,$http){
+		$scope.degrees=[];
+		$scope.majors=[];
+		
+		$scope.getDegrees = function(){
+		    
+		    $http
+		    .post('/admin/degrees/get')
+		    .then(function(response){
+		    $scope.degrees = response.data.degrees;
+		    $scope.majors = response.data.majors;
+		
+		});
+		
+		}
+		
+		$scope.getDegrees();
 		
 		//when adding a student, intialize his first term
 		$scope.add = function(){
@@ -488,13 +504,17 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	
 	homeModule.controller("AddSubjectCtrl",["$scope","$http",
 	function($scope,$http){
+	
 		$scope.add = function(){
 			var data = {
 				subject_code:$scope.subject_code,
 				subj_desc:$scope.subj_desc,
 				units:$scope.units,
 				prof_id:$scope.prof_id,
-				major_degree:$scope.major_degree
+				degree:$scope.degree,
+				major_degree:$scope.major_degree,
+				processed:false
+				
 			}
 
 			$http
@@ -505,6 +525,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 				$scope.units = null;
 				$scope.prof_id = null;
 				$scope.major_degree = null;
+				$scope.degree = null;
 			})
 			.catch(angular.noop);
 		}
@@ -512,7 +533,8 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	
 	homeModule.controller("AddFacultyCtrl",["$scope","$http",
 	function($scope,$http){
-		
+		$scope.degrees=[];
+		$scope.majors=[];
 	
 		$scope.add = function(){
 			var data = {
@@ -858,20 +880,39 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 				$scope.students=[];
 				$scope.faculties=[];
 				$scope.subjects=[];
-			
+				$scope.listing=[];
+			    $scope.unavailable = false;
+			   if($scope.display_table==="classes"){
+			        $scope.unavailable=true;
+			   }
+			   else if($scope.display_table==="students"){
+			        $scope.unavailable=false;
+			   }
+			   else if($scope.display_table==="faculty"){
+			        $scope.unavailable=false;
+			   }
+			   else if($scope.display_table==="listing"){
+			        $scope.unavailable=false;
+			   }
 			$scope.edit = function(index){
 				
-				if($scope.display_table==='subject'){
+				if($scope.display_table==="classes"){
+				    
+				   
 					var myData = {
 						subject_code:$scope.subjects[index].subject_code
 					}
 					$state.go('admin.records.editSubject',{obj:myData});
 				}else if($scope.display_table==='faculty'){
+				    
+				    
 					var myData = {
 						prof_id:$scope.faculties[index].prof_id
 					}
 					$state.go('admin.records.editFaculty',{obj:myData});
 				}else if($scope.display_table==='student'){
+				    
+				    
 					var myData = {
 						student_no:$scope.students[index].student_no
 					}
@@ -907,19 +948,22 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 				.post('https://picsis.herokuapp.com/admin/records',data)
 				.then(function(response){
 						console.log(response.data);
-						if($scope.display_table==='subject'){
+						if($scope.display_table==='classes'){
 							$scope.subjects = response.data;
 						}else if($scope.display_table==='faculty'){
 							$scope.faculties = response.data;
 						}else if($scope.display_table==='student'){
 							$scope.students = response.data;
 							console.log($scope.students);
+						}else if($scope.display_table==='listing'){
+							$scope.listing = response.data;
+							console.log($scope.students);
 						}
 				}).catch(angular.noop);
 		
 			}
 			$scope.addEntry = function(){
-				if($scope.display_table==='subject'){
+				if($scope.display_table==='listing'){
 					console.log("pressed");
 					$state.go('admin.records.addSubject',{});
 				}else if($scope.display_table==='faculty'){

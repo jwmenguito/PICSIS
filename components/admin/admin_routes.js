@@ -56,7 +56,7 @@ module.exports = (router) =>{
     router.post('/admin/listing/add',admin.admin_listing_add);
     router.post('/admin/listing/add/all',admin.admin_listing_add_all);
     router.post('/admin/listing/enroll',admin.admin_listing_enroll);
-    
+    router.post('/admin/degrees/get',admin.admin_degrees_get);
     //For Clearing
     router.post('/admin/listing/remove',admin.admin_listing_remove);
     router.post('/admin/listing/remove/all',admin.admin_listing_remove_all);

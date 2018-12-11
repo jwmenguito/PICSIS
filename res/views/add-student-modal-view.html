@@ -10,8 +10,12 @@
 					<input type="text" class="form-control input-xs col-sm-8" placeholder="Middle Name"  ng-model="mname"/><br/>
 					<input type="email" class="form-control input-xs col-sm-8" placeholder="Email Address"  ng-model="email"/><br/>
 					<input type="number" class="form-control input-xs col-sm-8" placeholder="Mobile"  ng-model="mobile"/><br/>
-					<input type="text" class="form-control input-xs col-sm-8" placeholder="Course"  ng-model="course"/><br/>
-					<input type="text" class="form-control input-xs col-sm-8" placeholder="Major/Degree"  ng-model="major_degree"/><br/>
+					<select name="table_data" class="custom-select" ng-model="course" style="max-width:200%" ng-options="degree.course_id  for degree in degrees">
+	                <option value ="" disabled selected>Degree Course</option>
+	                </select><br/>
+					<select name="table_data" class="custom-select" ng-model="major_degree" style="max-width:200%" ng-options="major.degree_id  for major in majors">
+	                <option value ="" disabled selected>Major</option>
+	                </select><br/>
 			</div>																
 				<button type="submit" class="btn btn-success btn-lg col-sm-2" ng-click="add()">Submit</button>
 		</form>

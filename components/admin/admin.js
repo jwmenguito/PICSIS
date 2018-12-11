@@ -3,7 +3,8 @@ var path = require('path');
 var Faculty = require(__dirname+'/../user_faculty');	//mongoose user
 var Subjects = require(__dirname+'/../subjects');
 var Student = require(__dirname+'/../user_student');
-
+var Degrees = require(__dirname_'/../degrees');
+var Majors = require(__dirname_'/../majors');
 var admin = require(__dirname+'/../user_admin');
 var Usr = require(__dirname+'/../usr');
 var Set = require('collections/set');
@@ -73,7 +74,7 @@ exports.admin_records = (req,res) =>{
 //Admin Get Records
 exports.admin_get_records = (req,res) => {
 		console.log("GET");
-	if(req.body.table==='subject'){
+	if(req.body.table==='classes'){
 		Classes.find({}).sort({subject_code:1}).exec(function(err,docs){
 			if(err) throw err;
 			if(!docs){
@@ -89,7 +90,7 @@ exports.admin_get_records = (req,res) => {
 		Student.find({}).populate('fees').sort({lname:1}).exec(function(err,docs){
 			if(err) throw err;
 			if(!docs){ 
-				return res.json({message:"Unsuccessful"});
+				return res.json({message:"Unsuccessful in retrieving records."});
 			}
 			if(docs){ 
 			console.log(docs);
@@ -101,7 +102,19 @@ exports.admin_get_records = (req,res) => {
 			if(err) throw err;
 			if(!docs){
 				console.log(docs);
-				return  res.json({message:"Unsuccessful"});
+				return  res.json({message:"Unsuccessful in retrieving records."});
+			}
+			if(docs) {
+				console.log(docs);
+				return res.json(docs);
+			}
+		});
+	}else if(req.body.table==='listing'){
+		Listing.find({}).sort({prof_id:1}).exec(function(err,docs){
+			if(err) throw err;
+			if(!docs){
+				console.log(docs);
+				return  res.json({message:"Unsuccessful in retrieving records."});
 			}
 			if(docs) {
 				console.log(docs);
@@ -109,7 +122,7 @@ exports.admin_get_records = (req,res) => {
 			}
 		});
 	}else{
-		return  res.json({message:"Unsuccessful"});
+		return  res.json({message:"Unsuccessful in retrieving records"});
 	}
 }
 
@@ -238,14 +251,14 @@ exports.admin_add_student = (req,res) => {
 }
 
 exports.admin_add_subject = (req,res) => {
-	var subject = new Subjects(req.body);
+	var subject = new Listing(req.body);
 	subject._id = new mongoose.Types.ObjectId();
 	console.log(subject);
 	subject.save(function(err,subject){
 		if(err) throw err;
-		else console.log("Adding new subject:\n"+subject);
+		else console.log("Adding new listing:\n"+subject);
 	});
-	return res.json({message:"New subject added"});
+	return res.json({message:"New listing added"});
 }
 
 exports.admin_add_faculty = (req,res) => {
@@ -566,11 +579,9 @@ exports.admin_term_end = (req,res) => {
     //get grade
     Student.update({},{$inc:{term:-2},$set:{status:"ENROLLED"}},{multi:true}).exec(function(err,doc){
         if (err) throw err;
-        
-    
     });
     
-    Fees.update({},{$inc:{term:-21},$set:{status:"PAID",year:curr_year}},{multi:true}).exec(function(err1,doc1){
+    Fees.update({},{$inc:{term:19},$set:{status:"PAID",year:curr_year}},{multi:true}).exec(function(err1,doc1){
         if(err1) throw err1;
         if(doc1) return res.json({message:"Term ended!"});
     });
@@ -591,6 +602,11 @@ exports.admin_section_get_listing = (req,res) => {
 
 }
 
+exports.admin_degrees_get = (req,res) => {
+
+    
+
+}
 /**
 Given a number of sections,
 Equally divide the number of students of the selected listing.

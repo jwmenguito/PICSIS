@@ -2,11 +2,11 @@
 	<h2>Records</h2>
     <div class="span12">
 	<select name="table_data" class="custom-select" ng-model="display_table" style="max-width:200%;margin-bottom:20px">
-	<option value ="student">Students</option>
-	<option value ="faculty">Faculty</option>
-	<option value ="classes">Classes</option>
-	<option value ="listing">Listing (Archive-Only)</option>
-	<option value ="fees">Fees (Archive-Only)</option>
+	    <option value ="student">Students</option>
+	    <option value ="faculty">Faculty</option>
+	    <option value ="classes">Classes</option>
+	    <option value ="listing">Listing</option>
+	    <option value ="fees">Fees (Archive-Only)</option>
 		
 		
 	</select>
@@ -14,7 +14,7 @@
 		
 	</ui-view>
 	<button class="btn btn-primary btn-md col-sm-2 " ng-click="getTable()" style="margin-left:20px;margin-right:20px;margin-bottom:20px">Select</button>
-	<button class="btn btn-success btn-md col-sm-2" ng-click="addEntry()"style="margin-bottom:20px"> Add </button>
+	<button class="btn btn-success btn-md col-sm-2" ng-click="addEntry()"style="margin-bottom:20px" ng-disabled="unavailable"> Add </button>
 	<button class="btn btn-warning btn-md col-sm-2" ng-click="archive()" style="margin-left:20px;margin-right:20px;margin-bottom:20px">Archive</button>
 	<div ng-switch="display_table" style="margin-top:10px">
 		<!-- Start of Student ng-switch !-->
@@ -201,6 +201,35 @@
 		
 		</div>
 		<!-- end of subject ng-switch -->
+	    <div ng-switch-when="listing">
+		<table class="table table-bordered">
+			<thead>
+				<tr class="topHeader">
+					<th>Term</th>
+					<th>Subject Code</th>
+					<th>Description</th>
+					<th id="subject-grade">Units </th>
+					<th>Degree </th>
+					<th>Major/Degree </th>
+					<th>Processed? </th>
+					
+				</tr>
+			</thead>
+        <tr	ng-repeat="list in listing">
+                <td class="subject" id ="subject-code">{{list.term}}</td>
+				<td class="subject" id ="subject-code">{{list.subject_code}}</td>
+				<td class="subject" id="subject-code">{{list.subj_desc}}</td>
+				<td class="subject" id="subject-grade">{{list.units}}</td>
+				<td class="subject" id="subject-grade">{{list.degree}}</td>
+				<td class="subject" id="subject-grade">{{list.major_degree}}</td>
+				<td class="subject" id="subject-grade">{{list.processed}}</td>
+				
+		</tr>
+		
+		</table>
+		
+		</div>
+	
 	</div>	
 	</div>
 	
