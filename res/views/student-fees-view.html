@@ -1,5 +1,19 @@
 <table class="table table-bordered" >
 	<h2>Fees</h2>
+	          
+	            <tr class="table-row">
+						<th>Term</th>
+						<td>{{fee.term}}</td>
+					  
+					
+						<th>Year</th>
+						<td>{{fee.year}}</td>
+					
+					
+						<th>Status</th>
+						<td>{{fee.status}}</td>
+					
+	            </tr>
 				<thead>
 					<tr class="secondHeader">
 					<th>Fee</th>
@@ -10,25 +24,34 @@
 					
 					<tr class="table-row">
 						<th>Tuition</th>
-						<td>{{fee.tuition}}</td>
+						<td>P{{fee.tuition}}</td>
 					</tr>
 					<tr class="table-row">
 						<th>Misc</th>
-						<td>{{fee.misc}}</td>
+						<td>P{{fee.misc}}</td>
 					</tr>
+					<tr>
+					    <th>Total:</th>
+					    <td>P{{fee.tuition + fee.misc}}</td>
+					</tr>
+					
 					<tr>
 					</tr>
 					<tr class="table-row">
 						<th class="thead">Entrance</th>
-						<td>{{fee.entrance}}</td>
+						<td>P{{fee.entrance}}</td>
 					</tr>
 					<tr class="table-row">
 						<th>Selection</th>
-						<td>{{fee.selection}}</td>
+						<td>P{{fee.selection}}</td>
 					</tr>
 					<tr class="table-row">
 						<th>Id</th>
-						<td>{{fee.id}}</td>
+						<td>P{{fee.id}}</td>
+					</tr>
+					<tr>
+					    <th>Total</th>
+					    <td>{{fee.entrance + fee.selection + fee.id}}</td> 
 					</tr>
 					<tr>
 					</tr>

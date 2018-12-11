@@ -4,8 +4,8 @@ var Faculty = require(__dirname+'/../user_faculty');	//mongoose user
 var Subjects = require(__dirname+'/../subjects');
 var Student = require(__dirname+'/../user_student');
 
-var Degrees = require(__dirname_+'/../degrees');
-var Majors = require(__dirname_+'/../majors');
+var Degrees = require(__dirname+'/../degrees');
+var Majors = require(__dirname+'/../majors');
 var admin = require(__dirname+'/../user_admin');
 var Usr = require(__dirname+'/../usr');
 var Set = require('collections/set');
@@ -139,7 +139,6 @@ exports.admin_add_student = (req,res) => {
 	}
 	// initialize fee
 	var fee = {
-		
 		id:0,
 		misc:0,
 		selection:0,
@@ -196,6 +195,7 @@ exports.admin_add_student = (req,res) => {
 				student:student._id,
 				selection: fee.selection,
 				entrance: fee.entrance,
+				degree:req.body.course,
 				id: fee.id,
 				misc: fee.misc,
 				tuition: fee.tuition,
