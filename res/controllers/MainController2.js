@@ -709,14 +709,17 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	   
   	            });
   	         
-  	         $scope.selected_subject = ($scope.subjects[0]).subject_code;
+  	     
 	   
 	   }
 	  
 	   $scope.retrieveListing();
 	   $scope.generate = function(){
 	        
-	        
+	        if(!($scope.selected_subject)){
+	            alert("Please select a subject!");
+	            return;
+	        }
 	        if(!($scope.no_of_sections) || $scope.no_of_sections < 0){
 	            alert("Please enter a valid number.");
 	            return;
