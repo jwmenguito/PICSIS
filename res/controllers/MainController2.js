@@ -755,7 +755,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	  $scope.add = function(){
 	        
 	        for(var x=0;x<$scope.classes.length;x++){
-	           $scope.classes[x].prof_id = $scope.prof_array[x]; 
+	           $scope.classes[x].prof_id = $scope.prof_array[x].prof_id; 
 	        }
 	        
 	        var data2={

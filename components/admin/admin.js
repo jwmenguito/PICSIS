@@ -706,7 +706,7 @@ exports.admin_section_create = (req,res) => {
 }
 
 exports.admin_section_generate = (req,res) => {
-   var classes = req.body.classes;
+   var classes = req.body.classes_obj;
    if(!classes){
         return res.json({message:"No classes generated. "});
    } else{
