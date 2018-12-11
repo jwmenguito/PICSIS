@@ -713,10 +713,18 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	  
 	   $scope.retrieveListing();
 	   $scope.generate = function(){
+	        
+	        
+	        if(!($scope.no_of_sections) || $scope.no_of_sections < 0){
+	            alert("Please enter a valid number.");
+	            return;
+	        }
+	        
 	        var data = {
 	            section_count: $scope.no_of_sections,
 	            subject_code: ($scope.selected_subject.subject_code)
 	        }
+	        
             console.log(data);
                    
 	        $http
