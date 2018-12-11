@@ -292,7 +292,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 			$scope.student_index = studentIndex;
 			$scope.subject_index = subjectIndex;
 
-			
+			$scope.classes[i].students[j].grade = $scope.gradeArray[$scope.student_index];
 			//gets the selected student
 			var data2 = {
 				student_no:$scope.classes[$scope.subject_index].students[$scope.student_index].student_no,
