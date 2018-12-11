@@ -708,6 +708,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	                $scope.subjects = response.data;
 	   
   	            });
+  	            $scope.selected_subject = $scope.subjects[0].subject_code;
 	   
 	   }
 	  
