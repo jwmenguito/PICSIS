@@ -115,14 +115,16 @@ exports.faculty_send_reminders = (req,res) =>{
 	var month = new Date().getMonth();
 	var day = new Date().getDay();
 	var year = new Date().getFullYear();
+	var studs = [];
 	var reminder = {
 		
-		title:req.body.title,
 		message:req.body.msg,
 		date:month+" "+day+", "+year
 	}
-
-	Student.update({'checklist.subject_code':req.body.subject_code},{$push:{reminders:reminder}},function(err,doc){
+    for(var x=0;x<req.body.students.length;x++){
+        studs.push(req.body.students[x].student_no);
+    }
+	Student.update({student_no:{$in:studs}},{$push:{reminders:reminder}},function(err,doc){
 		if(err) throw err;
 		if(doc) res.json({message:"Success!"});
 		else res.json({message:'Failed!'});
