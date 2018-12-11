@@ -628,7 +628,7 @@ exports.admin_section_create = (req,res) => {
         max:max_section-1,
         integer:true
     }
-    while(chosen_sections.length != section_count){
+    while(chosen_sections.length < section_count){
         
         var index = rn(options);
         console.log("Index is: ");
