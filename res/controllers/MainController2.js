@@ -724,9 +724,11 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	        .then(function(response){
 	            console.log("sent");
 	            alert(response.data.message);
+	            
 	            console.log($scope.classes);
 	            console.log($scope.prof_list);
-	            $scope.classes = response.data.classes;
+	            
+	            $scope.classes = response.data.generated;
 	            $scope.prof_list = response.data.profs;
 	            for(var c=0;c<$scope.prof_list.length;c++){
 	                
