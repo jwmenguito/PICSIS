@@ -1,4 +1,5 @@
-<table class="table table-bordered" ng-repeat="fee in user_object.fees track by $index" >
+<div ng-repeat="fee in user_object.fees track by $index" >
+<table class="table table-bordered" >
 	<h2>Fees</h2>
 	<br/>
 	<span><strong> Term: &nbsp {{fee.term}} </strong></span> 
@@ -13,8 +14,24 @@
 				</thead>
 				<tbody>
 					
-					<tr>
+					
+										
+					<tr class="table-row">
+						<th>Tuition</th>
+						<td>P{{fee.tuition}}</td>
 					</tr>
+					<tr class="table-row">
+						<th>Misc</th>
+						<td>P{{fee.misc}}</td>
+					</tr>
+					<tr>
+					    <th>Total:</th>
+					    <td>P{{fee.tuition + fee.misc}}</td>
+					</tr>
+				    <tr>
+				        <td></td>
+				        <td></td>
+				    </tr>
 					<tr class="table-row">
 						<th class="thead">Entrance</th>
 						<td>P{{fee.entrance}}</td>
@@ -31,28 +48,7 @@
 					    <th>Total</th>
 					    <td>P{{fee.entrance + fee.selection + fee.id}}</td> 
 					</tr>
-					<tr>
-					<td></td>
-					<td></td>
-					</tr>
-					
-					<tr class="table-row">
-						<th>Term</th>
-						<td>{{fee.term}}</td>
-					</tr>
-					<tr class="table-row">
-						<th>Year</th>
-						<td>{{fee.year}}</td>
-					</tr>
-					<tr class="table-row">
-						<th>Status</th>
-						<td>{{fee.status}}</td>
-					</tr>
-					
-					<tr>
-					<td></td>
-					<td></td>
-					</tr>
-					
+
 				</tbody>
 			</table>
+			</div>

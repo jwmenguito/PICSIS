@@ -580,11 +580,11 @@ exports.admin_listing_remove_all = (req,res) => {
 exports.admin_term_end = (req,res) => {
     var curr_year = new Date().getFullYear();
     //get grade
-    Student.update({},{$set:{status:"ENROLLED",term:1}},{multi:true}).exec(function(err,doc){
+    Student.update({},{$inc:{term:1},$set:{status:"NOT ENROLLED"}},{multi:true}).exec(function(err,doc){
         if (err) throw err;
     });
     
-    Fees.update({},{$set:{status:"PAID",year:curr_year,term:1}},{multi:true}).exec(function(err1,doc1){
+    Fees.update({degree:"MA"},{$inc:{term:1},$set:{status:"UNPAID",year:curr_year}},{multi:true}).exec(function(err1,doc1){
         if(err1) throw err1;
         if(doc1) return res.json({message:"Term ended!"});
     });
