@@ -207,12 +207,8 @@ exports.faculty_grades = (req,res) => {
 			        }
 			    
 			    }
-                
-                
-                
-                
-                
-                return res.json({message:doc});
+
+                return res.json({message:"Successfully graded student number "+req.body.student_no});
             
             }
         
