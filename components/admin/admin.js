@@ -583,8 +583,18 @@ exports.admin_term_end = (req,res) => {
     Student.update({},{$inc:{term:1},$set:{status:"NOT ENROLLED"}},{multi:true}).exec(function(err,doc){
         if (err) throw err;
     });
+    Fees.update({degree:"MA"},{$inc:{term:1},$set:{status:"UNPAID",year:curr_year,tuition:33000,misc:500}},{multi:true}).exec(function(err1,doc1){
+        if(err1) throw err1;
+        if(doc1) return res.json({message:"Term ended!"});
+    });
     
-    Fees.update({degree:"MA"},{$inc:{term:1},$set:{status:"UNPAID",year:curr_year}},{multi:true}).exec(function(err1,doc1){
+    Fees.update({degree:"BA"},{$inc:{term:1},$set:{status:"UNPAID",year:curr_year,tuition:25000, misc:500}},{multi:true}).exec(function(err1,doc1){
+        if(err1) throw err1;
+        if(doc1) return res.json({message:"Term ended!"});
+    });
+    
+    
+    Fees.update({degree:"PHD"},{$inc:{term:1},$set:{status:"UNPAID",year:curr_year,tuition:40000, misc:500}},{multi:true}).exec(function(err1,doc1){
         if(err1) throw err1;
         if(doc1) return res.json({message:"Term ended!"});
     });
