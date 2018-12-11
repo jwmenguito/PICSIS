@@ -111,7 +111,7 @@ exports.admin_get_records = (req,res) => {
 			}
 		});
 	}else if(req.body.table==='listing'){
-		Listing.find({}).sort({prof_id:1}).exec(function(err,docs){
+		Listing.find({}).sort({subject_code:1}).exec(function(err,docs){
 			if(err) throw err;
 			if(!docs){
 				console.log(docs);
