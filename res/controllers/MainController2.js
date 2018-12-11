@@ -1077,7 +1077,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 		})
 		.state('student.settings',{
 			url:'/settings',
-			templateUrl:'../views/settings-view.html',
+			templateUrl:'../views/student-settings.html',
 			controller:'StudentSettingsCtrl'
 		})
 			
