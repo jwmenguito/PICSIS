@@ -591,39 +591,22 @@ exports.admin_term_end = (req,res) => {
     });
     Fees.update({degree:"MA"},{$inc:{term:1},$set:{status:"UNPAID",year:curr_year,tuition:33000,misc:500}},{multi:true}).exec(function(err1,doc1){
         if(err1) throw err1;
-        if(doc1) return res.json({message:"Term ended!"});
+       
     });
     
     Fees.update({degree:"BA"},{$inc:{term:1},$set:{status:"UNPAID",year:curr_year,tuition:25000, misc:500}},{multi:true}).exec(function(err1,doc1){
         if(err1) throw err1;
-        if(doc1) return res.json({message:"Term ended!"});
+       
     });
     
     
     Fees.update({degree:"PHD"},{$inc:{term:1},$set:{status:"UNPAID",year:curr_year,tuition:40000, misc:500}},{multi:true}).exec(function(err1,doc1){
         if(err1) throw err1;
-        if(doc1) return res.json({message:"Term ended!"});
+        
     });
-    
-    /*
-        		var student_fee = {
-				_id:new mongoose.Types.ObjectId(),
-				student:student._id,
-				selection: fee.selection,
-				entrance: fee.entrance,
-				degree:req.body.course,
-				id: fee.id,
-				misc: fee.misc,
-				tuition: fee.tuition,
-				term:1,
-				year: today.getFullYear(),
-				status:"PAID"
-			}
-    */
-    
-    //mark to students
-    //archive
-    
+     
+     return res.json({message:"Term ended!"});
+
 }
 
 exports.admin_section_get_listing = (req,res) => {
