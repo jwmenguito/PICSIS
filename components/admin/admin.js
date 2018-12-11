@@ -571,8 +571,8 @@ exports.admin_term_end = (req,res) => {
     });
     
     Fees.update({},{$inc:{term:1},$set:{status:"UNPAID",year:curr_year}},{multi:true}).exec(function(err1,doc1){
-        if (err) throw err;
-        if(doc) return res.json({message:"Term ended!"});
+        if(err1) throw err1;
+        if(doc1) return res.json({message:"Term ended!"});
     });
     
     //mark to students
