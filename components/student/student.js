@@ -171,7 +171,7 @@ exports.student_changePassword = (req,res) => {
 
 exports.student_clear_reminders = (req,res) => {
     
-    student.update({student_no:req.body.students.student_no},{$set:{reminders:[]}},{multi:false}).exec(function(err,doc){
+    student.update({student_no:req.body.student_no},{$set:{reminders:[]}},{multi:false}).exec(function(err,doc){
         if(err) throw err;
         if(!doc) return res.json({message:"An error occurred while clearing reminders!"});
         else if(doc) return res.json({message:"Successfully cleared reminders!"});

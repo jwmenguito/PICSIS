@@ -280,7 +280,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 			
 			
 			var data = {
-			    students:$scope.classes[index].students,
+			    student_no:$scope.classes[index].students.student_no,
 				msg:$scope.msg
 			}
 			console.log(data);
