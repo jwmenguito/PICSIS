@@ -190,15 +190,17 @@ exports.admin_add_student = (req,res) => {
 			//Create Student Fee
 			var today = new Date();
 			student._id = new mongoose.Types.ObjectId();
+
+			
 			var student_fee = {
 				_id:new mongoose.Types.ObjectId(),
 				student:student._id,
-				selection: fee.selection,
-				entrance: fee.entrance,
+				selection:0,
+				entrance: 0,
 				degree:req.body.course,
-				id: fee.id,
-				misc: fee.misc,
-				tuition: fee.tuition,
+				id: 0,
+				misc: 0,
+				tuition: 0,
 				term:1,
 				year: today.getFullYear(),
 				status:"PAID"
@@ -578,14 +580,30 @@ exports.admin_listing_remove_all = (req,res) => {
 exports.admin_term_end = (req,res) => {
     var curr_year = new Date().getFullYear();
     //get grade
-    Student.update({},{$inc:{term:-2},$set:{status:"ENROLLED"}},{multi:true}).exec(function(err,doc){
+    Student.update({},{$set:{status:"ENROLLED",term:1}},{multi:true}).exec(function(err,doc){
         if (err) throw err;
     });
     
-    Fees.update({},{$inc:{term:19},$set:{status:"PAID",year:curr_year}},{multi:true}).exec(function(err1,doc1){
+    Fees.update({},{$set:{status:"PAID",year:curr_year,term:1}},{multi:true}).exec(function(err1,doc1){
         if(err1) throw err1;
         if(doc1) return res.json({message:"Term ended!"});
     });
+    
+    /*
+        		var student_fee = {
+				_id:new mongoose.Types.ObjectId(),
+				student:student._id,
+				selection: fee.selection,
+				entrance: fee.entrance,
+				degree:req.body.course,
+				id: fee.id,
+				misc: fee.misc,
+				tuition: fee.tuition,
+				term:1,
+				year: today.getFullYear(),
+				status:"PAID"
+			}
+    */
     
     //mark to students
     //archive
