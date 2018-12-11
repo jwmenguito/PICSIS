@@ -67,10 +67,6 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 			name:'Classes',
 			state_name:'faculty.classes',
 			state_url:'/faculty/classes'
-		},{
-			name:'Assign Sections',
-			state_name:'faculty.assign',
-			state_url:'/faculty/sections'
 		},
 		{
 			name:'Account Settings',
@@ -1090,11 +1086,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 			url:'/reminders',
 			template:'<p>Faculty Reminders</p>'
 		})
-		.state('faculty.assign',{
-			url:'/sections',
-			templateUrl:'../views/faculty-sections-assign.html',
-			controller:'FacultyAssignSections'
-		})
+		
 		.state('faculty.settings2',{
 			url:'/settings',
 			templateUrl:'../views/settings-view.html',
