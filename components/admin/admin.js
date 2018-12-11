@@ -603,7 +603,28 @@ exports.admin_section_get_listing = (req,res) => {
 }
 
 exports.admin_degrees_get = (req,res) => {
-
+    var d= [];
+    Degrees.find({}).exec(function(err,docs){
+        
+        if (err) throw err;
+        if(docs) {
+              d = docs;  
+            Majors.find({}).exec(function(err1,docs1){
+                    
+                if(err1) throw err1;
+                if(!docs1) return res.json({message:"No degrees found."});
+                else if (docs1) {
+                     var data = {
+                        degrees:d,
+                        majors:docs1
+                    }
+                    
+                    return res.json(data);
+                }
+            });
+        }
+    
+    });
     
 
 }
