@@ -4,8 +4,8 @@
 	<select name="table_data" class="custom-select" ng-model="display_table" style="max-width:200%;margin-bottom:20px">
 	    <option value ="student">Students</option>
 	    <option value ="faculty">Faculty</option>
-	    <option value ="classes">Classes</option>
-	    <option value ="listing">Listing</option>
+	    <option value ="classes">Classes (No Adding)</option>
+	    <option value ="listing">Listing (No Editing)</option>
 	    <option value ="fees">Fees (Archive-Only)</option>
 		
 		
@@ -98,39 +98,45 @@
 								</thead>
 								<tbody data-ng-repeat="fee in students[$index].fees track by $index">
 									<!--Content here-->
-							    		
-									<tr class="table_student">
-						                <th class="thead">Entrance</th>
-						                <td>{{fee.entrance}}</td>
-					                </tr>
-					                <tr class="table_student">
-						                <th>Selection</th>
-						                <td>{{fee.selection}}</td>
-					                </tr>
-					                <tr class="table_student">
-						                <th>Id</th>
-						                <td>{{fee.id}}</td>
+							    	<tr class="table_student">
+						                <th>Tuition</th>
+						                <td>P{{fee.tuition}}</td>
 					                </tr>
 					                <tr class="table_student">
 						                <th>Misc</th>
-						                <td>{{fee.misc}}</td>
+						                <td>P{{fee.misc}}</td>
+					                </tr>
+					                <tr>
+					                    <th>Total</th>
+					                    <td>P{{fee.tuition+fee.misc}}</td>
+					                </tr>
+					                <tr>
+					                <td></td>
+					                <td></td>
+					                </tr>	
+									<tr class="table_student">
+						                <th class="thead">Entrance</th>
+						                <td>P{{fee.entrance}}</td>
 					                </tr>
 					                <tr class="table_student">
-						                <th>Tuition</th>
-						                <td>{{fee.tuition}}</td>
+						                <th>Selection</th>
+						                <td>P{{fee.selection}}</td>
 					                </tr>
 					                <tr class="table_student">
-						                <th>Term</th>
-						                <td>{{fee.term}}</td>
+						                <th>Id</th>
+						                <td>P{{fee.id}}</td>
 					                </tr>
-					                <tr class="table_student">
-						                <th>Year</th>
-						                <td>{{fee.year}}</td>
+    					             
+    					            <tr>
+					                    <th>Total</th>
+					                    <td>P{{fee.id+fee.selection+fee.entrance}}</td>
 					                </tr>
-					                <tr class="table_student">
-						                <th>Status</th>
-						                <td>{{fee.status}}</td>
-					                </tr>
+					                <tr>
+					                <td></td>
+					                <td></td>
+					                </tr>	
+					                
+					                
 									<!--End of Content-->
 								</tbody>
 									
@@ -176,7 +182,7 @@
 		
 		</div>
 		<!-- end of faculty ng-switch-->
-		<div ng-switch-when="subject">
+		<div ng-switch-when="classes">
 		<table class="table table-bordered">
 			<thead>
 				<tr class="topHeader">
