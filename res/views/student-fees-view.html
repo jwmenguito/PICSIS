@@ -7,6 +7,17 @@
 					</tr>
 				</thead>
 				<tbody ng-repeat="fee in user_object.fees track by $index">
+					
+					<tr class="table-row">
+						<th>Tuition</th>
+						<td>{{fee.tuition}}</td>
+					</tr>
+					<tr class="table-row">
+						<th>Misc</th>
+						<td>{{fee.misc}}</td>
+					</tr>
+					<tr>
+					</tr>
 					<tr class="table-row">
 						<th class="thead">Entrance</th>
 						<td>{{fee.entrance}}</td>
@@ -19,14 +30,9 @@
 						<th>Id</th>
 						<td>{{fee.id}}</td>
 					</tr>
-					<tr class="table-row">
-						<th>Misc</th>
-						<td>{{fee.misc}}</td>
+					<tr>
 					</tr>
-					<tr class="table-row">
-						<th>Tuition</th>
-						<td>{{fee.tuition}}</td>
-					</tr>
+					
 					<tr class="table-row">
 						<th>Term</th>
 						<td>{{fee.term}}</td>

@@ -3,8 +3,9 @@ var path = require('path');
 var Faculty = require(__dirname+'/../user_faculty');	//mongoose user
 var Subjects = require(__dirname+'/../subjects');
 var Student = require(__dirname+'/../user_student');
-var Degrees = require(__dirname_'/../degrees');
-var Majors = require(__dirname_'/../majors');
+
+var Degrees = require(__dirname_+'/../degrees');
+var Majors = require(__dirname_+'/../majors');
 var admin = require(__dirname+'/../user_admin');
 var Usr = require(__dirname+'/../usr');
 var Set = require('collections/set');
