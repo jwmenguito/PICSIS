@@ -740,7 +740,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	            $scope.prof_list = response.data.profs;
 	            for(var c=0;c<$scope.prof_list.length;c++){
 	                
-	                $scope.prof_array[c] = $scope.prof_list.prof_id;
+	                $scope.prof_array[c] = $scope.prof_list[0].prof_id;
 	            }
 	            //alert(response.data.message);
 	        

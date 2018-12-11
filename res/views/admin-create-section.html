@@ -24,9 +24,9 @@
 	
 	
 	<table class="table table-hover table-condensed">
-
+         <h4>List of Sections</h4>
         <tr>
-        <h2>List of Sections</h2>
+       
        
         </tr>
         <tbody>
@@ -47,14 +47,14 @@
 	        <td id="subject-code">{{class.degree}}</td>
 	        <td id="subject-code">{{class.major_degree}}</td>
 	        <td id="subject-code">{{class.prof_id}}</td>
-	        
 	        <td>
-	            <button class="btn-primary btn-xs" ng-click="assign($index)">Assign</button>	        
-	        </td>
-	        <td>
-	            <select class="custom-select" ng-model="$parent.prof_array[$index]" ng-options="prof.prof_id for prof in prof_list" style="max-width:200%;margin-bottom:20px">
+	            <select class="custom-select" ng-model="$parent.prof_array[$index]" ng-options="prof.prof_id for prof in prof_list" style="max-width:200%">
 	   
 		        </select>
+	        </td>
+	        
+	         <td>
+	            <button class="btn-primary btn-xs" ng-click="assign($index)">Assign</button>	        
 	        </td>
         </tr>
         </tbody>
