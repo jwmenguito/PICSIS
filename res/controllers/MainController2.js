@@ -584,7 +584,21 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	function($scope,$http){
 		$scope.degrees=[];
 		$scope.majors=[];
-	
+	    
+	    $scope.getDegrees = function(){
+		    
+		    $http
+		    .post('/admin/degrees/get')
+		    .then(function(response){
+		    $scope.degrees = response.data.degrees;
+		    $scope.majors = response.data.majors;
+		
+		});
+		
+		}
+		
+		$scope.getDegrees();
+	    
 		$scope.add = function(){
 			var data = {
 				prof_id:$scope.prof_id,
@@ -592,7 +606,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 				fname:$scope.fname,
 				mname:$scope.mname,
 				degree:$scope.degree.course_id,
-				major:$scope.major.degree_id,
+				major:$scope.major_degree.degree_id,
 				email:$scope.email,
 				mobile:$scope.mobile,
 				gender:$scope.gender
