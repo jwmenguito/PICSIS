@@ -197,10 +197,9 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 		
 		$scope.clear_reminders = function(){
 	        var data = {
-	        
 	            student_no :dataHolder().student_no
 	        }
-	        
+	        console.log(data);
 	        $http
 				.post("https://picsis.herokuapp.com/student/settings/reminders",data)
 				.then(
@@ -280,6 +279,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 			
 			
 			var data = {
+			    title:$scope.title,
 			    student_no:$scope.classes[index].students.student_no,
 				msg:$scope.msg
 			}
