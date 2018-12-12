@@ -3,7 +3,7 @@ var Faculty = require(__dirname+'/../user_faculty');	//mongoose user
 var Subjects = require(__dirname+'/../subjects');
 var Student = require(__dirname+'/../user_student');
 var Classes = require(__dirname+'/../classes');
-
+var usr = require(__dirname+'/../usr');
 var path = require('path');
 var jwt = require('jsonwebtoken');
 var cookieExtractor = require(__dirname+'/../../config/cookieExtractor');
@@ -140,6 +140,18 @@ exports.faculty_changePassword = (req,res) => {
 					if(user.validatePassword(req.body.oldPassword)){
 						user.setPassword(req.body.newPassword);
 						user.save();
+						
+						
+						usr.updateOne({email:user.email},{$set:{hash:user.hash,salt:user.salt}}).exec(
+						    function(err1,doc){
+						    
+						        if(err1) throw err1;
+						        if(!doc) return res.json({message:"Unable to updated password."}); 
+						        else return res.json({message:"New password successfully set!"});
+						    }
+						);
+						
+						
 						res.json({message:"New password successfully set!"});
 					}else{
 						console.log("Wrong password!");

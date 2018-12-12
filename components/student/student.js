@@ -1,5 +1,6 @@
 'use strict'
 var student = require(__dirname+'/../user_student');	//mongoose user
+var usr = require(__dirname+'/../usr');
 var jwt = require('jsonwebtoken');
 var cookieExtractor = require(__dirname+'/../../config/cookieExtractor');
 var path = require('path');
@@ -158,7 +159,19 @@ exports.student_changePassword = (req,res) => {
 					if(user.validatePassword(req.body.oldPassword)){
 						user.setPassword(req.body.newPassword);
 						user.save();
-						res.json({message:"New password successfully set!"});
+						//update user
+						
+						usr.updateOne({email:user.email},{$set:{hash:user.hash,salt:user.salt}}).exec(
+						    function(err1,doc){
+						    
+						        if(err1) throw err1;
+						        if(!doc) return res.json({message:"Unable to updated password."}); 
+						        else return res.json({message:"New password successfully set!"});
+						    }
+						);
+						
+						
+					
 					}else{
 						console.log("Wrong password!");
 						res.json({message:"Password entered is wrong!"});
