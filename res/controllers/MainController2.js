@@ -511,7 +511,26 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 				
 			})
 			.catch(angular.noop);
+			
+			$scope.getTable();
 		}
+		
+		
+		$scope.getTable = function(){
+				var data ={
+					table : "student"
+				}
+				$http
+				.post('https://picsis.herokuapp.com/admin/records',data)
+				.then(function(response){
+						console.log(response.data);
+							$scope.students = response.data;
+							console.log($scope.students);
+						
+				}).catch(angular.noop);
+		
+	    }
+		
 	}]);
 	
 	homeModule.controller("AddSubjectCtrl",["$scope","$http",
@@ -522,7 +541,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 				subject_code:$scope.subject_code,
 				subj_desc:$scope.subj_desc,
 				units:$scope.units,
-				prof_id:$scope.prof_id,
+				
 				degree:$scope.degree,
 				major_degree:$scope.major_degree,
 				processed:false
@@ -535,12 +554,30 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 				$scope.subject_code = null;
 				$scope.subj_desc = null;
 				$scope.units = null;
-				$scope.prof_id = null;
+				
 				$scope.major_degree = null;
 				$scope.degree = null;
 			})
 			.catch(angular.noop);
+			
+			$scope.getTable();
 		}
+		
+		$scope.getTable = function(){
+				var data ={
+					table : "listing"
+				}
+				$http
+				.post('https://picsis.herokuapp.com/admin/records',data)
+				.then(function(response){
+						console.log(response.data);
+							$scope.students = response.data;
+							console.log($scope.students);
+						
+				}).catch(angular.noop);
+		
+	    }
+		
 	}]);
 	
 	homeModule.controller("AddFacultyCtrl",["$scope","$http",
@@ -579,6 +616,23 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 			})
 			.catch(angular.noop);
 		}
+		/*
+		$scope.getTable = function(){
+				var data ={
+					table : "faculty"
+				}
+				$http
+				.post('https://picsis.herokuapp.com/admin/records',data)
+				.then(function(response){
+						console.log(response.data);
+							$scope.students = response.data;
+							console.log($scope.students);
+						
+				}).catch(angular.noop);
+		
+	    }*/
+		
+		
 	}]);
 	
 	
