@@ -196,8 +196,9 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 		}
 		
 		$scope.clear_reminders = function(){
+	        console.log(dataHolder());
 	        var data = {
-	            student_no :dataHolder().student_no
+	            student_no :dataHolder()
 	        }
 	        console.log(data);
 	        $http
