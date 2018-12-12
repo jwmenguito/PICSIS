@@ -153,7 +153,7 @@ exports.admin_add_student = (req,res) => {
 		}
 	});
 	
-	Curriculum.findOne({major_degree:req.body.major_degree.degree_id,degree:req.body.course.course_id}).exec(function(err,docs){
+	Curriculum.findOne({major_degree:req.body.major_degree,degree:req.body.course}).exec(function(err,docs){
 		console.log(req.body.major_degree);
 		console.log(req.body.major_degree);
 		console.log(req.body.major_degree);
