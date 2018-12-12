@@ -165,7 +165,7 @@ exports.student_changePassword = (req,res) => {
 						    function(err1,doc){
 						    
 						        if(err1) throw err1;
-						        if(!doc) return res.json({message:"Unable to updated password."}); 
+						        if(!doc) return res.json({message:"Unable to update password."}); 
 						        else return res.json({message:"New password successfully set!"});
 						    }
 						);
