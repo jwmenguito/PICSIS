@@ -151,7 +151,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	
 		$scope.send_email = function(){
 			var data= {
-				student_no:dataHolder().student_no
+				student_no:dataHolder()
 			}
 			$http
 			.post("https://picsis.herokuapp.com/student/requests/send/",data)
@@ -174,7 +174,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 				var data = {
 					oldPassword : $scope.oldPassword,
 					newPassword : $scope.newPassword,
-					student_no :dataHolder().student_no
+					student_no :dataHolder()
 				}
 				
 				$http
@@ -383,7 +383,7 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 				var data = {
 					oldPassword : $scope.oldPassword,
 					newPassword : $scope.newPassword,
-					prof_id : dataHolder().prof_id
+					prof_id : dataHolder()
 				}
 				
 				$http
