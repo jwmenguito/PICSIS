@@ -861,7 +861,8 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 	        }
 	        
 	        var data2={
-	            classes_obj: $scope.classes
+	            classes_obj: $scope.classes,
+	            subject_code:$scope.selected_subject.subject_code
 	        }
 	        
 	        $http
