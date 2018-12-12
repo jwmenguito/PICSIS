@@ -74,7 +74,7 @@ exports.admin_records = (req,res) =>{
 
 //Admin Get Records
 exports.admin_get_records = (req,res) => {
-		console.log("GET");
+		console.log("GETTING "+req.body.table+" RECORDS");
 	if(req.body.table==='classes'){
 		Classes.find({}).sort({subject_code:1}).exec(function(err,docs){
 			if(err) throw err;

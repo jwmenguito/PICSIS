@@ -977,12 +977,15 @@ var homeModule = angular.module('homeModule',['ui.router','ui.bootstrap','ngCook
 			$scope.addEntry = function(){
 				if($scope.display_table==='listing'){
 					console.log("pressed");
+					$scope.getTable();
 					$state.go('admin.records.addSubject',{});
 				}else if($scope.display_table==='faculty'){
 					console.log("pressed");
+					$scope.getTable();
 					$state.go('admin.records.addFaculty',{});
 				}else if($scope.display_table==='student'){
 					console.log("pressed");
+					$scope.getTable();
 					$state.go('admin.records.addStudent',{});
 				}else{
 					console.log("pressed");
